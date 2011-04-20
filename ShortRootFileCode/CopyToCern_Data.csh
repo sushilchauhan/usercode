@@ -1,0 +1,5 @@
+#!/bin/tcsh                                                                                                                                                                  
+lcg-cp --verbose -b -D srmv2  "srm://cmssrm.fnal.gov:8443/srm/managerv2?SFN=/11/store/user/sushil/MonoPhoton/397_Ntuples_V26/ShortRootFiles/Data_A_New.root" "srm://srm-cms.cern.ch:8443//srm/managerv2?SFN=/castor/cern.ch/user/s/schauhan/ShortRootFiles_MonoPhoton/Data_A_New.root"
+
+lcg-cp --verbose -b -D srmv2  "srm://cmssrm.fnal.gov:8443/srm/managerv2?SFN=/11/store/user/sushil/MonoPhoton/397_Ntuples_V26/ShortRootFiles/Data_A_New_2.root" "srm://srm-cms.cern.ch:8443//srm/managerv2?SFN=/castor/cern.ch/user/s/schauhan/ShortRootFiles_MonoPhoton/Data_A_New_2.root"
+lcg-cp --verbose -b -D srmv2  "srm://cmssrm.fnal.gov:8443/srm/managerv2?SFN=/11/store/user/sushil/MonoPhoton/397_Ntuples_V26/ShortRootFiles/Data_B_New.root" "srm://srm-cms.cern.ch:8443//srm/managerv2?SFN=/castor/cern.ch/user/s/schauhan/ShortRootFiles_MonoPhoton/Data_B_New.root"      
