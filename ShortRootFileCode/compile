@@ -1,8 +1,0 @@
-rootcint -f NonCollisionBG_dict.cc -c NonCollisionBG.h NonCollisionBG.cc LinkDef.h
-if g++ -Wno-deprecated -fPIC  NonCollisionBG_dict.cc analysis.C -o $1 -I$ROOTSYS/include -I$CLHEP_PARAM_PATH/include -L${ROOTSYS}/lib -lRint -lTree -lTreePlayer -lCint -lThread -lGraf -lGraf3d -lSmatrix  -lHist -lHtml -lMinuit -lPostscript -lProof -lThread -lCore -lGX11 -lPhysics -lGpad -lGui -lTreeViewer -lvectorDict -L$CLHEP_PARAM_PATH/lib -lCLHEP -L/usr/X11R6/lib -lm -ldl -L/usr/lib -lpthread -rdynamic  
-
-#if g++ -Wno-deprecated analysis.C -o $1 -I$ROOTSYS/include -I$CLHEP_PARAM_PATH/include -L/afs/cern.ch/cms/sw/slc4_ia32_gcc345/lcg/root/5.22.00a-cms18/lib -lCore -lCint -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lTree -lRint -lPostscript -lMatrix -lPhysics -lMathCore -lThread -lz -pthread -lm -ldl -rdynamic -lGui -pthread -m32 
-then
-echo compiled $1
-#./a.exe
-fi
