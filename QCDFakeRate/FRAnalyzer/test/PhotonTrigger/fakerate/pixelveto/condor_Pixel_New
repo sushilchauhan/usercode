@@ -1,0 +1,10 @@
+universe = vanilla
+Executable = /uscms/home/sushil/nobackup/CMSSW/MonoPhoton/CMSSW_3_9_7/src/QCDFakeRate/Analyser/test/PhotonTrigger/fakerate/pixelveto/Analyzer_Pixel_New.csh
+Requirements = Memory >= 199 &&OpSys == "LINUX"&& (Arch != "DUMMY" )&& Disk > 1000000
+Should_Transfer_Files = YES
+WhenToTransferOutput = ON_EXIT
+ Output = $(Cluster)_$(Process).stdout 
+ Error = $(Cluster)_$(Process).stderr
+ Log = $(Cluster)_$(Process).log 
+notify_user = sushil@fnal.gov
+Queue 1
