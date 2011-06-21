@@ -1,0 +1,18 @@
+for which in May10thReReco_New;do
+cat myCuts_halo.C > myCuts_new.C
+sed -e '419 c\  TString location = "dcap://cmsgridftp.fnal.gov:24125";' \
+-e '420 c\  TString path = "/pnfs/cms/WAX/11/store/user/sushil/Summer11/Data/May10thReReco_New/'$which'/";' \
+-e '421 c\  TString short_path ="/pnfs/cms/WAX/11/store/user/sushil/Summer11/Data/May10thReReco_New/'$which'/";' \
+-e '457 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sushil/ShortRootFileCode/'$which'.root","RECREATE");' \
+-e '1289 c\  /*' \
+-e '1315 c\  */' \
+-e '1319 c\     scraping_isScrapingEvent = Scraping_isScrapingEvent;' \
+-e '1444 c\  /*' \
+-e '1468 c\  */'  < myCuts_new.C > myCuts.C
+./compile ${which}.exe
+rm myCuts.C myCuts_new.C
+./MakeCondorFiles.csh ${which}
+done
+
+exit 0
+
