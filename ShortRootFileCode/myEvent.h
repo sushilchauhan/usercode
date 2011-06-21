@@ -1,8 +1,8 @@
 //////////////////////////////////////////////////////////
 // This class has been automatically generated on
-// Wed Jan  5 06:16:02 2011 by ROOT version 5.22/00d
+// Tue Jun 21 01:49:06 2011 by ROOT version 5.26/00e
 // from TTree myEvent/a tree with histograms
-// found on file: dcache:///pnfs/cms/WAX/11/store/user/sushil/MonoPhoton/387_Ntuples_V26/WENu_Gamma/Histo_Wenu_Gamma_10_1_fNU.root
+// found on file: Histo_Wmunu_240_1_GIb.root
 //////////////////////////////////////////////////////////
 
 #ifndef myEvent_h
@@ -33,13 +33,17 @@
 #include <TSystemFile.h>
 #include <TSystemDirectory.h>
 #include <TDCacheFile.h>
+#include <TLorentzVector.h>
 using namespace std;
 #ifdef __MAKECINT__
 #pragma link C++ class vector<std::bool>;
 #pragma link C++ class vector<std::string>+;
 #pragma link C++ class vector<int>+;
+#pragma link C++ class vector<TLorentzVector>+;                                                                                                                                    
 #pragma extra_include "vector";
 #endif
+ 
+
 
 class myEvent {
 public :
@@ -62,159 +66,194 @@ public :
    vector<string>  *triggernames;
    vector<int>     *triggerprescales;
    vector<bool>    *ifTriggerpassed;
+   Float_t         trobjpt[100][100][10];   //[ntriggers]
+   Float_t         trobjeta[100][100][10];   //[ntriggers]
+   Float_t         trobjphi[100][100][10];   //[ntriggers]
    Int_t           Vertex_n;
-   Float_t         Vertex_x[100];   //[Vertex_n]
-   Float_t         Vertex_y[100];   //[Vertex_n]
-   Float_t         Vertex_z[100];   //[Vertex_n]
-   Int_t           Vertex_tracksize[100];   //[Vertex_n]
-   Int_t           Vertex_ndof[100];   //[Vertex_n]
-   Float_t         Vertex_chi2[100];   //[Vertex_n]
-   Float_t         Vertex_d0[100];   //[Vertex_n]
-   Bool_t          Vertex_isFake[100];   //[Vertex_n]
+   Float_t         Vertex_x[200];   //[Vertex_n]
+   Float_t         Vertex_y[200];   //[Vertex_n]
+   Float_t         Vertex_z[200];   //[Vertex_n]
+   Int_t           Vertex_tracksize[200];   //[Vertex_n]
+   Int_t           Vertex_ndof[200];   //[Vertex_n]
+   Float_t         Vertex_chi2[200];   //[Vertex_n]
+   Float_t         Vertex_d0[200];   //[Vertex_n]
+   Bool_t          Vertex_isFake[200];   //[Vertex_n]
+   Int_t           npuVertices;
+   Int_t           ootnpuVertices;
    Int_t           Track_n;
-   Float_t         Track_px[100];   //[Track_n]
-   Float_t         Track_py[100];   //[Track_n]
-   Float_t         Track_pz[100];   //[Track_n]
-   Float_t         Track_vx[100];   //[Track_n]
-   Float_t         Track_vy[100];   //[Track_n]
-   Float_t         Track_vz[100];   //[Track_n]
-   Float_t         Track_pt[100];   //[Track_n]
-   Float_t         Track_eta[100];   //[Track_n]
-   Float_t         Track_phi[100];   //[Track_n]
+   Float_t         Track_px[400];   //[Track_n]
+   Float_t         Track_py[400];   //[Track_n]
+   Float_t         Track_pz[400];   //[Track_n]
+   Float_t         Track_vx[400];   //[Track_n]
+   Float_t         Track_vy[400];   //[Track_n]
+   Float_t         Track_vz[400];   //[Track_n]
+   Float_t         Track_pt[400];   //[Track_n]
+   Float_t         Track_eta[400];   //[Track_n]
+   Float_t         Track_phi[400];   //[Track_n]
    Int_t           Jet_n;
-   Float_t         Jet_px[100];   //[Jet_n]
-   Float_t         Jet_py[100];   //[Jet_n]
-   Float_t         Jet_E[100];   //[Jet_n]
-   Float_t         Jet_pz[100];   //[Jet_n]
-   Float_t         Jet_vx[100];   //[Jet_n]
-   Float_t         Jet_vy[100];   //[Jet_n]
-   Float_t         Jet_vz[100];   //[Jet_n]
-   Float_t         Jet_pt[100];   //[Jet_n]
-   Float_t         Jet_eta[100];   //[Jet_n]
-   Float_t         Jet_phi[100];   //[Jet_n]
-   Float_t         Jet_emEnergyFraction[100];   //[Jet_n]
-   Float_t         Jet_energyFractionHadronic[100];   //[Jet_n]
-   Int_t           Jet_hitsInN90[100];   //[Jet_n]
-   Int_t           Jet_n90Hits[100];   //[Jet_n]
-   Int_t           Jet_nTowers[100];   //[Jet_n]
-   Float_t         Jet_fHPD[100];   //[Jet_n]
-   Float_t         Jet_fRBX[100];   //[Jet_n]
-   Float_t         Jet_RHF[100];   //[Jet_n]
-
-   Int_t            pfJet_n;
-   Float_t          pfJet_pt[100];                                                                                                                                
-   Float_t          pfJet_px[100];
-   Float_t          pfJet_py[100];
-   Float_t          pfJet_E[100];
-   Float_t          pfJet_pz[100];
-   Float_t          pfJet_vx[100];
-   Float_t          pfJet_vy[100];
-   Float_t          pfJet_vz[100];
-   Float_t          pfJet_eta[100];
-   Float_t          pfJet_phi[100];
-
-
+   Float_t         Jet_px[200];   //[Jet_n]
+   Float_t         Jet_py[200];   //[Jet_n]
+   Float_t         Jet_E[200];   //[Jet_n]
+   Float_t         Jet_pz[200];   //[Jet_n]
+   Float_t         Jet_vx[200];   //[Jet_n]
+   Float_t         Jet_vy[200];   //[Jet_n]
+   Float_t         Jet_vz[200];   //[Jet_n]
+   Float_t         Jet_pt[200];   //[Jet_n]
+   Float_t         Jet_eta[200];   //[Jet_n]
+   Float_t         Jet_phi[200];   //[Jet_n]
+   Float_t         Jet_emEnergyFraction[200];   //[Jet_n]
+   Float_t         Jet_energyFractionHadronic[200];   //[Jet_n]
+   Int_t           Jet_hitsInN90[200];   //[Jet_n]
+   Int_t           Jet_n90Hits[200];   //[Jet_n]
+   Int_t           Jet_nTowers[200];   //[Jet_n]
+   Float_t         Jet_fHPD[200];   //[Jet_n]
+   Float_t         Jet_fRBX[200];   //[Jet_n]
+   Float_t         Jet_RHF[200];   //[Jet_n]
+   Float_t         Jet_jecCorr[200];   //[Jet_n]
+   Float_t         ucJet_px[200];   //[Jet_n]
+   Float_t         ucJet_py[200];   //[Jet_n]
+   Float_t         ucJet_E[200];   //[Jet_n]
+   Float_t         ucJet_pz[200];   //[Jet_n]
+   Float_t         ucJet_pt[200];   //[Jet_n]
+   Float_t         ucJet_eta[200];   //[Jet_n]
+   Float_t         ucJet_phi[200];   //[Jet_n]
+   Int_t           pfJet_n;
+   Float_t         pfJet_px[200];   //[pfJet_n]
+   Float_t         pfJet_py[200];   //[pfJet_n]
+   Float_t         pfJet_E[200];   //[pfJet_n]
+   Float_t         pfJet_pz[200];   //[pfJet_n]
+   Float_t         pfJet_vx[200];   //[pfJet_n]
+   Float_t         pfJet_vy[200];   //[pfJet_n]
+   Float_t         pfJet_vz[200];   //[pfJet_n]
+   Float_t         pfJet_pt[200];   //[pfJet_n]
+   Float_t         pfJet_eta[200];   //[pfJet_n]
+   Float_t         pfJet_phi[200];   //[pfJet_n]
+   Float_t         pfJet_jecCorr[200];   //[pfJet_n]
+   Float_t         ucpfJet_px[200];   //[pfJet_n]
+   Float_t         ucpfJet_py[200];   //[pfJet_n]
+   Float_t         ucpfJet_E[200];   //[pfJet_n]
+   Float_t         ucpfJet_pz[200];   //[pfJet_n]
+   Float_t         ucpfJet_pt[200];   //[pfJet_n]
+   Float_t         ucpfJet_eta[200];   //[pfJet_n]
+   Float_t         ucpfJet_phi[200];   //[pfJet_n]
+   Int_t           genJet_n;
+   Float_t         genJet_px[200];   //[genJet_n]
+   Float_t         genJet_py[200];   //[genJet_n]
+   Float_t         genJet_E[200];   //[genJet_n]
+   Float_t         genJet_pz[200];   //[genJet_n]
+   Float_t         genJet_pt[200];   //[genJet_n]
+   Float_t         genJet_eta[200];   //[genJet_n]
+   Float_t         genJet_phi[200];   //[genJet_n]
    Int_t           Electron_n;
-   Float_t         Electron_px[100];   //[Electron_n]
-   Float_t         Electron_py[100];   //[Electron_n]
-   Float_t         Electron_pz[100];   //[Electron_n]
-   Float_t         Electron_vx[100];   //[Electron_n]
-   Float_t         Electron_vy[100];   //[Electron_n]
-   Float_t         Electron_vz[100];   //[Electron_n]
-   Float_t         Electron_pt[100];   //[Electron_n]
-   Float_t         Electron_eta[100];   //[Electron_n]
-   Float_t         Electron_phi[100];   //[Electron_n]
-   Float_t         Electron_energy[100];   //[Electron_n]
-   Float_t         Electron_charge[100];   //[Electron_n]
-   Float_t         Electron_trkIso[100];   //[Electron_n]
-   Float_t         Electron_ecalIso[100];   //[Electron_n]
-   Float_t         Electron_hcalIso[100];   //[Electron_n]
-   Float_t         Electron_SigmaIetaIeta[100];   //[Electron_n]
-   Float_t         Electron_dEtaIn[100];   //[Electron_n]
-   Float_t         Electron_dPhiIn[100];   //[Electron_n]
-   Float_t         Electron_HoE[100];   //[Electron_n]
-   Float_t         Electron_sc_energy[100];   //[Electron_n]
-   Float_t         Electron_sc_eta[100];   //[Electron_n]
-   Float_t         Electron_sc_phi[100];   //[Electron_n]
+   Float_t         Electron_px[200];   //[Electron_n]
+   Float_t         Electron_py[200];   //[Electron_n]
+   Float_t         Electron_pz[200];   //[Electron_n]
+   Float_t         Electron_vx[200];   //[Electron_n]
+   Float_t         Electron_vy[200];   //[Electron_n]
+   Float_t         Electron_vz[200];   //[Electron_n]
+   Float_t         Electron_pt[200];   //[Electron_n]
+   Float_t         Electron_eta[200];   //[Electron_n]
+   Float_t         Electron_phi[200];   //[Electron_n]
+   Float_t         Electron_energy[200];   //[Electron_n]
+   Float_t         Electron_charge[200];   //[Electron_n]
+   Float_t         Electron_trkIso[200];   //[Electron_n]
+   Float_t         Electron_ecalIso[200];   //[Electron_n]
+   Float_t         Electron_hcalIso[200];   //[Electron_n]
+   Float_t         Electron_SigmaIetaIeta[200];   //[Electron_n]
+   Float_t         Electron_dEtaIn[200];   //[Electron_n]
+   Float_t         Electron_dPhiIn[200];   //[Electron_n]
+   Float_t         Electron_HoE[200];   //[Electron_n]
+   Float_t         Electron_sc_energy[200];   //[Electron_n]
+   Float_t         Electron_sc_eta[200];   //[Electron_n]
+   Float_t         Electron_sc_phi[200];   //[Electron_n]
    Int_t           Muon_n;
-   Float_t         Muon_px[100];   //[Muon_n]
-   Float_t         Muon_py[100];   //[Muon_n]
-   Float_t         Muon_pz[100];   //[Muon_n]
-   Float_t         Muon_vx[100];   //[Muon_n]
-   Float_t         Muon_vy[100];   //[Muon_n]
-   Float_t         Muon_vz[100];   //[Muon_n]
-   Float_t         Muon_pt[100];   //[Muon_n]
-   Float_t         Muon_eta[100];   //[Muon_n]
-   Float_t         Muon_phi[100];   //[Muon_n]
-   Float_t         Muon_energy[100];   //[Muon_n]
-   Float_t         Muon_charge[100];   //[Muon_n]
-   Bool_t          Muon_isGlobalMuon[100];   //[Muon_n]
-   Bool_t          Muon_isTrackerMuon[100];   //[Muon_n]
-   Bool_t          Muon_isStandAloneMuon[100];   //[Muon_n]
-   Bool_t          Muon_InnerTrack_isNonnull[100];   //[Muon_n]
-   Bool_t          Muon_OuterTrack_isNonnull[100];   //[Muon_n]
-   Float_t         Muon_OuterTrack_InnerPoint_x[100];   //[Muon_n]
-   Float_t         Muon_OuterTrack_InnerPoint_y[100];   //[Muon_n]
-   Float_t         Muon_OuterTrack_InnerPoint_z[100];   //[Muon_n]
-   Float_t         Muon_OuterTrack_InnerPoint_px[100];   //[Muon_n]
-   Float_t         Muon_OuterTrack_InnerPoint_py[100];   //[Muon_n]
-   Float_t         Muon_OuterTrack_InnerPoint_pz[100];   //[Muon_n]
-   Float_t         Muon_OuterTrack_OuterPoint_x[100];   //[Muon_n]
-   Float_t         Muon_OuterTrack_OuterPoint_y[100];   //[Muon_n]
-   Float_t         Muon_OuterTrack_OuterPoint_z[100];   //[Muon_n]
-   Float_t         Muon_OuterTrack_OuterPoint_px[100];   //[Muon_n]
-   Float_t         Muon_OuterTrack_OuterPoint_py[100];   //[Muon_n]
-   Float_t         Muon_OuterTrack_OuterPoint_pz[100];   //[Muon_n]
-   Float_t         Muon_InnerTrack_InnerPoint_x[100];   //[Muon_n]
-   Float_t         Muon_InnerTrack_InnerPoint_y[100];   //[Muon_n]
-   Float_t         Muon_InnerTrack_InnerPoint_z[100];   //[Muon_n]
-   Float_t         Muon_InnerTrack_InnerPoint_px[100];   //[Muon_n]
-   Float_t         Muon_InnerTrack_InnerPoint_py[100];   //[Muon_n]
-   Float_t         Muon_InnerTrack_InnerPoint_pz[100];   //[Muon_n]
-   Float_t         Muon_InnerTrack_OuterPoint_x[100];   //[Muon_n]
-   Float_t         Muon_InnerTrack_OuterPoint_y[100];   //[Muon_n]
-   Float_t         Muon_InnerTrack_OuterPoint_z[100];   //[Muon_n]
-   Float_t         Muon_InnerTrack_OuterPoint_px[100];   //[Muon_n]
-   Float_t         Muon_InnerTrack_OuterPoint_py[100];   //[Muon_n]
-   Float_t         Muon_InnerTrack_OuterPoint_pz[100];   //[Muon_n]
+   Float_t         Muon_px[200];   //[Muon_n]
+   Float_t         Muon_py[200];   //[Muon_n]
+   Float_t         Muon_pz[200];   //[Muon_n]
+   Float_t         Muon_vx[200];   //[Muon_n]
+   Float_t         Muon_vy[200];   //[Muon_n]
+   Float_t         Muon_vz[200];   //[Muon_n]
+   Float_t         Muon_pt[200];   //[Muon_n]
+   Float_t         Muon_eta[200];   //[Muon_n]
+   Float_t         Muon_phi[200];   //[Muon_n]
+   Float_t         Muon_energy[200];   //[Muon_n]
+   Float_t         Muon_charge[200];   //[Muon_n]
+   Bool_t          Muon_isGlobalMuon[200];   //[Muon_n]
+   Bool_t          Muon_isTrackerMuon[200];   //[Muon_n]
+   Bool_t          Muon_isStandAloneMuon[200];   //[Muon_n]
+   Bool_t          Muon_InnerTrack_isNonnull[200];   //[Muon_n]
+   Bool_t          Muon_OuterTrack_isNonnull[200];   //[Muon_n]
+   Float_t         Muon_OuterTrack_InnerPoint_x[200];   //[Muon_n]
+   Float_t         Muon_OuterTrack_InnerPoint_y[200];   //[Muon_n]
+   Float_t         Muon_OuterTrack_InnerPoint_z[200];   //[Muon_n]
+   Float_t         Muon_OuterTrack_InnerPoint_px[200];   //[Muon_n]
+   Float_t         Muon_OuterTrack_InnerPoint_py[200];   //[Muon_n]
+   Float_t         Muon_OuterTrack_InnerPoint_pz[200];   //[Muon_n]
+   Float_t         Muon_OuterTrack_OuterPoint_x[200];   //[Muon_n]
+   Float_t         Muon_OuterTrack_OuterPoint_y[200];   //[Muon_n]
+   Float_t         Muon_OuterTrack_OuterPoint_z[200];   //[Muon_n]
+   Float_t         Muon_OuterTrack_OuterPoint_px[200];   //[Muon_n]
+   Float_t         Muon_OuterTrack_OuterPoint_py[200];   //[Muon_n]
+   Float_t         Muon_OuterTrack_OuterPoint_pz[200];   //[Muon_n]
+   Float_t         Muon_InnerTrack_InnerPoint_x[200];   //[Muon_n]
+   Float_t         Muon_InnerTrack_InnerPoint_y[200];   //[Muon_n]
+   Float_t         Muon_InnerTrack_InnerPoint_z[200];   //[Muon_n]
+   Float_t         Muon_InnerTrack_InnerPoint_px[200];   //[Muon_n]
+   Float_t         Muon_InnerTrack_InnerPoint_py[200];   //[Muon_n]
+   Float_t         Muon_InnerTrack_InnerPoint_pz[200];   //[Muon_n]
+   Float_t         Muon_InnerTrack_OuterPoint_x[200];   //[Muon_n]
+   Float_t         Muon_InnerTrack_OuterPoint_y[200];   //[Muon_n]
+   Float_t         Muon_InnerTrack_OuterPoint_z[200];   //[Muon_n]
+   Float_t         Muon_InnerTrack_OuterPoint_px[200];   //[Muon_n]
+   Float_t         Muon_InnerTrack_OuterPoint_py[200];   //[Muon_n]
+   Float_t         Muon_InnerTrack_OuterPoint_pz[200];   //[Muon_n]
+   Float_t         Muon_OuterPoint_x[200];   //[Muon_n]
+   Float_t         Muon_OuterPoint_y[200];   //[Muon_n]
+   Float_t         Muon_OuterPoint_z[200];   //[Muon_n]
+   Float_t         Muon_InnerPoint_x[200];   //[Muon_n]
+   Float_t         Muon_InnerPoint_y[200];   //[Muon_n]
+   Float_t         Muon_InnerPoint_z[200];   //[Muon_n]
    Int_t           CosmicMuon_n;
-   Float_t         CosmicMuon_px[100];   //[CosmicMuon_n]
-   Float_t         CosmicMuon_py[100];   //[CosmicMuon_n]
-   Float_t         CosmicMuon_pz[100];   //[CosmicMuon_n]
-   Float_t         CosmicMuon_pt[100];   //[CosmicMuon_n]
-   Float_t         CosmicMuon_eta[100];   //[CosmicMuon_n]
-   Float_t         CosmicMuon_phi[100];   //[CosmicMuon_n]
-   Float_t         CosmicMuon_energy[100];   //[CosmicMuon_n]
-   Float_t         CosmicMuon_charge[100];   //[CosmicMuon_n]
-   Bool_t          CosmicMuon_isGlobalMuon[100];   //[CosmicMuon_n]
-   Bool_t          CosmicMuon_isTrackerMuon[100];   //[CosmicMuon_n]
-   Bool_t          CosmicMuon_isStandAloneMuon[100];   //[CosmicMuon_n]
-   Bool_t          CosmicMuon_InnerTrack_isNonnull[100];   //[CosmicMuon_n]
-   Bool_t          CosmicMuon_OuterTrack_isNonnull[100];   //[CosmicMuon_n]
-   Float_t         CosmicMuon_OuterTrack_InnerPoint_x[100];   //[CosmicMuon_n]
-   Float_t         CosmicMuon_OuterTrack_InnerPoint_y[100];   //[CosmicMuon_n]
-   Float_t         CosmicMuon_OuterTrack_InnerPoint_z[100];   //[CosmicMuon_n]
-   Float_t         CosmicMuon_OuterTrack_InnerPoint_px[100];   //[CosmicMuon_n]
-   Float_t         CosmicMuon_OuterTrack_InnerPoint_py[100];   //[CosmicMuon_n]
-   Float_t         CosmicMuon_OuterTrack_InnerPoint_pz[100];   //[CosmicMuon_n]
-   Float_t         CosmicMuon_OuterTrack_OuterPoint_x[100];   //[CosmicMuon_n]
-   Float_t         CosmicMuon_OuterTrack_OuterPoint_y[100];   //[CosmicMuon_n]
-   Float_t         CosmicMuon_OuterTrack_OuterPoint_z[100];   //[CosmicMuon_n]
-   Float_t         CosmicMuon_OuterTrack_OuterPoint_px[100];   //[CosmicMuon_n]
-   Float_t         CosmicMuon_OuterTrack_OuterPoint_py[100];   //[CosmicMuon_n]
-   Float_t         CosmicMuon_OuterTrack_OuterPoint_pz[100];   //[CosmicMuon_n]
-   Float_t         CosmicMuon_InnerTrack_InnerPoint_x[100];   //[CosmicMuon_n]
-   Float_t         CosmicMuon_InnerTrack_InnerPoint_y[100];   //[CosmicMuon_n]
-   Float_t         CosmicMuon_InnerTrack_InnerPoint_z[100];   //[CosmicMuon_n]
-   Float_t         CosmicMuon_InnerTrack_InnerPoint_px[100];   //[CosmicMuon_n]
-   Float_t         CosmicMuon_InnerTrack_InnerPoint_py[100];   //[CosmicMuon_n]
-   Float_t         CosmicMuon_InnerTrack_InnerPoint_pz[100];   //[CosmicMuon_n]
-   Float_t         CosmicMuon_InnerTrack_OuterPoint_x[100];   //[CosmicMuon_n]
-   Float_t         CosmicMuon_InnerTrack_OuterPoint_y[100];   //[CosmicMuon_n]
-   Float_t         CosmicMuon_InnerTrack_OuterPoint_z[100];   //[CosmicMuon_n]
-   Float_t         CosmicMuon_InnerTrack_OuterPoint_px[100];   //[CosmicMuon_n]
-   Float_t         CosmicMuon_InnerTrack_OuterPoint_py[100];   //[CosmicMuon_n]
-   Float_t         CosmicMuon_InnerTrack_OuterPoint_pz[100];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_px[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_py[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_pz[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_pt[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_eta[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_phi[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_energy[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_charge[200];   //[CosmicMuon_n]
+   Bool_t          CosmicMuon_isGlobalMuon[200];   //[CosmicMuon_n]
+   Bool_t          CosmicMuon_isTrackerMuon[200];   //[CosmicMuon_n]
+   Bool_t          CosmicMuon_isStandAloneMuon[200];   //[CosmicMuon_n]
+   Bool_t          CosmicMuon_InnerTrack_isNonnull[200];   //[CosmicMuon_n]
+   Bool_t          CosmicMuon_OuterTrack_isNonnull[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_OuterTrack_InnerPoint_x[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_OuterTrack_InnerPoint_y[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_OuterTrack_InnerPoint_z[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_OuterTrack_InnerPoint_px[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_OuterTrack_InnerPoint_py[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_OuterTrack_InnerPoint_pz[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_OuterTrack_OuterPoint_x[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_OuterTrack_OuterPoint_y[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_OuterTrack_OuterPoint_z[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_OuterTrack_OuterPoint_px[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_OuterTrack_OuterPoint_py[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_OuterTrack_OuterPoint_pz[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_InnerTrack_InnerPoint_x[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_InnerTrack_InnerPoint_y[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_InnerTrack_InnerPoint_z[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_InnerTrack_InnerPoint_px[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_InnerTrack_InnerPoint_py[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_InnerTrack_InnerPoint_pz[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_InnerTrack_OuterPoint_x[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_InnerTrack_OuterPoint_y[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_InnerTrack_OuterPoint_z[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_InnerTrack_OuterPoint_px[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_InnerTrack_OuterPoint_py[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_InnerTrack_OuterPoint_pz[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_OuterPoint_x[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_OuterPoint_y[200];   //[CosmicMuon_n]
+   Float_t         CosmicMuon_OuterPoint_z[200];   //[CosmicMuon_n]
    Int_t           Tau_n;
    Float_t         Tau_px[100];   //[Tau_n]
    Float_t         Tau_py[100];   //[Tau_n]
@@ -227,6 +266,35 @@ public :
    Float_t         Tau_phi[100];   //[Tau_n]
    Float_t         Tau_energy[100];   //[Tau_n]
    Float_t         Tau_charge[100];   //[Tau_n]
+   vector<string>  *genTauDecayMode1;
+   Int_t           oneProng0Pi0[100];   //[Tau_n]
+   Int_t           oneProng1Pi0[100];   //[Tau_n]
+   Int_t           oneProng2Pi0[100];   //[Tau_n]
+   Int_t           threeProng0Pi0[100];   //[Tau_n]
+   Int_t           threeProng1Pi0[100];   //[Tau_n]
+   Int_t           tauelectron[100];   //[Tau_n]
+   Int_t           taumuon[100];   //[Tau_n]
+   Int_t           nthreeProng1Pi0;
+   Int_t           ntauelectron;
+   Int_t           ntaumuon;
+   Double_t        genHadTauPt[100];   //[Tau_n]
+   Double_t        genHadTauEta[100];   //[Tau_n]
+   Double_t        genHadTauPhi[100];   //[Tau_n]
+   Int_t           nPions[100];   //[Tau_n]
+   Int_t           PionPdgId[100][5];   //[Tau_n]
+   Double_t        PionPt[100][5];   //[Tau_n]
+   Double_t        PionEta[100][5];   //[Tau_n]
+   Double_t        PionPhi[100][5];   //[Tau_n]
+   Int_t           nPi0[100];   //[Tau_n]
+   Int_t           Pi0PdgId[100][5];   //[Tau_n]
+   Double_t        Pi0Pt[100][5];   //[Tau_n]
+   Double_t        Pi0Eta[100][5];   //[Tau_n]
+   Double_t        Pi0Phi[100][5];   //[Tau_n]
+   Int_t           nPhotons[100];   //[Tau_n]
+   Double_t        PhotonPt[100][5];   //[Tau_n]
+   Double_t        PhotonEta[100][5];   //[Tau_n]
+   Double_t        PhotonPhi[100][5];   //[Tau_n]
+   Int_t           PhotonPdgId[100][5];   //[Tau_n]
    Float_t         gen_pthat;
    Int_t           ngenphotons;
    Float_t         gen_photonpt[1000];   //[ngenphotons]
@@ -248,14 +316,13 @@ public :
    Float_t         gen_photonGrandmotherPhi[1000];   //[ngenphotons]
    Int_t           gen_photonGrandmotherStatus[1000];   //[ngenphotons]
    Int_t           nhardphotons;
-
-   Float_t         gen_hardphotonpt[100];   //[nhardphotons]
-   Float_t         gen_hardphotoneta[100];   //[nhardphotons]
-   Float_t         gen_hardphotonphi[100];   //[nhardphotons]
-   Float_t         gen_hardphotonpx[100];   //[nhardphotons]
-   Float_t         gen_hardphotonpy[100];   //[nhardphotons]
-   Float_t         gen_hardphotonpz[100];   //[nhardphotons]
-   Float_t         gen_hardphotonE[100];   //[nhardphotons]
+   Float_t         gen_hardphotonpt[2];   //[nhardphotons]
+   Float_t         gen_hardphotoneta[2];   //[nhardphotons]
+   Float_t         gen_hardphotonphi[2];   //[nhardphotons]
+   Float_t         gen_hardphotonpx[2];   //[nhardphotons]
+   Float_t         gen_hardphotonpy[2];   //[nhardphotons]
+   Float_t         gen_hardphotonpz[2];   //[nhardphotons]
+   Float_t         gen_hardphotonE[2];   //[nhardphotons]
    Float_t         gen_gravitonpt;
    Float_t         gen_gravitoneta;
    Float_t         gen_gravitonphi;
@@ -263,15 +330,15 @@ public :
    Float_t         gen_gravitonpy;
    Float_t         gen_gravitonpz;
    Float_t         gen_gravitonE;
-   Float_t         gen_Wdaughterpt[100];
-   Float_t         gen_Wdaughtereta[100];
-   Float_t         gen_Wdaughterphi[100];
-   Float_t         gen_Wdaughterpx[100];
-   Float_t         gen_Wdaughterpy[100];
-   Float_t         gen_Wdaughterpz[100];
-   Float_t         gen_WdaughterE[100];
-   Int_t           gen_Wdaughter_charge[100];
-   Int_t           gen_WdaughterID[100];
+   Float_t         gen_Wdaughterpt[2];
+   Float_t         gen_Wdaughtereta[2];
+   Float_t         gen_Wdaughterphi[2];
+   Float_t         gen_Wdaughterpx[2];
+   Float_t         gen_Wdaughterpy[2];
+   Float_t         gen_Wdaughterpz[2];
+   Float_t         gen_WdaughterE[2];
+   Int_t           gen_Wdaughter_charge[2];
+   Int_t           gen_WdaughterID[2];
    Float_t         gen_Wbosonpt;
    Float_t         gen_Wbosoneta;
    Float_t         gen_Wbosonphi;
@@ -281,15 +348,15 @@ public :
    Float_t         gen_WbosonE;
    Int_t           gen_Wbosoncharge;
    Int_t           gen_WbosonID;
-   Float_t         gen_Zdaughterpt[100];
-   Float_t         gen_Zdaughtereta[100];
-   Float_t         gen_Zdaughterphi[100];
-   Float_t         gen_Zdaughterpx[100];
-   Float_t         gen_Zdaughterpy[100];
-   Float_t         gen_Zdaughterpz[100];
-   Float_t         gen_ZdaughterE[100];
-   Int_t           gen_Zdaughter_charge[100];
-   Int_t           gen_ZdaughterID[100];
+   Float_t         gen_Zdaughterpt[2];
+   Float_t         gen_Zdaughtereta[2];
+   Float_t         gen_Zdaughterphi[2];
+   Float_t         gen_Zdaughterpx[2];
+   Float_t         gen_Zdaughterpy[2];
+   Float_t         gen_Zdaughterpz[2];
+   Float_t         gen_ZdaughterE[2];
+   Int_t           gen_Zdaughter_charge[2];
+   Int_t           gen_ZdaughterID[2];
    Float_t         gen_Zbosonpt;
    Float_t         gen_Zbosoneta;
    Float_t         gen_Zbosonphi;
@@ -322,172 +389,175 @@ public :
    Int_t           n_Wtau_events;
    Int_t           n_SingleHardPhoton_events;
    Int_t           n_diphoton_events;
-   Float_t         gen_MuonID[100];
-   Float_t         gen_MuonStatus[100];
-   Float_t         gen_MuonPt[100];
-   Float_t         gen_MuonDaughterpt[100];
-   Float_t         gen_MuonDaughtereta[100];
-   Float_t         gen_MuonDaughterphi[100];
-   Float_t         gen_MuonDaughterpx[100];
-   Float_t         gen_MuonDaughterpy[100];
-   Float_t         gen_MuonDaughterpz[100];
-   Float_t         gen_MuonDaughterE[100];
-   Int_t           gen_MuonDaughterCharge[100];
-   Int_t           gen_MuonDaughterStatus[100];
-   Int_t           gen_MuonDaughterID[100];
-   Float_t         gen_tauID[100];
-   Float_t         gen_tauStatus[100];
-   Float_t         gen_tauPt[100];
-   Float_t         gen_tauDaughterpt[100];
-   Float_t         gen_tauDaughtereta[100];
-   Float_t         gen_tauDaughterphi[100];
-   Float_t         gen_tauDaughterpx[100];
-   Float_t         gen_tauDaughterpy[100];
-   Float_t         gen_tauDaughterpz[100];
-   Float_t         gen_tauDaughterE[100];
-   Int_t           gen_tauDaughterCharge[100];
-   Int_t           gen_tauDaughterStatus[100];
-   Int_t           gen_tauDaughterID[100];
-
-    Bool_t          Scraping_isScrapingEvent;
+   Float_t         gen_MuonID[200];
+   Float_t         gen_MuonStatus[200];
+   Float_t         gen_MuonPt[200];
+   Float_t         gen_MuonDaughterpt[200];
+   Float_t         gen_MuonDaughtereta[200];
+   Float_t         gen_MuonDaughterphi[200];
+   Float_t         gen_MuonDaughterpx[200];
+   Float_t         gen_MuonDaughterpy[200];
+   Float_t         gen_MuonDaughterpz[200];
+   Float_t         gen_MuonDaughterE[200];
+   Int_t           gen_MuonDaughterCharge[200];
+   Int_t           gen_MuonDaughterStatus[200];
+   Int_t           gen_MuonDaughterID[200];
+   Float_t         gen_tauID[200];
+   Float_t         gen_tauStatus[200];
+   Float_t         gen_tauPt[200];
+   Float_t         gen_tauDaughterpt[200];
+   Float_t         gen_tauDaughtereta[200];
+   Float_t         gen_tauDaughterphi[200];
+   Float_t         gen_tauDaughterpx[200];
+   Float_t         gen_tauDaughterpy[200];
+   Float_t         gen_tauDaughterpz[200];
+   Float_t         gen_tauDaughterE[200];
+   Int_t           gen_tauDaughterCharge[200];
+   Int_t           gen_tauDaughterStatus[200];
+   Int_t           gen_tauDaughterID[200];
+   Bool_t          Scraping_isScrapingEvent;
    Int_t           Photon_n;
-   Float_t         Photon_E[100];   //[Photon_n]
-   Float_t         Photon_pt[100];   //[Photon_n]
-   Float_t         Photon_eta[100];   //[Photon_n]
-   Float_t         Photon_phi[100];   //[Photon_n]
-   Float_t         Photon_theta[100];   //[Photon_n]
-   Float_t         Photon_et[100];   //[Photon_n]
-   Float_t         Photon_swissCross[100];   //[Photon_n]
-   Float_t         Photonr9[100];   //[Photon_n]
-   Float_t         Photon_e1x5[100];   //[Photon_n]
-   Float_t         Photon_e2x5[100];   //[Photon_n]
-   Float_t         Photon_e3x3[100];   //[Photon_n]
-   Float_t         Photon_e5x5[100];   //[Photon_n]
-   Float_t         Photon_r1x5[100];   //[Photon_n]
-   Float_t         Photon_r2x5[100];   //[Photon_n]
-   Float_t         Photon_maxEnergyXtal[100];   //[Photon_n]
-   Float_t         Photon_SigmaEtaEta[100];   //[Photon_n]
-   Float_t         Photon_SigmaIetaIeta[100];   //[Photon_n]
-   Float_t         Photon_SigmaEtaPhi[100];   //[Photon_n]
-   Float_t         Photon_SigmaIetaIphi[100];   //[Photon_n]
-   Float_t         Photon_SigmaPhiPhi[100];   //[Photon_n]
-   Float_t         Photon_SigmaIphiIphi[100];   //[Photon_n]
-   Float_t         Photon_Roundness[100];   //[Photon_n]
-   Float_t         Photon_Angle[100];   //[Photon_n]
-   Float_t         Photon_ecalRecHitSumEtConeDR03[100];   //[Photon_n]
-   Float_t         Photon_hcalTowerSumEtConeDR03[100];   //[Photon_n]
-   Float_t         Photon_trkSumPtSolidConeDR03[100];   //[Photon_n]
-   Float_t         Photon_trkSumPtHollowConeDR03[100];   //[Photon_n]
-   Int_t           Photon_nTrkSolidConeDR03[100];   //[Photon_n]
-   Int_t           Photon_nTrkHollowConeDR03[100];   //[Photon_n]
-   Float_t         Photon_hcalDepth1TowerSumEtConeDR03[100];   //[Photon_n]
-   Float_t         Photon_hcalDepth2TowerSumEtConeDR03[100];   //[Photon_n]
-   Float_t         Photon_ecalRecHitSumEtConeDR04[100];   //[Photon_n]
-   Float_t         Photon_hcalTowerSumEtConeDR04[100];   //[Photon_n]
-   Float_t         Photon_trkSumPtSolidConeDR04[100];   //[Photon_n]
-   Float_t         Photon_trkSumPtHollowConeDR04[100];   //[Photon_n]
-   Int_t           Photon_nTrkSolidConeDR04[100];   //[Photon_n]
-   Int_t           Photon_nTrkHollowConeDR04[100];   //[Photon_n]
-   Float_t         Photon_hcalDepth1TowerSumEtConeDR04[100];   //[Photon_n]
-   Float_t         Photon_hcalDepth2TowerSumEtConeDR04[100];   //[Photon_n]
-   Bool_t          Photon_hasPixelSeed[100];   //[Photon_n]
-   Bool_t          Photon_isEB[100];   //[Photon_n]
-   Bool_t          Photon_isEE[100];   //[Photon_n]
-   Bool_t          Photon_isEBGap[100];   //[Photon_n]
-   Bool_t          Photon_isEEGap[100];   //[Photon_n]
-   Bool_t          Photon_isEBEEGap[100];   //[Photon_n]
-   Float_t         Photon_HoE[100];   //[Photon_n]
-   Float_t         Photon_px[100];   //[Photon_n]
-   Float_t         Photon_py[100];   //[Photon_n]
-   Float_t         Photon_pz[100];   //[Photon_n]
-   Float_t         Photon_vx[100];   //[Photon_n]
-   Float_t         Photon_vy[100];   //[Photon_n]
-   Float_t         Photon_vz[100];   //[Photon_n]
-   Int_t           Photon_no_of_basic_clusters[100];   //[Photon_n]
-   Float_t         Photon_sc_energy[100];   //[Photon_n]
-   Float_t         Photon_sc_eta[100];   //[Photon_n]
-   Float_t         Photon_sc_phi[100];   //[Photon_n]
-   Float_t         Photon_sc_x[100];   //[Photon_n]
-   Float_t         Photon_sc_y[100];   //[Photon_n]
-   Float_t         Photon_sc_z[100];   //[Photon_n]
-   Float_t         Photon_etaWidth[100];   //[Photon_n]
-   Float_t         Photon_phiWidth[100];   //[Photon_n]
-   Float_t         Photon_sc_et[100];   //[Photon_n]
-   Float_t         matchphotonE[100];   //[Photon_n]
-   Float_t         matchphotonpt[100];   //[Photon_n]
-   Float_t         matchphotoneta[100];   //[Photon_n]
-   Float_t         matchphotonphi[100];   //[Photon_n]
-   Float_t         matchphotonpx[100];   //[Photon_n]
-   Float_t         matchphotonpy[100];   //[Photon_n]
-   Float_t         matchphotonpz[100];   //[Photon_n]
-   Bool_t          ismatchedphoton[100];   //[Photon_n]
-   Bool_t          Photon_hasConvTrk[100];   //[Photon_n]
-   Int_t           Photon_ntracks[100];   //[Photon_n]
-   Bool_t          Photon_isconverted[100];   //[Photon_n]
-   Float_t         Photon_pairInvmass[100];   //[Photon_n]
-   Float_t         Photon_pairCotThetaSeperation[100];   //[Photon_n]
-   Float_t         Photon_pairmomentumX[100];   //[Photon_n]
-   Float_t         Photon_pairmomentumY[100];   //[Photon_n]
-   Float_t         Photon_pairmomentumZ[100];   //[Photon_n]
-   Float_t         Photon_EoverP[100];   //[Photon_n]
-   Float_t         Photon_ConvVx[100];   //[Photon_n]
-   Float_t         Photon_ConvVy[100];   //[Photon_n]
-   Float_t         Photon_ConvVz[100];   //[Photon_n]
-   Float_t         Photon_ZOfPrimaryVertex[100];   //[Photon_n]
-   Float_t         Photon_distOfMinimumApproach[100];   //[Photon_n]
-   Float_t         Photon_dPhiTracksAtVtx[100];   //[Photon_n]
-   Float_t         Photon_dPhiTracksAtEcal[100];   //[Photon_n]
-   Float_t         Photon_dEtaTracksAtEcal[100];   //[Photon_n]
-   Int_t           Photon_ncrys[100];   //[Photon_n]
-   Float_t         Photon_timing_xtal[100][100];   //[Photon_n]
-   Float_t         Photon_timingavg_xtal[100];   //[Photon_n]
-   Float_t         Photon_energy_xtal[100][100];   //[Photon_n]
-   Int_t           Photon_ieta_xtalEB[100][100];   //[Photon_n]
-   Int_t           Photon_iphi_xtalEB[100][100];   //[Photon_n]
-   Float_t         Photon_s9[100];   //[Photon_n]
+   Float_t         Photon_E[200];   //[Photon_n]
+   Float_t         Photon_pt[200];   //[Photon_n]
+   Float_t         Photon_eta[200];   //[Photon_n]
+   Float_t         Photon_phi[200];   //[Photon_n]
+   Float_t         Photon_theta[200];   //[Photon_n]
+   Float_t         Photon_et[200];   //[Photon_n]
+   Float_t         Photon_swissCross[200];   //[Photon_n]
+   Float_t         Photon_e6e2[200];   //[Photon_n]
+   Float_t         Photon_e4e1[200];   //[Photon_n]
+   Float_t         Photonr9[200];   //[Photon_n]
+   Float_t         Photon_e1x5[200];   //[Photon_n]
+   Float_t         Photon_e2x5[200];   //[Photon_n]
+   Float_t         Photon_e3x3[200];   //[Photon_n]
+   Float_t         Photon_e5x5[200];   //[Photon_n]
+   Float_t         Photon_r1x5[200];   //[Photon_n]
+   Float_t         Photon_r2x5[200];   //[Photon_n]
+   Float_t         Photon_maxEnergyXtal[200];   //[Photon_n]
+   Float_t         Photon_SigmaEtaEta[200];   //[Photon_n]
+   Float_t         Photon_SigmaIetaIeta[200];   //[Photon_n]
+   Float_t         Photon_SigmaEtaPhi[200];   //[Photon_n]
+   Float_t         Photon_SigmaIetaIphi[200];   //[Photon_n]
+   Float_t         Photon_SigmaPhiPhi[200];   //[Photon_n]
+   Float_t         Photon_SigmaIphiIphi[200];   //[Photon_n]
+   Float_t         Photon_Roundness[200];   //[Photon_n]
+   Float_t         Photon_Angle[200];   //[Photon_n]
+   Float_t         Photon_ecalRecHitSumEtConeDR03[200];   //[Photon_n]
+   Float_t         Photon_hcalTowerSumEtConeDR03[200];   //[Photon_n]
+   Float_t         Photon_trkSumPtSolidConeDR03[200];   //[Photon_n]
+   Float_t         Photon_trkSumPtHollowConeDR03[200];   //[Photon_n]
+   Int_t           Photon_nTrkSolidConeDR03[200];   //[Photon_n]
+   Int_t           Photon_nTrkHollowConeDR03[200];   //[Photon_n]
+   Float_t         Photon_hcalDepth1TowerSumEtConeDR03[200];   //[Photon_n]
+   Float_t         Photon_hcalDepth2TowerSumEtConeDR03[200];   //[Photon_n]
+   Float_t         Photon_ecalRecHitSumEtConeDR04[200];   //[Photon_n]
+   Float_t         Photon_hcalTowerSumEtConeDR04[200];   //[Photon_n]
+   Float_t         Photon_trkSumPtSolidConeDR04[200];   //[Photon_n]
+   Float_t         Photon_trkSumPtHollowConeDR04[200];   //[Photon_n]
+   Int_t           Photon_nTrkSolidConeDR04[200];   //[Photon_n]
+   Int_t           Photon_nTrkHollowConeDR04[200];   //[Photon_n]
+   Float_t         Photon_hcalDepth1TowerSumEtConeDR04[200];   //[Photon_n]
+   Float_t         Photon_hcalDepth2TowerSumEtConeDR04[200];   //[Photon_n]
+   Bool_t          Photon_hasPixelSeed[200];   //[Photon_n]
+   Bool_t          Photon_isEB[200];   //[Photon_n]
+   Bool_t          Photon_isEE[200];   //[Photon_n]
+   Bool_t          Photon_isEBGap[200];   //[Photon_n]
+   Bool_t          Photon_isEEGap[200];   //[Photon_n]
+   Bool_t          Photon_isEBEEGap[200];   //[Photon_n]
+   Float_t         Photon_e2e9[200];   //[Photon_n]
+   Float_t         Photon_HoE[200];   //[Photon_n]
+   Float_t         Photon_px[200];   //[Photon_n]
+   Float_t         Photon_py[200];   //[Photon_n]
+   Float_t         Photon_pz[200];   //[Photon_n]
+   Float_t         Photon_vx[200];   //[Photon_n]
+   Float_t         Photon_vy[200];   //[Photon_n]
+   Float_t         Photon_vz[200];   //[Photon_n]
+   Int_t           Photon_no_of_basic_clusters[200];   //[Photon_n]
+   Float_t         Photon_sc_energy[200];   //[Photon_n]
+   Float_t         Photon_sc_eta[200];   //[Photon_n]
+   Float_t         Photon_sc_phi[200];   //[Photon_n]
+   Float_t         Photon_sc_x[200];   //[Photon_n]
+   Float_t         Photon_sc_y[200];   //[Photon_n]
+   Float_t         Photon_sc_z[200];   //[Photon_n]
+   Float_t         Photon_etaWidth[200];   //[Photon_n]
+   Float_t         Photon_phiWidth[200];   //[Photon_n]
+   Float_t         Photon_sc_et[200];   //[Photon_n]
+   Float_t         matchphotonE[200];   //[Photon_n]
+   Float_t         matchphotonpt[200];   //[Photon_n]
+   Float_t         matchphotoneta[200];   //[Photon_n]
+   Float_t         matchphotonphi[200];   //[Photon_n]
+   Float_t         matchphotonpx[200];   //[Photon_n]
+   Float_t         matchphotonpy[200];   //[Photon_n]
+   Float_t         matchphotonpz[200];   //[Photon_n]
+   Bool_t          ismatchedphoton[200];   //[Photon_n]
+   Bool_t          Photon_hasConvTrk[200];   //[Photon_n]
+   Int_t           Photon_ntracks[200];   //[Photon_n]
+   Bool_t          Photon_isconverted[200];   //[Photon_n]
+   Float_t         Photon_pairInvmass[200];   //[Photon_n]
+   Float_t         Photon_pairCotThetaSeperation[200];   //[Photon_n]
+   Float_t         Photon_pairmomentumX[200];   //[Photon_n]
+   Float_t         Photon_pairmomentumY[200];   //[Photon_n]
+   Float_t         Photon_pairmomentumZ[200];   //[Photon_n]
+   Float_t         Photon_EoverP[200];   //[Photon_n]
+   Float_t         Photon_ConvVx[200];   //[Photon_n]
+   Float_t         Photon_ConvVy[200];   //[Photon_n]
+   Float_t         Photon_ConvVz[200];   //[Photon_n]
+   Float_t         Photon_ZOfPrimaryVertex[200];   //[Photon_n]
+   Float_t         Photon_distOfMinimumApproach[200];   //[Photon_n]
+   Float_t         Photon_dPhiTracksAtVtx[200];   //[Photon_n]
+   Float_t         Photon_dPhiTracksAtEcal[200];   //[Photon_n]
+   Float_t         Photon_dEtaTracksAtEcal[200];   //[Photon_n]
+   Int_t           Photon_ncrys[200];   //[Photon_n]
+   Float_t         Photon_timing_xtal[200][100];   //[Photon_n]
+   Float_t         Photon_timingavg_xtal[200];   //[Photon_n]
+   Float_t         Photon_energy_xtal[200][100];   //[Photon_n]
+   Int_t           Photon_ieta_xtalEB[200][100];   //[Photon_n]
+   Int_t           Photon_iphi_xtalEB[200][100];   //[Photon_n]
+   Int_t           Photon_recoFlag_xtalEB[200][100];   //[Photon_n]
+   Float_t         Photon_timeError_xtal[200][100];   //[Photon_n]
+   Float_t         Photon_s9[200];   //[Photon_n]
    Int_t           HERecHit_subset_n;
    UInt_t          HERecHit_subset_detid[10000];   //[HERecHit_subset_n]
    Float_t         HERecHit_subset_energy[10000];   //[HERecHit_subset_n]
    Float_t         HERecHit_subset_time[10000];   //[HERecHit_subset_n]
    Int_t           HERecHit_subset_depth[10000];   //[HERecHit_subset_n]
    Float_t         HERecHit_subset_phi[10000];   //[HERecHit_subset_n]
-   Float_t         HERecHit_subset_eta[100000];   //[HERecHit_subset_n]
-   Float_t         HERecHit_subset_x[100000];   //[HERecHit_subset_n]
-   Float_t         HERecHit_subset_y[100000];   //[HERecHit_subset_n]
-   Float_t         HERecHit_subset_z[100000];   //[HERecHit_subset_n]
-   Int_t           CSCseg_n;
-   Float_t         CSCseg_time[10000];   //[CSCseg_n]
-   Float_t         CSCseg_x[10000];   //[CSCseg_n]
-   Float_t         CSCseg_y[10000];   //[CSCseg_n]
-   Float_t         CSCseg_z[10000];   //[CSCseg_n]
-   Float_t         CSCseg_phi[10000];   //[CSCseg_n]
-   Float_t         CSCseg_DirectionX[10000];   //[CSCseg_n]
-   Float_t         CSCseg_DirectionY[10000];   //[CSCseg_n]
-   Float_t         CSCseg_DirectionZ[10000];   //[CSCseg_n]
-
-  Bool_t isBeamHaloIDTightPass;
-  Bool_t isBeamHaloIDLoosePass;
-    
-  Bool_t isBeamHaloEcalLoosePass;
-  Bool_t isBeamHaloHcalLoosePass;
-  Bool_t isBeamHaloCSCLoosePass;
-  Bool_t isBeamHaloGlobalLoosePass;
-    
-  Bool_t isBeamHaloEcalTightPass;
-  Bool_t isBeamHaloHcalTightPass;
-  Bool_t isBeamHaloCSCTightPass;
-  Bool_t isBeamHaloGlobalTightPass;
-    
-  Bool_t isSmellsLikeHalo_Tag;
-  Bool_t isLooseHalo_Tag;
-  Bool_t isTightHalo_Tag;
-  Bool_t isExtremeTightHalo_Tag;
-
-   Int_t           RPChit_n;
-   Float_t         RPChit_x[10000];   //[RPChit_n]
-   Float_t         RPChit_y[10000];   //[RPChit_n]
-   Float_t         RPChit_z[10000];   //[RPChit_n]
-   Int_t           RPChit_BunchX[10000];   //[RPChit_n]
+   Float_t         HERecHit_subset_eta[10000];   //[HERecHit_subset_n]
+   Float_t         HERecHit_subset_x[10000];   //[HERecHit_subset_n]
+   Float_t         HERecHit_subset_y[10000];   //[HERecHit_subset_n]
+   Float_t         HERecHit_subset_z[10000];   //[HERecHit_subset_n]
+   Int_t           EBRecHit_size;
+   Float_t         EBRecHit_eta[10000];   //[EBRecHit_size]
+   Float_t         EBRecHit_phi[10000];   //[EBRecHit_size]
+   Int_t           EBRecHit_ieta[10000];   //[EBRecHit_size]
+   Int_t           EBRecHit_iphi[10000];   //[EBRecHit_size]
+   Float_t         EBRecHit_e[10000];   //[EBRecHit_size]
+   Float_t         EBRecHit_et[10000];   //[EBRecHit_size]
+   Int_t           EBRecHit_flag[10000];   //[EBRecHit_size]
+   Float_t         EBRecHit_time[10000];   //[EBRecHit_size]
+   Int_t           EERecHit_size;
+   Float_t         EERecHit_eta[10000];   //[EERecHit_size]
+   Float_t         EERecHit_phi[10000];   //[EERecHit_size]
+   Int_t           EERecHit_ieta[10000];   //[EERecHit_size]
+   Int_t           EERecHit_iphi[10000];   //[EERecHit_size]
+   Float_t         EERecHit_e[10000];   //[EERecHit_size]
+   Float_t         EERecHit_et[10000];   //[EERecHit_size]
+   Int_t           EERecHit_flag[10000];   //[EERecHit_size]
+   Float_t         EERecHit_time[10000];   //[EERecHit_size]
+   Bool_t          isBeamHaloGlobalLoosePass;
+   Bool_t          isBeamHaloGlobalTightPass;
+   Bool_t          isBeamHaloHcalLoosePass;
+   Bool_t          isBeamHaloHcalTightPass;
+   Bool_t          isBeamHaloCSCLoosePass;
+   Bool_t          isBeamHaloCSCTightPass;
+   Bool_t          isBeamHaloEcalLoosePass;
+   Bool_t          isBeamHaloEcalTightPass;
+   Bool_t          isBeamHaloIDTightPass;
+   Bool_t          isBeamHaloIDLoosePass;
+   Bool_t          isSmellsLikeHalo_Tag;
+   Bool_t          isLooseHalo_Tag;
+   Bool_t          isTightHalo_Tag;
+   Bool_t          isExtremeTightHalo_Tag;
    Float_t         CaloMetSigma;
    Float_t         CaloMetEz;
    Float_t         CaloEtFractionHadronic;
@@ -506,7 +576,6 @@ public :
    Float_t         CaloMetPy[6];
    Float_t         CaloMetPhi[6];
    Float_t         CaloMetSumEt[6];
-
    Float_t         genMetPt;
    Float_t         genMetPx;
    Float_t         genMetPy;
@@ -526,6 +595,27 @@ public :
    Float_t         TCMetPhi[6];
    Float_t         TCMetSumEt[6];
    Float_t         Delta_phiTC;
+   Int_t           CaloTower_n;
+   Float_t         CaloTower_eta[5000];   //[CaloTower_n]
+   Float_t         CaloTower_phi[5000];   //[CaloTower_n]
+   Float_t         CaloTower_E[5000];   //[CaloTower_n]
+   Float_t         CaloTower_Et[5000];   //[CaloTower_n]
+   Float_t         CaloTower_emEnergy[5000];   //[CaloTower_n]
+   Float_t         CaloTower_hadEnergy[5000];   //[CaloTower_n]
+   Float_t         CaloTower_p[5000];   //[CaloTower_n]
+   Float_t         CaloTower_EMEt[5000];   //[CaloTower_n]
+   Float_t         CaloTower_HadEt[5000];   //[CaloTower_n]
+   Float_t         CaloTower_HadPhi[5000];   //[CaloTower_n]
+   Float_t         CaloTower_HadEta[5000];   //[CaloTower_n]
+   Float_t         CaloTower_EMPhi[5000];   //[CaloTower_n]
+   Float_t         CaloTower_EMEta[5000];   //[CaloTower_n]
+   Float_t         CaloTower_HadX[5000];   //[CaloTower_n]
+   Float_t         CaloTower_HadY[5000];   //[CaloTower_n]
+   Float_t         CaloTower_HadZ[5000];   //[CaloTower_n]
+   Float_t         CaloTower_HE_E[5000];   //[CaloTower_n]
+   Float_t         CaloTower_HB_E[5000];   //[CaloTower_n]
+   Float_t         CaloTower_EMTime[5000];   //[CaloTower_n]
+   Float_t         CaloTower_HadTime[5000];   //[CaloTower_n]
 
    // List of branches
    TBranch        *b_nevents;   //!
@@ -543,6 +633,9 @@ public :
    TBranch        *b_triggernames;   //!
    TBranch        *b_triggerprescales;   //!
    TBranch        *b_ifTriggerpassed;   //!
+   TBranch        *b_trobjpt;   //!
+   TBranch        *b_trobjeta;   //!
+   TBranch        *b_trobjphi;   //!
    TBranch        *b_Vertex_n;   //!
    TBranch        *b_Vertex_x;   //!
    TBranch        *b_Vertex_y;   //!
@@ -552,6 +645,8 @@ public :
    TBranch        *b_Vertex_chi2;   //!
    TBranch        *b_Vertex_d0;   //!
    TBranch        *b_Vertex_isFake;   //!
+   TBranch        *b_npuVertices;   //!
+   TBranch        *b_ootnpuVertices;   //!
    TBranch        *b_Track_n;   //!
    TBranch        *b_Track_px;   //!
    TBranch        *b_Track_py;   //!
@@ -581,7 +676,14 @@ public :
    TBranch        *b_Jet_fHPD;   //!
    TBranch        *b_Jet_fRBX;   //!
    TBranch        *b_Jet_RHF;   //!
-
+   TBranch        *b_Jet_jecCorr;   //!
+   TBranch        *b_ucJet_px;   //!
+   TBranch        *b_ucJet_py;   //!
+   TBranch        *b_ucJet_E;   //!
+   TBranch        *b_ucJet_pz;   //!
+   TBranch        *b_ucJet_pt;   //!
+   TBranch        *b_ucJet_eta;   //!
+   TBranch        *b_ucJet_phi;   //!
    TBranch        *b_pfJet_n;   //!
    TBranch        *b_pfJet_px;   //!
    TBranch        *b_pfJet_py;   //!
@@ -593,7 +695,22 @@ public :
    TBranch        *b_pfJet_pt;   //!
    TBranch        *b_pfJet_eta;   //!
    TBranch        *b_pfJet_phi;   //!
-
+   TBranch        *b_pfJet_jecCorr;   //!
+   TBranch        *b_ucpfJet_px;   //!
+   TBranch        *b_ucpfJet_py;   //!
+   TBranch        *b_ucpfJet_E;   //!
+   TBranch        *b_ucpfJet_pz;   //!
+   TBranch        *b_ucpfJet_pt;   //!
+   TBranch        *b_ucpfJet_eta;   //!
+   TBranch        *b_ucpfJet_phi;   //!
+   TBranch        *b_genJet_n;   //!
+   TBranch        *b_genJet_px;   //!
+   TBranch        *b_genJet_py;   //!
+   TBranch        *b_genJet_E;   //!
+   TBranch        *b_genJet_pz;   //!
+   TBranch        *b_genJet_pt;   //!
+   TBranch        *b_genJet_eta;   //!
+   TBranch        *b_genJet_phi;   //!
    TBranch        *b_Electron_n;   //!
    TBranch        *b_Electron_px;   //!
    TBranch        *b_Electron_py;   //!
@@ -657,6 +774,12 @@ public :
    TBranch        *b_Muon_InnerTrack_OuterPoint_px;   //!
    TBranch        *b_Muon_InnerTrack_OuterPoint_py;   //!
    TBranch        *b_Muon_InnerTrack_OuterPoint_pz;   //!
+   TBranch        *b_Muon_OuterPoint_x;   //!
+   TBranch        *b_Muon_OuterPoint_y;   //!
+   TBranch        *b_Muon_OuterPoint_z;   //!
+   TBranch        *b_Muon_InnerPoint_x;   //!
+   TBranch        *b_Muon_InnerPoint_y;   //!
+   TBranch        *b_Muon_InnerPoint_z;   //!
    TBranch        *b_CosmicMuon_n;   //!
    TBranch        *b_CosmicMuon_px;   //!
    TBranch        *b_CosmicMuon_py;   //!
@@ -695,6 +818,9 @@ public :
    TBranch        *b_CosmicMuon_InnerTrack_OuterPoint_px;   //!
    TBranch        *b_CosmicMuon_InnerTrack_OuterPoint_py;   //!
    TBranch        *b_CosmicMuon_InnerTrack_OuterPoint_pz;   //!
+   TBranch        *b_CosmicMuon_OuterPoint_x;   //!
+   TBranch        *b_CosmicMuon_OuterPoint_y;   //!
+   TBranch        *b_CosmicMuon_OuterPoint_z;   //!
    TBranch        *b_Tau_n;   //!
    TBranch        *b_Tau_px;   //!
    TBranch        *b_Tau_py;   //!
@@ -707,7 +833,35 @@ public :
    TBranch        *b_Tau_phi;   //!
    TBranch        *b_Tau_energy;   //!
    TBranch        *b_Tau_charge;   //!
-
+   TBranch        *b_genTauDecayMode1;   //!
+   TBranch        *b_oneProng0Pi0;   //!
+   TBranch        *b_oneProng1Pi0;   //!
+   TBranch        *b_oneProng2Pi0;   //!
+   TBranch        *b_threeProng0Pi0;   //!
+   TBranch        *b_threeProng1Pi0;   //!
+   TBranch        *b_tauelectron;   //!
+   TBranch        *b_taumuon;   //!
+   TBranch        *b_nthreeProng1Pi0;   //!
+   TBranch        *b_ntauelectron;   //!
+   TBranch        *b_ntaumuon;   //!
+   TBranch        *b_genHadTauPt;   //!
+   TBranch        *b_genHadTauEta;   //!
+   TBranch        *b_genHadTauPhi;   //!
+   TBranch        *b_nPions;   //!
+   TBranch        *b_PionPdgId;   //!
+   TBranch        *b_PionPt;   //!
+   TBranch        *b_PionEta;   //!
+   TBranch        *b_PionPhi;   //!
+   TBranch        *b_nPi0;   //!
+   TBranch        *b_Pi0PdgId;   //!
+   TBranch        *b_Pi0Pt;   //!
+   TBranch        *b_Pi0Eta;   //!
+   TBranch        *b_Pi0Phi;   //!
+   TBranch        *b_nPhotons;   //!
+   TBranch        *b_PhotonPt;   //!
+   TBranch        *b_PhotonEta;   //!
+   TBranch        *b_PhotonPhi;   //!
+   TBranch        *b_PhotonPdgId;   //!
    TBranch        *b_gen_pthat;   //!
    TBranch        *b_ngenphotons;   //!
    TBranch        *b_gen_photonpt;   //!
@@ -828,7 +982,6 @@ public :
    TBranch        *b_gen_tauDaughter_charge;   //!
    TBranch        *b_gen_tauDaughter_status;   //!
    TBranch        *b_gen_tauDaughter_ID;   //!
-
    TBranch        *b_Scraping_isScrapingEvent;//!
    TBranch        *b_Photon_n;   //!
    TBranch        *b_Photon_E;   //!
@@ -838,6 +991,8 @@ public :
    TBranch        *b_Photon_theta;   //!
    TBranch        *b_Photon_et;   //!
    TBranch        *b_Photon_swissCross;   //!
+   TBranch        *b_Photon_e6e2;   //!
+   TBranch        *b_Photon_e4e1;   //!
    TBranch        *b_Photonr9;   //!
    TBranch        *b_Photon_e1x5;   //!
    TBranch        *b_Photon_e2x5;   //!
@@ -876,6 +1031,7 @@ public :
    TBranch        *b_Photon_isEBGap;   //!
    TBranch        *b_Photon_isEEGap;   //!
    TBranch        *b_Photon_isEBEEGap;   //!
+   TBranch        *b_Photon_e2e9;   //!
    TBranch        *b_Photon_HoE;   //!
    TBranch        *b_Photon_px;   //!
    TBranch        *b_Photon_py;   //!
@@ -924,6 +1080,8 @@ public :
    TBranch        *b_Photon_energy_xtal;   //!
    TBranch        *b_Photon_ieta_xtalEB;   //!
    TBranch        *b_Photon_iphi_xtalEB;   //!
+   TBranch        *b_Photon_recoFlag_xtalEB;   //!
+   TBranch        *b_Photon_timeError_xtal;   //!
    TBranch        *b_Photon_s9;   //!
    TBranch        *b_HERecHit_subset_n;   //!
    TBranch        *b_HERecHit_subset_detid;   //!
@@ -935,37 +1093,38 @@ public :
    TBranch        *b_HERecHit_subset_x;   //!
    TBranch        *b_HERecHit_subset_y;   //!
    TBranch        *b_HERecHit_subset_z;   //!
-   TBranch        *b_CSCseg_n;   //!
-   TBranch        *b_CSCseg_time;   //!
-   TBranch        *b_CSCseg_x;   //!
-   TBranch        *b_CSCseg_y;   //!
-   TBranch        *b_CSCseg_z;   //!
-   TBranch        *b_CSCseg_phi;   //!
-   TBranch        *b_CSCseg_DirectionX;   //!
-   TBranch        *b_CSCseg_DirectionY;   //!
-   TBranch        *b_CSCseg_DirectionZ;   //!
-
-   TBranch       *b_isBeamHaloIDTightPass;
-   TBranch       *b_isBeamHaloIDLoosePass;
-   TBranch       *b_isBeamHaloEcalLoosePass;
-   TBranch       *b_isBeamHaloHcalLoosePass;
-   TBranch       *b_isBeamHaloCSCLoosePass;
-   TBranch       *b_isBeamHaloGlobalLoosePass;
-   TBranch       *b_isBeamHaloEcalTightPass;
-   TBranch       *b_isBeamHaloHcalTightPass;
-   TBranch       *b_isBeamHaloCSCTightPass;
-   TBranch       *b_isBeamHaloGlobalTightPass;
-   TBranch       *b_isSmellsLikeHalo_Tag;
-   TBranch       *b_isLooseHalo_Tag;
-   TBranch       *b_isTightHalo_Tag;
-   TBranch       *b_isExtremeTightHalo_Tag;
-
-
-   TBranch        *b_RPChit_n;   //!
-   TBranch        *b_RPChit_x;   //!
-   TBranch        *b_RPChit_y;   //!
-   TBranch        *b_RPChit_z;   //!
-   TBranch        *b_RPChit_BunchX;   //!
+   TBranch        *b_EBRecHit_size;   //!
+   TBranch        *b_EBRecHit_eta;   //!
+   TBranch        *b_EBRecHit_phi;   //!
+   TBranch        *b_EBRecHit_ieta;   //!
+   TBranch        *b_EBRecHit_iphi;   //!
+   TBranch        *b_EBRecHit_e;   //!
+   TBranch        *b_EBRecHit_et;   //!
+   TBranch        *b_EBRecHit_flag;   //!
+   TBranch        *b_EBRecHit_time;   //!
+   TBranch        *b_EERecHit_size;   //!
+   TBranch        *b_EERecHit_eta;   //!
+   TBranch        *b_EERecHit_phi;   //!
+   TBranch        *b_EERecHit_ieta;   //!
+   TBranch        *b_EERecHit_iphi;   //!
+   TBranch        *b_EERecHit_e;   //!
+   TBranch        *b_EERecHit_et;   //!
+   TBranch        *b_EERecHit_flag;   //!
+   TBranch        *b_EERecHit_time;   //!
+   TBranch        *b_isBeamHaloGlobalLoosePass;   //!
+   TBranch        *b_isBeamHaloGloablTightPass;   //!
+   TBranch        *b_isBeamHaloHcalLoosePass;   //!
+   TBranch        *b_isBeamHaloHcalTightPass;   //!
+   TBranch        *b_isBeamHaloCSCLoosePass;   //!
+   TBranch        *b_isBeamHaloCSCTightPass;   //!
+   TBranch        *b_isBeamHaloEcalLoosePass;   //!
+   TBranch        *b_isBeamHaloEcalTightPass;   //!
+   TBranch        *b_isBeamHaloIDTightPass;   //!
+   TBranch        *b_isBeamHaloIDLoosePass;   //!
+   TBranch        *b_isSmellsLikeHalo_Tag;   //!
+   TBranch        *b_isLooseHalo_Tag;   //!
+   TBranch        *b_isTightHalo_Tag;   //!
+   TBranch        *b_isExtremeTightHalo_Tag;   //!
    TBranch        *b_CaloMetSig;   //!
    TBranch        *b_CaloMetEz;   //!
    TBranch        *b_CaloEtFractionHadronic;   //!
@@ -984,7 +1143,6 @@ public :
    TBranch        *b_CaloMetPy;   //!
    TBranch        *b_CaloMetPhi;   //!
    TBranch        *b_CaloMetSumEt;   //!
-
    TBranch        *b_genMetPt;   //!
    TBranch        *b_genMetPx;   //!
    TBranch        *b_genMetPy;   //!
@@ -1004,6 +1162,27 @@ public :
    TBranch        *b_TCMetPhi;   //!
    TBranch        *b_TCMetSumEt;   //!
    TBranch        *b_Delta_phiTC;   //!
+   TBranch        *b_CaloTower_n;   //!
+   TBranch        *b_CaloTower_eta;   //!
+   TBranch        *b_CaloTower_phi;   //!
+   TBranch        *b_CaloTower_E;   //!
+   TBranch        *b_CaloTower_Et;   //!
+   TBranch        *b_CaloTower_emEnergy;   //!
+   TBranch        *b_CaloTower_hadEnergy;   //!
+   TBranch        *b_CaloTower_p;   //!
+   TBranch        *b_CaloTower_EMEt;   //!
+   TBranch        *b_CaloTower_HadEt;   //!
+   TBranch        *b_CaloTower_HadPhi;   //!
+   TBranch        *b_CaloTower_HadEta;   //!
+   TBranch        *b_CaloTower_EMPhi;   //!
+   TBranch        *b_CaloTower_EMEta;   //!
+   TBranch        *b_CaloTower_HadX;   //!
+   TBranch        *b_CaloTower_HadY;   //!
+   TBranch        *b_CaloTower_HadZ;   //!
+   TBranch        *b_CaloTower_HE_E;   //!
+   TBranch        *b_CaloTower_HB_E;   //!
+   TBranch        *b_CaloTower_EMTime;   //!
+   TBranch        *b_CaloTower_HadTime;   //!
 
    myEvent(TTree *tree=0);
    virtual ~myEvent();
@@ -1024,9 +1203,9 @@ myEvent::myEvent(TTree *tree)
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
    if (tree == 0) {
-      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("dcache:///pnfs/cms/WAX/11/store/user/sushil/MonoPhoton/387_Ntuples_V26/Data_noSkim/Data_A/Histo_Data_A_10_0_L0n.root");
+      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/pnfs/cms/WAX/11/store/user/carley/Summer11/MC/W_MuNu/Histo_Wmunu_240_1_GIb.root");
       if (!f) {
-        // f = new TFile("dcache:///pnfs/cms/WAX/11/store/user/sushil/MonoPhoton/387_Ntuples_V26/WENu_Gamma/Histo_Wenu_Gamma_10_1_fNU.root");
+         f = new TFile("/pnfs/cms/WAX/11/store/user/carley/Summer11/MC/W_MuNu/Histo_Wmunu_240_1_GIb.root");
       }
       tree = (TTree*)gDirectory->Get("myEvent");
 
@@ -1075,6 +1254,7 @@ void myEvent::Init(TTree *tree)
    triggernames = 0;
    triggerprescales = 0;
    ifTriggerpassed = 0;
+   genTauDecayMode1 = 0;
    // Set branch addresses and branch pointers
    if (!tree) return;
    fChain = tree;
@@ -1096,6 +1276,9 @@ void myEvent::Init(TTree *tree)
    fChain->SetBranchAddress("triggernames", &triggernames, &b_triggernames);
    fChain->SetBranchAddress("triggerprescales", &triggerprescales, &b_triggerprescales);
    fChain->SetBranchAddress("ifTriggerpassed", &ifTriggerpassed, &b_ifTriggerpassed);
+   fChain->SetBranchAddress("trobjpt", trobjpt, &b_trobjpt);
+   fChain->SetBranchAddress("trobjeta", trobjeta, &b_trobjeta);
+   fChain->SetBranchAddress("trobjphi", trobjphi, &b_trobjphi);
    fChain->SetBranchAddress("Vertex_n", &Vertex_n, &b_Vertex_n);
    fChain->SetBranchAddress("Vertex_x", Vertex_x, &b_Vertex_x);
    fChain->SetBranchAddress("Vertex_y", Vertex_y, &b_Vertex_y);
@@ -1105,6 +1288,8 @@ void myEvent::Init(TTree *tree)
    fChain->SetBranchAddress("Vertex_chi2", Vertex_chi2, &b_Vertex_chi2);
    fChain->SetBranchAddress("Vertex_d0", Vertex_d0, &b_Vertex_d0);
    fChain->SetBranchAddress("Vertex_isFake", Vertex_isFake, &b_Vertex_isFake);
+   fChain->SetBranchAddress("npuVertices", &npuVertices, &b_npuVertices);
+   fChain->SetBranchAddress("ootnpuVertices", &ootnpuVertices, &b_ootnpuVertices);
    fChain->SetBranchAddress("Track_n", &Track_n, &b_Track_n);
    fChain->SetBranchAddress("Track_px", Track_px, &b_Track_px);
    fChain->SetBranchAddress("Track_py", Track_py, &b_Track_py);
@@ -1134,7 +1319,14 @@ void myEvent::Init(TTree *tree)
    fChain->SetBranchAddress("Jet_fHPD", Jet_fHPD, &b_Jet_fHPD);
    fChain->SetBranchAddress("Jet_fRBX", Jet_fRBX, &b_Jet_fRBX);
    fChain->SetBranchAddress("Jet_RHF", Jet_RHF, &b_Jet_RHF);
-
+   fChain->SetBranchAddress("Jet_jecCorr", Jet_jecCorr, &b_Jet_jecCorr);
+   fChain->SetBranchAddress("ucJet_px", ucJet_px, &b_ucJet_px);
+   fChain->SetBranchAddress("ucJet_py", ucJet_py, &b_ucJet_py);
+   fChain->SetBranchAddress("ucJet_E", ucJet_E, &b_ucJet_E);
+   fChain->SetBranchAddress("ucJet_pz", ucJet_pz, &b_ucJet_pz);
+   fChain->SetBranchAddress("ucJet_pt", ucJet_pt, &b_ucJet_pt);
+   fChain->SetBranchAddress("ucJet_eta", ucJet_eta, &b_ucJet_eta);
+   fChain->SetBranchAddress("ucJet_phi", ucJet_phi, &b_ucJet_phi);
    fChain->SetBranchAddress("pfJet_n", &pfJet_n, &b_pfJet_n);
    fChain->SetBranchAddress("pfJet_px", pfJet_px, &b_pfJet_px);
    fChain->SetBranchAddress("pfJet_py", pfJet_py, &b_pfJet_py);
@@ -1146,7 +1338,22 @@ void myEvent::Init(TTree *tree)
    fChain->SetBranchAddress("pfJet_pt", pfJet_pt, &b_pfJet_pt);
    fChain->SetBranchAddress("pfJet_eta", pfJet_eta, &b_pfJet_eta);
    fChain->SetBranchAddress("pfJet_phi", pfJet_phi, &b_pfJet_phi);
-
+   fChain->SetBranchAddress("pfJet_jecCorr", pfJet_jecCorr, &b_pfJet_jecCorr);
+   fChain->SetBranchAddress("ucpfJet_px", ucpfJet_px, &b_ucpfJet_px);
+   fChain->SetBranchAddress("ucpfJet_py", ucpfJet_py, &b_ucpfJet_py);
+   fChain->SetBranchAddress("ucpfJet_E", ucpfJet_E, &b_ucpfJet_E);
+   fChain->SetBranchAddress("ucpfJet_pz", ucpfJet_pz, &b_ucpfJet_pz);
+   fChain->SetBranchAddress("ucpfJet_pt", ucpfJet_pt, &b_ucpfJet_pt);
+   fChain->SetBranchAddress("ucpfJet_eta", ucpfJet_eta, &b_ucpfJet_eta);
+   fChain->SetBranchAddress("ucpfJet_phi", ucpfJet_phi, &b_ucpfJet_phi);
+   fChain->SetBranchAddress("genJet_n", &genJet_n, &b_genJet_n);
+   fChain->SetBranchAddress("genJet_px", genJet_px, &b_genJet_px);
+   fChain->SetBranchAddress("genJet_py", genJet_py, &b_genJet_py);
+   fChain->SetBranchAddress("genJet_E", genJet_E, &b_genJet_E);
+   fChain->SetBranchAddress("genJet_pz", genJet_pz, &b_genJet_pz);
+   fChain->SetBranchAddress("genJet_pt", genJet_pt, &b_genJet_pt);
+   fChain->SetBranchAddress("genJet_eta", genJet_eta, &b_genJet_eta);
+   fChain->SetBranchAddress("genJet_phi", genJet_phi, &b_genJet_phi);
    fChain->SetBranchAddress("Electron_n", &Electron_n, &b_Electron_n);
    fChain->SetBranchAddress("Electron_px", Electron_px, &b_Electron_px);
    fChain->SetBranchAddress("Electron_py", Electron_py, &b_Electron_py);
@@ -1210,6 +1417,12 @@ void myEvent::Init(TTree *tree)
    fChain->SetBranchAddress("Muon_InnerTrack_OuterPoint_px", Muon_InnerTrack_OuterPoint_px, &b_Muon_InnerTrack_OuterPoint_px);
    fChain->SetBranchAddress("Muon_InnerTrack_OuterPoint_py", Muon_InnerTrack_OuterPoint_py, &b_Muon_InnerTrack_OuterPoint_py);
    fChain->SetBranchAddress("Muon_InnerTrack_OuterPoint_pz", Muon_InnerTrack_OuterPoint_pz, &b_Muon_InnerTrack_OuterPoint_pz);
+   fChain->SetBranchAddress("Muon_OuterPoint_x", Muon_OuterPoint_x, &b_Muon_OuterPoint_x);
+   fChain->SetBranchAddress("Muon_OuterPoint_y", Muon_OuterPoint_y, &b_Muon_OuterPoint_y);
+   fChain->SetBranchAddress("Muon_OuterPoint_z", Muon_OuterPoint_z, &b_Muon_OuterPoint_z);
+   fChain->SetBranchAddress("Muon_InnerPoint_x", Muon_InnerPoint_x, &b_Muon_InnerPoint_x);
+   fChain->SetBranchAddress("Muon_InnerPoint_y", Muon_InnerPoint_y, &b_Muon_InnerPoint_y);
+   fChain->SetBranchAddress("Muon_InnerPoint_z", Muon_InnerPoint_z, &b_Muon_InnerPoint_z);
    fChain->SetBranchAddress("CosmicMuon_n", &CosmicMuon_n, &b_CosmicMuon_n);
    fChain->SetBranchAddress("CosmicMuon_px", CosmicMuon_px, &b_CosmicMuon_px);
    fChain->SetBranchAddress("CosmicMuon_py", CosmicMuon_py, &b_CosmicMuon_py);
@@ -1248,6 +1461,9 @@ void myEvent::Init(TTree *tree)
    fChain->SetBranchAddress("CosmicMuon_InnerTrack_OuterPoint_px", CosmicMuon_InnerTrack_OuterPoint_px, &b_CosmicMuon_InnerTrack_OuterPoint_px);
    fChain->SetBranchAddress("CosmicMuon_InnerTrack_OuterPoint_py", CosmicMuon_InnerTrack_OuterPoint_py, &b_CosmicMuon_InnerTrack_OuterPoint_py);
    fChain->SetBranchAddress("CosmicMuon_InnerTrack_OuterPoint_pz", CosmicMuon_InnerTrack_OuterPoint_pz, &b_CosmicMuon_InnerTrack_OuterPoint_pz);
+   fChain->SetBranchAddress("CosmicMuon_OuterPoint_x", CosmicMuon_OuterPoint_x, &b_CosmicMuon_OuterPoint_x);
+   fChain->SetBranchAddress("CosmicMuon_OuterPoint_y", CosmicMuon_OuterPoint_y, &b_CosmicMuon_OuterPoint_y);
+   fChain->SetBranchAddress("CosmicMuon_OuterPoint_z", CosmicMuon_OuterPoint_z, &b_CosmicMuon_OuterPoint_z);
    fChain->SetBranchAddress("Tau_n", &Tau_n, &b_Tau_n);
    fChain->SetBranchAddress("Tau_px", Tau_px, &b_Tau_px);
    fChain->SetBranchAddress("Tau_py", Tau_py, &b_Tau_py);
@@ -1260,6 +1476,35 @@ void myEvent::Init(TTree *tree)
    fChain->SetBranchAddress("Tau_phi", Tau_phi, &b_Tau_phi);
    fChain->SetBranchAddress("Tau_energy", Tau_energy, &b_Tau_energy);
    fChain->SetBranchAddress("Tau_charge", Tau_charge, &b_Tau_charge);
+   fChain->SetBranchAddress("genTauDecayMode1", &genTauDecayMode1, &b_genTauDecayMode1);
+   fChain->SetBranchAddress("oneProng0Pi0", oneProng0Pi0, &b_oneProng0Pi0);
+   fChain->SetBranchAddress("oneProng1Pi0", oneProng1Pi0, &b_oneProng1Pi0);
+   fChain->SetBranchAddress("oneProng2Pi0", oneProng2Pi0, &b_oneProng2Pi0);
+   fChain->SetBranchAddress("threeProng0Pi0", threeProng0Pi0, &b_threeProng0Pi0);
+   fChain->SetBranchAddress("threeProng1Pi0", threeProng1Pi0, &b_threeProng1Pi0);
+   fChain->SetBranchAddress("tauelectron", tauelectron, &b_tauelectron);
+   fChain->SetBranchAddress("taumuon", taumuon, &b_taumuon);
+   fChain->SetBranchAddress("nthreeProng1Pi0", &nthreeProng1Pi0, &b_nthreeProng1Pi0);
+   fChain->SetBranchAddress("ntauelectron", &ntauelectron, &b_ntauelectron);
+   fChain->SetBranchAddress("ntaumuon", &ntaumuon, &b_ntaumuon);
+   fChain->SetBranchAddress("genHadTauPt", genHadTauPt, &b_genHadTauPt);
+   fChain->SetBranchAddress("genHadTauEta", genHadTauEta, &b_genHadTauEta);
+   fChain->SetBranchAddress("genHadTauPhi", genHadTauPhi, &b_genHadTauPhi);
+   fChain->SetBranchAddress("nPions", nPions, &b_nPions);
+   fChain->SetBranchAddress("PionPdgId", PionPdgId, &b_PionPdgId);
+   fChain->SetBranchAddress("PionPt", PionPt, &b_PionPt);
+   fChain->SetBranchAddress("PionEta", PionEta, &b_PionEta);
+   fChain->SetBranchAddress("PionPhi", PionPhi, &b_PionPhi);
+   fChain->SetBranchAddress("nPi0", nPi0, &b_nPi0);
+   fChain->SetBranchAddress("Pi0PdgId", Pi0PdgId, &b_Pi0PdgId);
+   fChain->SetBranchAddress("Pi0Pt", Pi0Pt, &b_Pi0Pt);
+   fChain->SetBranchAddress("Pi0Eta", Pi0Eta, &b_Pi0Eta);
+   fChain->SetBranchAddress("Pi0Phi", Pi0Phi, &b_Pi0Phi);
+   fChain->SetBranchAddress("nPhotons", nPhotons, &b_nPhotons);
+   fChain->SetBranchAddress("PhotonPt", PhotonPt, &b_PhotonPt);
+   fChain->SetBranchAddress("PhotonEta", PhotonEta, &b_PhotonEta);
+   fChain->SetBranchAddress("PhotonPhi", PhotonPhi, &b_PhotonPhi);
+   fChain->SetBranchAddress("PhotonPdgId", PhotonPdgId, &b_PhotonPdgId);
    fChain->SetBranchAddress("gen_pthat", &gen_pthat, &b_gen_pthat);
    fChain->SetBranchAddress("ngenphotons", &ngenphotons, &b_ngenphotons);
    fChain->SetBranchAddress("gen_photonpt", gen_photonpt, &b_gen_photonpt);
@@ -1281,13 +1526,13 @@ void myEvent::Init(TTree *tree)
    fChain->SetBranchAddress("gen_photonGrandmotherPhi", gen_photonGrandmotherPhi, &b_gen_photonGrandmotherPhi);
    fChain->SetBranchAddress("gen_photonGrandmotherStatus", gen_photonGrandmotherStatus, &b_gen_photonGrandmotherStatus);
    fChain->SetBranchAddress("nhardphotons", &nhardphotons, &b_nhardphotons);
-   fChain->SetBranchAddress("gen_hardphotonpt", gen_hardphotonpt, &b_gen_hardphotonpt);
-   fChain->SetBranchAddress("gen_hardphotoneta", gen_hardphotoneta, &b_gen_hardphotoneta);
-   fChain->SetBranchAddress("gen_hardphotonphi", gen_hardphotonphi, &b_gen_hardphotonphi);
-   fChain->SetBranchAddress("gen_hardphotonpx", gen_hardphotonpx, &b_gen_hardphotonpx);
-   fChain->SetBranchAddress("gen_hardphotonpy", gen_hardphotonpy, &b_gen_hardphotonpy);
-   fChain->SetBranchAddress("gen_hardphotonpz", gen_hardphotonpz, &b_gen_hardphotonpz);
-   fChain->SetBranchAddress("gen_hardphotonE", gen_hardphotonE, &b_gen_hardphotonE);
+   fChain->SetBranchAddress("gen_hardphotonpt", &gen_hardphotonpt, &b_gen_hardphotonpt);
+   fChain->SetBranchAddress("gen_hardphotoneta", &gen_hardphotoneta, &b_gen_hardphotoneta);
+   fChain->SetBranchAddress("gen_hardphotonphi", &gen_hardphotonphi, &b_gen_hardphotonphi);
+   fChain->SetBranchAddress("gen_hardphotonpx", &gen_hardphotonpx, &b_gen_hardphotonpx);
+   fChain->SetBranchAddress("gen_hardphotonpy", &gen_hardphotonpy, &b_gen_hardphotonpy);
+   fChain->SetBranchAddress("gen_hardphotonpz", &gen_hardphotonpz, &b_gen_hardphotonpz);
+   fChain->SetBranchAddress("gen_hardphotonE", &gen_hardphotonE, &b_gen_hardphotonE);
    fChain->SetBranchAddress("gen_gravitonpt", &gen_gravitonpt, &b_gen_graviton_pt);
    fChain->SetBranchAddress("gen_gravitoneta", &gen_gravitoneta, &b_gen_graviton_eta);
    fChain->SetBranchAddress("gen_gravitonphi", &gen_gravitonphi, &b_gen_graviton_phi);
@@ -1342,7 +1587,6 @@ void myEvent::Init(TTree *tree)
    fChain->SetBranchAddress("is_SingleHardPhoton_event", &is_SingleHardPhoton_event, &b_is_SingleHardPhoton_event);
    fChain->SetBranchAddress("is_diphoton_event", &is_diphoton_event, &b_is_diphoton_event);
    fChain->SetBranchAddress("is_isr_photon_event", &is_isr_photon_event, &b_is_isr_photon_event);
-   fChain->SetBranchAddress("Scraping_isScrapingEvent", &Scraping_isScrapingEvent, &b_Scraping_isScrapingEvent);
    fChain->SetBranchAddress("n_signal_events", &n_signal_events, &b_n_signal_events);
    fChain->SetBranchAddress("n_Z_events", &n_Z_events, &b_n_Z_events);
    fChain->SetBranchAddress("n_W_events", &n_W_events, &b_n_W_events);
@@ -1381,7 +1625,7 @@ void myEvent::Init(TTree *tree)
    fChain->SetBranchAddress("gen_tauDaughterCharge", gen_tauDaughterCharge, &b_gen_tauDaughter_charge);
    fChain->SetBranchAddress("gen_tauDaughterStatus", gen_tauDaughterStatus, &b_gen_tauDaughter_status);
    fChain->SetBranchAddress("gen_tauDaughterID", gen_tauDaughterID, &b_gen_tauDaughter_ID);
-
+   fChain->SetBranchAddress("Scraping_isScrapingEvent", &Scraping_isScrapingEvent, &b_Scraping_isScrapingEvent);
    fChain->SetBranchAddress("Photon_n", &Photon_n, &b_Photon_n);
    fChain->SetBranchAddress("Photon_E", Photon_E, &b_Photon_E);
    fChain->SetBranchAddress("Photon_pt", Photon_pt, &b_Photon_pt);
@@ -1390,6 +1634,8 @@ void myEvent::Init(TTree *tree)
    fChain->SetBranchAddress("Photon_theta", Photon_theta, &b_Photon_theta);
    fChain->SetBranchAddress("Photon_et", Photon_et, &b_Photon_et);
    fChain->SetBranchAddress("Photon_swissCross", Photon_swissCross, &b_Photon_swissCross);
+   fChain->SetBranchAddress("Photon_e6e2", Photon_e6e2, &b_Photon_e6e2);
+   fChain->SetBranchAddress("Photon_e4e1", Photon_e4e1, &b_Photon_e4e1);
    fChain->SetBranchAddress("Photonr9", Photonr9, &b_Photonr9);
    fChain->SetBranchAddress("Photon_e1x5", Photon_e1x5, &b_Photon_e1x5);
    fChain->SetBranchAddress("Photon_e2x5", Photon_e2x5, &b_Photon_e2x5);
@@ -1428,6 +1674,7 @@ void myEvent::Init(TTree *tree)
    fChain->SetBranchAddress("Photon_isEBGap", Photon_isEBGap, &b_Photon_isEBGap);
    fChain->SetBranchAddress("Photon_isEEGap", Photon_isEEGap, &b_Photon_isEEGap);
    fChain->SetBranchAddress("Photon_isEBEEGap", Photon_isEBEEGap, &b_Photon_isEBEEGap);
+   fChain->SetBranchAddress("Photon_e2e9", Photon_e2e9, &b_Photon_e2e9);
    fChain->SetBranchAddress("Photon_HoE", Photon_HoE, &b_Photon_HoE);
    fChain->SetBranchAddress("Photon_px", Photon_px, &b_Photon_px);
    fChain->SetBranchAddress("Photon_py", Photon_py, &b_Photon_py);
@@ -1476,50 +1723,51 @@ void myEvent::Init(TTree *tree)
    fChain->SetBranchAddress("Photon_energy_xtal", Photon_energy_xtal, &b_Photon_energy_xtal);
    fChain->SetBranchAddress("Photon_ieta_xtalEB", Photon_ieta_xtalEB, &b_Photon_ieta_xtalEB);
    fChain->SetBranchAddress("Photon_iphi_xtalEB", Photon_iphi_xtalEB, &b_Photon_iphi_xtalEB);
+   fChain->SetBranchAddress("Photon_recoFlag_xtalEB", Photon_recoFlag_xtalEB, &b_Photon_recoFlag_xtalEB);
+   fChain->SetBranchAddress("Photon_timeError_xtal", Photon_timeError_xtal, &b_Photon_timeError_xtal);
    fChain->SetBranchAddress("Photon_s9", Photon_s9, &b_Photon_s9);
    fChain->SetBranchAddress("HERecHit_subset_n", &HERecHit_subset_n, &b_HERecHit_subset_n);
-   fChain->SetBranchAddress("HERecHit_subset_detid", HERecHit_subset_detid, &b_HERecHit_subset_detid);
-   fChain->SetBranchAddress("HERecHit_subset_energy", HERecHit_subset_energy, &b_HERecHit_subset_energy);
-   fChain->SetBranchAddress("HERecHit_subset_time", HERecHit_subset_time, &b_HERecHit_subset_time);
-   fChain->SetBranchAddress("HERecHit_subset_depth", HERecHit_subset_depth, &b_HERecHit_subset_depth);
-   fChain->SetBranchAddress("HERecHit_subset_phi", HERecHit_subset_phi, &b_HERecHit_subset_phi);
-   fChain->SetBranchAddress("HERecHit_subset_eta", HERecHit_subset_eta, &b_HERecHit_subset_eta);
-   fChain->SetBranchAddress("HERecHit_subset_x", HERecHit_subset_x, &b_HERecHit_subset_x);
-   fChain->SetBranchAddress("HERecHit_subset_y", HERecHit_subset_y, &b_HERecHit_subset_y);
-   fChain->SetBranchAddress("HERecHit_subset_z", HERecHit_subset_z, &b_HERecHit_subset_z);
-   fChain->SetBranchAddress("CSCseg_n", &CSCseg_n, &b_CSCseg_n);
-   fChain->SetBranchAddress("CSCseg_time", CSCseg_time, &b_CSCseg_time);
-   fChain->SetBranchAddress("CSCseg_x", CSCseg_x, &b_CSCseg_x);
-   fChain->SetBranchAddress("CSCseg_y", CSCseg_y, &b_CSCseg_y);
-   fChain->SetBranchAddress("CSCseg_z", CSCseg_z, &b_CSCseg_z);
-   fChain->SetBranchAddress("CSCseg_phi", CSCseg_phi, &b_CSCseg_phi);
-   fChain->SetBranchAddress("CSCseg_DirectionX", CSCseg_DirectionX, &b_CSCseg_DirectionX);
-   fChain->SetBranchAddress("CSCseg_DirectionY", CSCseg_DirectionY, &b_CSCseg_DirectionY);
-   fChain->SetBranchAddress("CSCseg_DirectionZ", CSCseg_DirectionZ, &b_CSCseg_DirectionZ);
-
+   fChain->SetBranchAddress("HERecHit_subset_detid", &HERecHit_subset_detid, &b_HERecHit_subset_detid);
+   fChain->SetBranchAddress("HERecHit_subset_energy", &HERecHit_subset_energy, &b_HERecHit_subset_energy);
+   fChain->SetBranchAddress("HERecHit_subset_time", &HERecHit_subset_time, &b_HERecHit_subset_time);
+   fChain->SetBranchAddress("HERecHit_subset_depth", &HERecHit_subset_depth, &b_HERecHit_subset_depth);
+   fChain->SetBranchAddress("HERecHit_subset_phi", &HERecHit_subset_phi, &b_HERecHit_subset_phi);
+   fChain->SetBranchAddress("HERecHit_subset_eta", &HERecHit_subset_eta, &b_HERecHit_subset_eta);
+   fChain->SetBranchAddress("HERecHit_subset_x", &HERecHit_subset_x, &b_HERecHit_subset_x);
+   fChain->SetBranchAddress("HERecHit_subset_y", &HERecHit_subset_y, &b_HERecHit_subset_y);
+   fChain->SetBranchAddress("HERecHit_subset_z", &HERecHit_subset_z, &b_HERecHit_subset_z);
+   fChain->SetBranchAddress("EBRecHit_size", &EBRecHit_size, &b_EBRecHit_size);
+   fChain->SetBranchAddress("EBRecHit_eta", EBRecHit_eta, &b_EBRecHit_eta);
+   fChain->SetBranchAddress("EBRecHit_phi", EBRecHit_phi, &b_EBRecHit_phi);
+   fChain->SetBranchAddress("EBRecHit_ieta", EBRecHit_ieta, &b_EBRecHit_ieta);
+   fChain->SetBranchAddress("EBRecHit_iphi", EBRecHit_iphi, &b_EBRecHit_iphi);
+   fChain->SetBranchAddress("EBRecHit_e", EBRecHit_e, &b_EBRecHit_e);
+   fChain->SetBranchAddress("EBRecHit_et", EBRecHit_et, &b_EBRecHit_et);
+   fChain->SetBranchAddress("EBRecHit_flag", EBRecHit_flag, &b_EBRecHit_flag);
+   fChain->SetBranchAddress("EBRecHit_time", EBRecHit_time, &b_EBRecHit_time);
+   fChain->SetBranchAddress("EERecHit_size", &EERecHit_size, &b_EERecHit_size);
+   fChain->SetBranchAddress("EERecHit_eta", EERecHit_eta, &b_EERecHit_eta);
+   fChain->SetBranchAddress("EERecHit_phi", EERecHit_phi, &b_EERecHit_phi);
+   fChain->SetBranchAddress("EERecHit_ieta", EERecHit_ieta, &b_EERecHit_ieta);
+   fChain->SetBranchAddress("EERecHit_iphi", EERecHit_iphi, &b_EERecHit_iphi);
+   fChain->SetBranchAddress("EERecHit_e", EERecHit_e, &b_EERecHit_e);
+   fChain->SetBranchAddress("EERecHit_et", EERecHit_et, &b_EERecHit_et);
+   fChain->SetBranchAddress("EERecHit_flag", EERecHit_flag, &b_EERecHit_flag);
+   fChain->SetBranchAddress("EERecHit_time", EERecHit_time, &b_EERecHit_time);
+   fChain->SetBranchAddress("isBeamHaloGlobalLoosePass", &isBeamHaloGlobalLoosePass, &b_isBeamHaloGlobalLoosePass);
+   fChain->SetBranchAddress("isBeamHaloGlobalTightPass", &isBeamHaloGlobalTightPass, &b_isBeamHaloGloablTightPass);
+   fChain->SetBranchAddress("isBeamHaloHcalLoosePass", &isBeamHaloHcalLoosePass, &b_isBeamHaloHcalLoosePass);
+   fChain->SetBranchAddress("isBeamHaloHcalTightPass", &isBeamHaloHcalTightPass, &b_isBeamHaloHcalTightPass);
+   fChain->SetBranchAddress("isBeamHaloCSCLoosePass", &isBeamHaloCSCLoosePass, &b_isBeamHaloCSCLoosePass);
+   fChain->SetBranchAddress("isBeamHaloCSCTightPass", &isBeamHaloCSCTightPass, &b_isBeamHaloCSCTightPass);
+   fChain->SetBranchAddress("isBeamHaloEcalLoosePass", &isBeamHaloEcalLoosePass, &b_isBeamHaloEcalLoosePass);
+   fChain->SetBranchAddress("isBeamHaloEcalTightPass", &isBeamHaloEcalTightPass, &b_isBeamHaloEcalTightPass);
    fChain->SetBranchAddress("isBeamHaloIDTightPass", &isBeamHaloIDTightPass, &b_isBeamHaloIDTightPass);
    fChain->SetBranchAddress("isBeamHaloIDLoosePass", &isBeamHaloIDLoosePass, &b_isBeamHaloIDLoosePass);
-   fChain->SetBranchAddress("isBeamHaloEcalLoosePass",&isBeamHaloEcalLoosePass, &b_isBeamHaloEcalLoosePass);
-   fChain->SetBranchAddress("isBeamHaloHcalLoosePass", &isBeamHaloHcalLoosePass, &b_isBeamHaloHcalLoosePass);
-   fChain->SetBranchAddress("isBeamHaloCSCLoosePass", &isBeamHaloCSCLoosePass, &b_isBeamHaloCSCLoosePass);
-   fChain->SetBranchAddress("isBeamHaloGlobalLoosePass", &isBeamHaloGlobalLoosePass, &b_isBeamHaloGlobalLoosePass);
-    
-   fChain->SetBranchAddress("isBeamHaloEcalTightPass", &isBeamHaloEcalTightPass, &b_isBeamHaloEcalTightPass);
-   fChain->SetBranchAddress("isBeamHaloHcalTightPass", &isBeamHaloHcalTightPass, &b_isBeamHaloHcalTightPass);
-   fChain->SetBranchAddress("isBeamHaloCSCTightPass", &isBeamHaloCSCTightPass, &b_isBeamHaloCSCTightPass);
-   fChain->SetBranchAddress("isBeamHaloGlobalTightPass", &isBeamHaloGlobalTightPass, &b_isBeamHaloGlobalTightPass);
-    
    fChain->SetBranchAddress("isSmellsLikeHalo_Tag", &isSmellsLikeHalo_Tag, &b_isSmellsLikeHalo_Tag);
    fChain->SetBranchAddress("isLooseHalo_Tag", &isLooseHalo_Tag, &b_isLooseHalo_Tag);
-   fChain->SetBranchAddress("isTightHalo_Tag", &isTightHalo_Tag,  &b_isTightHalo_Tag);
+   fChain->SetBranchAddress("isTightHalo_Tag", &isTightHalo_Tag, &b_isTightHalo_Tag);
    fChain->SetBranchAddress("isExtremeTightHalo_Tag", &isExtremeTightHalo_Tag, &b_isExtremeTightHalo_Tag);
-    
-
-   fChain->SetBranchAddress("RPChit_n", &RPChit_n, &b_RPChit_n);
-   fChain->SetBranchAddress("RPChit_x", RPChit_x, &b_RPChit_x);
-   fChain->SetBranchAddress("RPChit_y", RPChit_y, &b_RPChit_y);
-   fChain->SetBranchAddress("RPChit_z", RPChit_z, &b_RPChit_z);
-   fChain->SetBranchAddress("RPChit_BunchX", RPChit_BunchX, &b_RPChit_BunchX);
    fChain->SetBranchAddress("CaloMetSigma", &CaloMetSigma, &b_CaloMetSig);
    fChain->SetBranchAddress("CaloMetEz", &CaloMetEz, &b_CaloMetEz);
    fChain->SetBranchAddress("CaloEtFractionHadronic", &CaloEtFractionHadronic, &b_CaloEtFractionHadronic);
@@ -1543,7 +1791,6 @@ void myEvent::Init(TTree *tree)
    fChain->SetBranchAddress("genMetPy", &genMetPy, &b_genMetPy);
    fChain->SetBranchAddress("genMetPhi", &genMetPhi, &b_genMetPhi);
    fChain->SetBranchAddress("genMetSumEt", &genMetSumEt, &b_genMetSumEt);
-
    fChain->SetBranchAddress("Delta_phi", &Delta_phi, &b_Delta_phi);
    fChain->SetBranchAddress("Delta_phiGEN", &Delta_phiGEN, &b_Delta_phiGEN);
    fChain->SetBranchAddress("PFMetPt", PFMetPt, &b_PFMetPt);
@@ -1558,6 +1805,27 @@ void myEvent::Init(TTree *tree)
    fChain->SetBranchAddress("TCMetPhi", TCMetPhi, &b_TCMetPhi);
    fChain->SetBranchAddress("TCMetSumEt", TCMetSumEt, &b_TCMetSumEt);
    fChain->SetBranchAddress("Delta_phiTC", &Delta_phiTC, &b_Delta_phiTC);
+   fChain->SetBranchAddress("CaloTower_n", &CaloTower_n, &b_CaloTower_n);
+   fChain->SetBranchAddress("CaloTower_eta", CaloTower_eta, &b_CaloTower_eta);
+   fChain->SetBranchAddress("CaloTower_phi", CaloTower_phi, &b_CaloTower_phi);
+   fChain->SetBranchAddress("CaloTower_E", CaloTower_E, &b_CaloTower_E);
+   fChain->SetBranchAddress("CaloTower_Et", CaloTower_Et, &b_CaloTower_Et);
+   fChain->SetBranchAddress("CaloTower_emEnergy", CaloTower_emEnergy, &b_CaloTower_emEnergy);
+   fChain->SetBranchAddress("CaloTower_hadEnergy", CaloTower_hadEnergy, &b_CaloTower_hadEnergy);
+   fChain->SetBranchAddress("CaloTower_p", CaloTower_p, &b_CaloTower_p);
+   fChain->SetBranchAddress("CaloTower_EMEt", CaloTower_EMEt, &b_CaloTower_EMEt);
+   fChain->SetBranchAddress("CaloTower_HadEt", CaloTower_HadEt, &b_CaloTower_HadEt);
+   fChain->SetBranchAddress("CaloTower_HadPhi", CaloTower_HadPhi, &b_CaloTower_HadPhi);
+   fChain->SetBranchAddress("CaloTower_HadEta", CaloTower_HadEta, &b_CaloTower_HadEta);
+   fChain->SetBranchAddress("CaloTower_EMPhi", CaloTower_EMPhi, &b_CaloTower_EMPhi);
+   fChain->SetBranchAddress("CaloTower_EMEta", CaloTower_EMEta, &b_CaloTower_EMEta);
+   fChain->SetBranchAddress("CaloTower_HadX", CaloTower_HadX, &b_CaloTower_HadX);
+   fChain->SetBranchAddress("CaloTower_HadY", CaloTower_HadY, &b_CaloTower_HadY);
+   fChain->SetBranchAddress("CaloTower_HadZ", CaloTower_HadZ, &b_CaloTower_HadZ);
+   fChain->SetBranchAddress("CaloTower_HE_E", CaloTower_HE_E, &b_CaloTower_HE_E);
+   fChain->SetBranchAddress("CaloTower_HB_E", CaloTower_HB_E, &b_CaloTower_HB_E);
+   fChain->SetBranchAddress("CaloTower_EMTime", CaloTower_EMTime, &b_CaloTower_EMTime);
+   fChain->SetBranchAddress("CaloTower_HadTime", CaloTower_HadTime, &b_CaloTower_HadTime);
    Notify();
 }
 
