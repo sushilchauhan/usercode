@@ -56,9 +56,9 @@ private:
   Float_t track_pt[100];   
   Float_t track_eta[100];   
   Float_t track_phi[100];   
-  
   //PHOTON
   Int_t   photon_n;
+  //Float_t photon_iLICTD[100];
   Float_t photon_pt[100];
   Float_t photon_et[100];
   Float_t photon_E[100];
@@ -69,6 +69,9 @@ private:
   Float_t photon_pz[100];
   Float_t photon_theta[100];
 
+  Float_t photon_e2e9[100];
+  Float_t photon_e6e2[100];
+  Float_t photon_e4e1[100];
   Float_t photon_swissCross[100];
   Float_t photon_r9[100];
   Float_t photon_e1x5[100];
@@ -80,7 +83,9 @@ private:
   Float_t photon_maxEnergyXtal[100];
 
   Float_t photon_SigmaEtaEta[100];
+  Float_t photon_SigmaPhiPhi[100];
   Float_t photon_SigmaIetaIeta[100];
+  Float_t photon_SigmaIphiIphi[100];
   Float_t photon_Roundness[100];
   Float_t photon_Angle[100];
 
@@ -140,6 +145,7 @@ private:
   Float_t  photon_s9[100]; 
   Int_t photon_basiccluster_size[100];
   Int_t photon_ntracks[100];
+  Float_t photon_deltaR_mc[100];
 
   //JET 
   Int_t   jet_n;
@@ -160,6 +166,7 @@ private:
   Float_t elec_hcalIso[100];
   Float_t elec_HoE[100]; 
   Float_t elec_SigmaIetaIeta[100];
+  Float_t elec_SigmaIphiIphi[100];
   Float_t elec_dEtaIn[100];
   Float_t elec_dPhiIn[100];
   Float_t elec_sc_energy[100];
@@ -208,13 +215,48 @@ private:
   Float_t  muon_InnerTrack_OuterPoint_pz[100];   
   
   //MC photon_
-  Float_t MC_photon_pt[100];
-  Float_t MC_photon_eta[100];
-  Float_t MC_photon_phi[100];
-  Int_t   MC_photon_MotherID[100];
-  Float_t MC_photon_MotherPt[100];
-  Float_t MC_photon_MotherEta[100];
-  Float_t MC_photon_MotherPhi[100];
+  Float_t MC_photon_pt[1000];
+  Float_t MC_photon_eta[1000];
+  Float_t MC_photon_phi[1000];
+  Float_t MC_photon_px[1000]; 
+  Float_t MC_photon_py[1000];
+  Float_t MC_photon_pz[1000];
+  Float_t MC_photon_E[1000];
+  Int_t   MC_photon_MotherID[1000];
+  Float_t MC_photon_MotherPt[1000];
+  Float_t MC_photon_MotherEta[1000];
+  Float_t MC_photon_MotherPhi[1000];
+  Int_t   MC_photon_GrandMotherID[1000]; 
+
+  ////////////////////////added by bhawna//////////////// 
+  ///////////////////////////////////////////////////////
+  //tau info
+  Int_t   tau_n;
+  Int_t   OneProng0Pi0[100];  
+  Int_t   OneProng1Pi0[100];  
+  Int_t   OneProng2Pi0[100];  
+  Int_t   ThreeProng0Pi0[100];
+  Int_t   ThreeProng1Pi0[100];
+  Float_t  GenHadTauPt[100];  
+  Float_t  GenHadTauEta[100]; 
+  Float_t  GenHadTauPhi[100]; 
+  Int_t     NPions[100];  
+  Int_t     pionPdgId[100][100]; 
+  Float_t  pionPt[100][100];  
+  Float_t  pionEta[100][100]; 
+  Float_t  pionPhi[100][100]; 
+  Int_t     NPi0[100];   
+  Int_t     pi0PdgId[100][100]; 
+  Float_t  pi0Pt[100][100];  
+  Float_t  pi0Eta[100][100]; 
+  Float_t  pi0Phi[100][100]; 
+  Int_t     NPhotons[100];  
+  Float_t  photonPt[100][100]; //change these doubles to float after the next time when you will ran since this  is wrong
+  Float_t  photonEta[100][100];
+  Float_t  photonPhi[100][100];
+  Int_t     photonPdgId[100][100];
+  ////////////////ends here//////////////////////
+  ////////////////////////////////////////////////
 
 
   //MET
@@ -267,7 +309,8 @@ private:
   vector<std::string>    *HLT_Names;
   vector<int>            *HLT_Prescales;	
   vector<bool>           *HLT_IfPassed;
-  
+ 
+
   //Graviton
   Float_t  graviton_pt;
 
@@ -315,7 +358,6 @@ private:
 
 
   //calculated here in this code:
-  Float_t photon_e2e9[100]; 
   Float_t jet_pt[100];
   Float_t jet_px[100];
   Float_t jet_py[100];
@@ -343,12 +385,21 @@ private:
   Float_t pfjet_E[100];
   Float_t pfjet_eta[100];
   Float_t pfjet_phi[100];
+  Int_t   pfjet_n_PhotonRemoved;
+  Int_t   pfjet_n_FromHT;
+
 
 
   Float_t HT;
   Float_t HT_JetpT50;
   Float_t HT_JetpT100;
   Float_t HT_JetpT150;
+
+
+  Float_t pfHT;
+  Float_t HT_pfJetpT50;
+  Float_t HT_pfJetpT100;
+  Float_t HT_pfJetpT150;
 
   bool scraping_isScrapingEvent;
   bool IsHEHalo[100];
@@ -397,6 +448,9 @@ void myCuts::define_Tree(){
   HLT_Names        = &HLTNames;
   HLT_Prescales    = &HLTPrescales;
   HLT_IfPassed     = &HLTIfPassed;	
+
+
+
   Long64_t maxsize = 500000000;                  //100GB
   maxsize *= 100;                                //to bypass some compiler limitations with big constants
   TTree::SetMaxTreeSize(maxsize);
@@ -448,10 +502,10 @@ void myCuts::define_Tree(){
   tree->Branch("track_eta",track_eta,"track_eta[NFilled]/F");
   tree->Branch("track_phi",track_phi,"track_phi[NFilled]/F");
   
-  
   //PHOTON
   tree->Branch("photon_n",&Photon_n,"photon_n/I");
   tree->Branch("photon_E",photon_E,"photon_E[NFilled]/F");
+  //tree->Branch("photon_iLICTD",photon_iLICTD,"photon_iLICTD[NFilled]/F");
   tree->Branch("photon_pt",photon_pt,"photon_pt[NFilled]/F");
   tree->Branch("photon_eta",photon_eta,"photon_eta[NFilled]/F");
   tree->Branch("photon_phi",photon_phi,"photon_phi[NFilled]/F");
@@ -468,6 +522,8 @@ void myCuts::define_Tree(){
   tree->Branch("photon_maxEnergyXtal",photon_maxEnergyXtal,"photon_maxEnergyXtal[NFilled]/F");
   tree->Branch("photon_SigmaEtaEta",photon_SigmaEtaEta,"photon_SigmaEtaEta[NFilled]/F");
   tree->Branch("photon_SigmaIetaIeta",photon_SigmaIetaIeta,"photon_SigmaIetaIeta[NFilled]/F");
+  tree->Branch("photon_SigmaPhiPhi",photon_SigmaPhiPhi,"photon_SigmaPhiPhi[NFilled]/F");
+  tree->Branch("photon_SigmaIphiIphi",photon_SigmaIphiIphi,"photon_SigmaIphiIphi[NFilled]/F");
   tree->Branch("photon_Roundness",photon_Roundness,"photon_Roundness[NFilled]/F");
   tree->Branch("photon_Angle",photon_Angle,"photon_Angle[NFilled]/F");
   tree->Branch("photon_ecalRecHitSumEtConeDR03",photon_ecalRecHitSumEtConeDR03,"photon_ecalRecHitSumEtConeDR03[NFilled]/F");
@@ -523,8 +579,13 @@ void myCuts::define_Tree(){
   tree->Branch("photon_dPhiTracksAtEcal",photon_dPhiTracksAtEcal,"photon_dPhiTracksAtEcal[NFilled]/F");
   tree->Branch("photon_dEtaTracksAtEcal",photon_dEtaTracksAtEcal,"photon_dEtaTracksAtEcal[NFilled]/F");
   tree->Branch("photon_e2e9",photon_e2e9,"photon_e2e9[NFilled]/F");
+  tree->Branch("photon_e4e1",photon_e4e1,"photon_e4e1[NFilled]/F");
+  tree->Branch("photon_e6e2",photon_e6e2,"photon_e6e2[NFilled]/F");
   tree->Branch("photon_timing_xtal",photon_timing_xtal,"photon_timing_xtal[NFilled][2]/F");
-  
+
+  //
+  tree->Branch("photon_deltaR_mc",photon_deltaR_mc,"photon_deltaR_mc[NFilled]/F"); 
+ 
   //JET
   tree->Branch("jet_n",&jet_n,"jet_n/I");
   tree->Branch("pfjet_n",&pfjet_n,"pfjet_n/I");
@@ -594,11 +655,16 @@ void myCuts::define_Tree(){
   tree->Branch("MC_photon_pt",MC_photon_pt,"MC_photon_pt[NFilled]/F");
   tree->Branch("MC_photon_eta",MC_photon_eta,"MC_photon_eta[NFilled]/F");
   tree->Branch("MC_photon_phi",MC_photon_phi,"MC_photon_phi[NFilled]/F");
+  tree->Branch("MC_photon_px",MC_photon_pz,"MC_photon_px[NFilled]/F");   
+  tree->Branch("MC_photon_py",MC_photon_py,"MC_photon_py[NFilled]/F");
+  tree->Branch("MC_photon_pz",MC_photon_pz,"MC_photon_pz[NFilled]/F");
+  tree->Branch("MC_photon_E",MC_photon_E,"MC_photon_E[NFilled]/F"); 
+
   tree->Branch("MC_photon_MotherPt",MC_photon_MotherPt,"MC_photon_MotherPt[NFilled]/F");
   tree->Branch("MC_photon_MotherID",MC_photon_MotherID,"MC_photon_MotherID[NFilled]/I");
   tree->Branch("MC_photon_MotherEta",MC_photon_MotherEta,"MC_photon_MotherEta[NFilled]/F");
   tree->Branch("MC_photon_MotherPhi",MC_photon_MotherPhi,"MC_photon_MotherPhi[NFilled]/F");
-
+  tree->Branch("MC_photon_GrandMotherID",MC_photon_GrandMotherID,"MC_photon_GrandMotherID[NFilled]/I");
 
   //GRAVITON
   tree->Branch("graviton_pt",&graviton_pt,"graviton_pt/F");
@@ -713,7 +779,52 @@ void myCuts::define_Tree(){
   tree->Branch("pfjet_E",pfjet_E,"pfjet_E[NJFilled]/F");
   tree->Branch("pfjet_eta",pfjet_eta,"pfjet_eta[NJFilled]/F");
   tree->Branch("pfjet_phi",pfjet_phi,"pfjet_phi[NJFilled]/F");
+  tree->Branch("pfjet_n_PhotonRemoved",&pfjet_n_PhotonRemoved,"pfjet_n_PhotonRemoved/I");
+  tree->Branch("pfjet_n_FromHT",&pfjet_n_FromHT,"pfjet_n_FromHT/I");
+  tree->Branch("pfHT",&pfHT,"pfHT/F");
+  tree->Branch("HT_pfJetpT50",&HT_pfJetpT50,"HT_pfJetpT50/F");  
+  tree->Branch("HT_pfJetpT100",&HT_pfJetpT100,"HT_pfJetpT100/F");
+  tree->Branch("HT_pfJetpT150",&HT_pfJetpT150,"HT_pfJetpT150/F");
+                 
 
+
+  ///////////////////////added by bhawna/////////////////////
+  //////////////////////////////////////////////////////////
+  //tau info
+  tree->Branch("tau_n",&tau_n,"tau_n/I");
+  tree->Branch("OneProng0Pi0",OneProng0Pi0,"OneProng0Pi0[NFilled]/I");
+  tree->Branch("OneProng1Pi0",OneProng1Pi0,"OneProng1Pi0[NFilled]/I");
+  tree->Branch("OneProng2Pi0",OneProng2Pi0,"OneProng2Pi0[NFilled]/I");
+  tree->Branch("ThreeProng0Pi0",ThreeProng0Pi0,"ThreeProng0Pi0[NFilled]/I");
+  tree->Branch("ThreeProng1Pi0",ThreeProng1Pi0,"ThreeProng1Pi0[NFilled]/I");
+  tree->Branch("GenHadTauPt",GenHadTauPt,"GenHadTauPt[NFilled]/F");
+  tree->Branch("GenHadTauEta",GenHadTauEta,"GenHadTauEta[NFilled]/F");
+  tree->Branch("GenHadTauPhi",GenHadTauPhi,"GenHadTauPhi[NFilled]/F");
+  tree->Branch("NPions",&NPions,"NPions/I");
+  tree->Branch("NPi0",&NPi0,"NPi0/I");
+  tree->Branch("NPhotons",&NPhotons,"NPhotons/I");
+  tree->Branch("pionPdgId",pionPdgId,"pionPdgId[NFilled][NFilled]/I");
+  tree->Branch("pionPt",pionPt,"pionPt[NFilled][NFilled]/F");
+  tree->Branch("pionEta",pionEta,"pionEta[NFilled][NFilled]/F");
+  tree->Branch("pionPhi",pionPhi,"pionPhi[NFilled][NFilled]/F");
+  
+  tree->Branch("pi0PdgId",pi0PdgId,"pi0PdgId[NFilled][NFilled]/I");
+  tree->Branch("pi0Pt",pi0Pt,"pi0Pt[NFilled][NFilled]/F");
+  tree->Branch("pi0Eta",pi0Eta,"pi0Eta[NFilled][NFilled]/F");
+  tree->Branch("pi0Phi",pi0Phi,"pi0Phi[NFilled][NFilled]/F");
+
+
+  tree->Branch("photonPdgId",photonPdgId,"photonPdgId[NFilled][NFilled]/I");
+  tree->Branch("photonPt",photonPt,"photonPt[NFilled][NFilled]/F");
+  tree->Branch("photonEta",photonEta,"photonEta[NFilled][NFilled]/F");
+  tree->Branch("photonPhi",photonPhi,"photonPhi[NFilled][NFilled]/F");  
+
+  /////////////ends here///////////////////////////
+  
+  
+  
+  
+  
 
   //scrapping Halo etc
   tree->Branch("scraping_isScrapingEvent",&scraping_isScrapingEvent,"scraping_isScrapingEvent/O");
@@ -740,12 +851,24 @@ void myCuts::Loop(){
   nentries = Int_t(fchain->GetEntries());
   cout << " nentries " << nentries << endl;
   nbytes = 0, nb = 0; NonCollisionBG *bg=new NonCollisionBG();
+
+
+   //add branches in cache for faster run
+    Int_t cachesize = 100000000; //100 MBytes
+    fChain->SetCacheSize(cachesize); //<<<
+    fChain->AddBranchToCache("*");
+
+
+//--------Loop over events
   for(jentry =0; jentry < nentries; jentry++){
-    Int_t ientry = LoadTree(jentry) ; if(ientry == 0)cout<<"file name:"<<fchain->GetFile()->GetName()<<endl;
+    Int_t ientry = LoadTree(jentry) ; 
+    if(ientry == 0)cout<<"file name:"<<fchain->GetFile()->GetName()<<endl;
     //initializing variables here:
    if(debug_)cout<<"starting Initilalization of variable"<<endl;
-    NFilled=2;
-    NJFilled=15;
+
+
+    NFilled=3;
+    NJFilled=5;
 
     for(int i = 0; i <NFilled; i++){
       vertex_x[i]                           =-99.;
@@ -758,8 +881,12 @@ void myCuts::Loop(){
       vertex_isFake[i]                      =false;
       
       //Photon
+      photon_e2e9[i]                        =-99.; 
+      photon_e6e2[i]                        =-99.; 
+      photon_e4e1[i]                        =-99.; 
       photon_E[i]                           =-99.;
       photon_pt[i]                          =-99.;
+      //photon_iLICTD[i]                      =-99.;
       photon_eta[i]                         =-99.;
       photon_phi[i]                         =-99.;
       photon_theta[i]                       =-99.;
@@ -775,6 +902,8 @@ void myCuts::Loop(){
       photon_maxEnergyXtal[i]               =-99.;
       photon_SigmaEtaEta[i]                 =-99.;
       photon_SigmaIetaIeta[i]               =-99.;
+      photon_SigmaPhiPhi[i]                 =-99.;
+      photon_SigmaIphiIphi[i]               =-99.;
       photon_Roundness[i]                   =-99.;
       photon_Angle[i]                       =-99.;
       photon_ecalRecHitSumEtConeDR03[i]     =-99.;
@@ -831,8 +960,8 @@ void myCuts::Loop(){
       photon_isEBEEGap[i]    = false; 
       for(int j=0;j<2;j++)
 	{	
-	  photon_timing_xtal[i][j]         =-99.;
-	  //photon_energy_xtal[i][j]         =-99.;
+	  photon_timing_xtal[i][j]         = -99.;
+	  //photon_energy_xtal[i][j]       = -99.;
   	}
       
       //Tracks
@@ -847,10 +976,51 @@ void myCuts::Loop(){
       MC_photon_pt[i]                      =-99.;
       MC_photon_eta[i]                     =-99.;
       MC_photon_phi[i]                     =-99.;
-      MC_photon_MotherID[i]                =-99.;
+
+      MC_photon_px[i]                      =-99.;
+      MC_photon_py[i]                      =-99.;
+      MC_photon_pz[i]                      =-99.;
+      MC_photon_E[i]                       =-99.;
+
+      MC_photon_MotherID[i]                =-99;
       MC_photon_MotherPt[i]                =-99.;
       MC_photon_MotherEta[i]               =-99.;
       MC_photon_MotherPhi[i]               =-99.;
+      MC_photon_GrandMotherID[i]           =-99;
+
+      ////////////////////added by bhawna///////////////////
+      //tau info
+      
+      OneProng0Pi0[i]                    =-99;
+      OneProng1Pi0[i]                    =-99;
+      OneProng2Pi0[i]                    =-99;
+      ThreeProng0Pi0[i]                  =-99;
+      ThreeProng1Pi0[i]                  =-99;
+      GenHadTauPt[i]                     =-99;
+      GenHadTauEta[i]                    =-99;
+      GenHadTauPhi[i]                    =-99;
+      NPions[i]                          =-99;
+      NPi0[i]                            =-99;
+      NPi0[i]                            =-99;
+
+
+      for(int j = 0; j <2; j++){
+      pionPdgId[i][j]                     =-99;
+      pionPt[i][j]                        =-99;
+      pionEta[i][j]                       =-99;
+      pionPhi[i][j]                       =-99;
+
+      pi0PdgId[i][j]                      =-99;
+      pi0Pt[i][j]                         =-99;
+      pi0Eta[i][j]                        =-99;
+      pi0Phi[i][j]                        =-99;
+
+      photonPt[i][j]                       =-99; 
+      photonEta[i][j]                      =-99;
+      photonPhi[i][j]                      =-99;
+      photonPdgId[i][j]                    =-99;
+      }
+      /////////////////////////ends here///////////////////////
 
       //gsfElectron
       elec_px[i]                          =-99.;
@@ -932,6 +1102,7 @@ void myCuts::Loop(){
 	tc_MetPhi[i]                       =-99.;
 	tc_MetSumEt[i]                     =-99.;
       }
+
     calo_MetSigma                          =-99.;
     calo_MetEz                             =-99.;
     calo_EtFractionHadronic                =-99.;
@@ -965,6 +1136,7 @@ void myCuts::Loop(){
     elec_n                                =-99;
     cscseg_n                              =-99;
     gen_gravitonpt                        =-99.;
+    tau_n                              =-99;
 
     //BeamHaloo Summary 
     
@@ -1009,6 +1181,7 @@ void myCuts::Loop(){
       cscseg_z[j]                   =-99.;
       cscseg_time[j]                =-99.;
     }
+    
     //HLT
     ntriggers = 0;
     HLTNames.clear();	
@@ -1017,7 +1190,6 @@ void myCuts::Loop(){
      
     //information different separate from the original ntuple
     for(int i = 0; i<NJFilled;i++){
-      photon_e2e9[i]                    =-99.; 
       jet_pt[i]                         =-99.;
       jet_px[i]                         =-99.;
       jet_py[i]                         =-99.;
@@ -1048,6 +1220,7 @@ void myCuts::Loop(){
       IsTrackHalo[i]              = false;
       IsE2E9Spike[i]              = false;
       IsTimeSpike[i]              = false;
+
       for(int j=0;j<100;j++) DeltaPhiCSCHalo[i][j]=-99.;
  
       
@@ -1057,14 +1230,21 @@ void myCuts::Loop(){
       sigmaRC[i]                        = -99.;
     }
 
-    jet_n_PhotonRemoved = 0;
-    jet_n_FromHT        = 0;
+     jet_n_PhotonRemoved = 0;
+     jet_n_FromHT        = 0;
 
      HT          =0.0;
      HT_JetpT50  =0.0;
      HT_JetpT100 =0.0;
      HT_JetpT150 =0.0;
-  
+
+     pfjet_n_PhotonRemoved = 0;
+     pfjet_n_FromHT        = 0;
+
+     pfHT          =0.0;
+     HT_pfJetpT50  =0.0;
+     HT_pfJetpT100 =0.0;
+     HT_pfJetpT150 =0.0;
   
     
 
@@ -1078,7 +1258,10 @@ void myCuts::Loop(){
      ////////////////////////////////////////////////////////////////////
 
    if(debug_)cout<<"starting assigning values to new brancehs"<<endl;
+
+  //Get this event
    nb = fChain->GetEntry(jentry);
+
    if(debug_)cout<<"nb ="<<nb<<endl;
     Nnevents             = nevents;
     Nrun                 = run;
@@ -1101,7 +1284,7 @@ void myCuts::Loop(){
       HLTIfPassed.push_back((*ifTriggerpassed)[i]);
     }
     //////////////////////////////////////////////////////
-    /////to be turned on for MC only//////////////////////
+    /////to be turned on for MC only SSC /////////////////
     //////////////////////////////////////////////////////
 
 
@@ -1117,19 +1300,21 @@ void myCuts::Loop(){
     isSingleHardPhoton_event = is_SingleHardPhoton_event;
     isdiphoton_event         = is_diphoton_event;
     isisr_photon_event       = is_isr_photon_event;
+    
     gen_MetPt                = genMetPt;
     gen_MetPx                = genMetPx;
     gen_MetPy                = genMetPy;
     gen_MetPhi               = genMetPhi;
     gen_MetSumEt             = genMetSumEt;
     delta_phiGEN             = Delta_phiGEN; 
+   
     pthat                    = gen_pthat;
     graviton_pt              = gen_gravitonpt;	
     //////////////////////////////////////////////////////
     
     
     //////////////////////////////////////////////////////
-    /////to be turned on for data only////////////////////
+    /////to be turned on for data only SSC ///////////////
     //////////////////////////////////////////////////////
     //scraping_isScrapingEvent = Scraping_isScrapingEvent;//
     /////////////////////////////////////////////////////
@@ -1141,7 +1326,9 @@ void myCuts::Loop(){
      elec_n                   = Electron_n;
      muon_n                   = Muon_n;
      vertex_n                 = Vertex_n;
-     cscseg_n                 = CSCseg_n;
+     //cscseg_n                 = CSCseg_n;
+     tau_n                    = Tau_n;
+
     if(debug_)cout<<"Starting Filling: vertex, photon, ele, muon  and tracks variable "<<endl;
 
      for(int i=0; i<NFilled;i++){
@@ -1153,6 +1340,7 @@ void myCuts::Loop(){
        vertex_chi2[i]                         = Vertex_chi2[i];
        vertex_d0[i]                           = Vertex_d0[i];
        vertex_isFake[i]                       = Vertex_isFake[i];
+       //photon_iLICTD[i]                        = computeLICTD(Photon_ncrys[i], Photon_timing_xtal[i], Photon_energy_xtal[i]);
        photon_E[i]                            = Photon_E[i];
        photon_pt[i]                           = Photon_pt[i];
        photon_eta[i]                          = Photon_eta[i];
@@ -1170,6 +1358,8 @@ void myCuts::Loop(){
        photon_maxEnergyXtal[i]                = Photon_maxEnergyXtal[i];
        photon_SigmaEtaEta[i]                  = Photon_SigmaEtaEta[i];
        photon_SigmaIetaIeta[i]                = Photon_SigmaIetaIeta[i];
+       photon_SigmaPhiPhi[i]                  = Photon_SigmaPhiPhi[i];
+       photon_SigmaIphiIphi[i]                = Photon_SigmaIphiIphi[i];
        photon_Roundness[i]                    = Photon_Roundness[i];
        photon_Angle[i]                        = Photon_Angle[i];
 
@@ -1202,6 +1392,13 @@ void myCuts::Loop(){
        photon_px[i]                           = Photon_px[i];
        photon_py[i]                           = Photon_py[i];
        photon_pz[i]                           = Photon_pz[i];
+
+       TLorentzVector v1;
+       v1.SetPxPyPzE(photon_px[i],
+                     photon_py[i],
+                     photon_pz[i],
+                     photon_E[i]); 
+
 
        photon_basiccluster_size[i]            = Photon_no_of_basic_clusters[i];
        photon_sc_energy[i]                    = Photon_sc_energy[i];
@@ -1241,7 +1438,7 @@ void myCuts::Loop(){
        }
 
        //////////////////////////////////////////////////////
-       /////to be turned on for MC only//////////////////////
+       /////to be turned on for MC only SSC /////////////////
        //////////////////////////////////////////////////////
 
 
@@ -1249,10 +1446,25 @@ void myCuts::Loop(){
        MC_photon_pt[i]                        = gen_photonpt[i];
        MC_photon_eta[i]                       = gen_photoneta[i];
        MC_photon_phi[i]                       = gen_photonphi[i];
+       MC_photon_px[i]                        = gen_photonpx[i]; 
+       MC_photon_py[i]                        = gen_photonpy[i];
+       MC_photon_pz[i]                        = gen_photonpx[i];
+       MC_photon_E[i]                         = gen_photonE[i];
        MC_photon_MotherID[i]                  = gen_photonMotherID[i];
        MC_photon_MotherPt[i]                  = gen_photonMotherPt[i];
        MC_photon_MotherEta[i]                 = gen_photonMotherEta[i];
        MC_photon_MotherPhi[i]                 = gen_photonMotherPhi[i];
+       MC_photon_GrandMotherID[i]             = gen_photonGrandmotherID[i];
+
+       TLorentzVetor v2;
+       v2.clear();
+       v2.SetPxPyPzE(MC_photon_px[i],
+                     MC_photon_py[i],
+                     MC_photon_pz[i],
+                     MC_photon_E[i]); 
+ 
+       photon_deltR_mc[i]=v2.DeltaR(v1); 
+ 
        //////////////////////////////////////////////////////
 
 
@@ -1281,6 +1493,35 @@ void myCuts::Loop(){
        elec_sc_energy[i]                      = Electron_sc_energy[i];	
        elec_sc_eta[i]                         = Electron_sc_eta[i];	
        elec_sc_phi[i]                         = Electron_sc_phi[i];	
+
+       ///////////////////added by bhawna//////////
+       OneProng0Pi0[i]                     =oneProng0Pi0[i];
+       OneProng1Pi0[i]                     =oneProng1Pi0[i];
+       OneProng2Pi0[i]                     =oneProng2Pi0[i];
+       ThreeProng0Pi0[i]                   =threeProng0Pi0[i];
+       ThreeProng1Pi0[i]                   =threeProng1Pi0[i];
+       GenHadTauPt[i]                      =genHadTauPt[i];
+       GenHadTauEta[i]                     =genHadTauEta[i];
+       GenHadTauPhi[i]                     =genHadTauPhi[i];
+       NPions[i]                           =nPions[i]; 
+       NPhotons[i]                         =nPhotons[i];
+       NPi0[i]                             =nPi0[i];
+
+       for(int j = 0; j <2; j++){
+	 pionPdgId[i][j]                =PionPdgId[i][j];
+	 pionPt[i][j]                   =PionPt[i][j];
+	 pionEta[i][j]                  =PionEta[i][j];
+	 pionPhi[i][j]                  =PionPhi[i][j];
+	 pi0PdgId[i][j]                 =Pi0PdgId[i][j];
+	 pi0Pt[i][j]                    =Pi0Pt[i][j];
+	 pi0Eta[i][j]                   =Pi0Eta[i][j];
+	 pi0Phi[i][j]                   =Pi0Phi[i][j];
+	 photonPt[i][j]                 =PhotonPt[i][j]; 
+	 photonEta[i][j]                =PhotonEta[i][j];
+	 photonPhi[i][j]                =PhotonPhi[i][j];
+	 photonPdgId[i][j]              =PhotonPdgId[i][j];
+       }
+       
 
        muon_px[i]                             = Muon_px[i];
        muon_py[i]                             = Muon_py[i];
@@ -1338,14 +1579,16 @@ void myCuts::Loop(){
        
        }
 
+       photon_e4e1[i] = Photon_e4e1[i];
+       photon_e6e2[i] = Photon_e6e2[i];
 
        IsHEHalo[i]       = bg->isHEHalo(Photon_sc_phi[i], HERecHit_subset_n, HERecHit_subset_x, HERecHit_subset_y, HERecHit_subset_energy, HERecHit_subset_time);
-       IsCSCHalo[i]      = bg->isCSCHalo(Photon_sc_phi[i], CSCseg_n, CSCseg_x, CSCseg_y, CSCseg_time);
+       //IsCSCHalo[i]      = bg->isCSCHalo(Photon_sc_phi[i], CSCseg_n, CSCseg_x, CSCseg_y, CSCseg_time);
        IsTrackHalo[i]    = bg->isTrackHalo(Photon_sc_phi[i], CosmicMuon_n, CosmicMuon_OuterTrack_InnerPoint_x, CosmicMuon_OuterTrack_InnerPoint_y);
-       for(int j=0;j < cscseg_n;j++)
+       /*   for(int j=0;j < cscseg_n;j++)
 	 {
 	   DeltaPhiCSCHalo[i][j]   = bg->deltaPhiCSCHalo(Photon_sc_phi[i], CSCseg_x[j], CSCseg_y[j]);
-	 }
+	   }*/
       // sigmaRC[i] = bg->sigmaRCosmic(Photon_sc_x[i],  Photon_sc_y[i], Photon_sc_z[i],CosmicMuon_OuterTrack_InnerPoint_x,CosmicMuon_OuterTrack_InnerPoint_y,CosmicMuon_OuterTrack_InnerPoint_z, CosmicMuon_OuterTrack_InnerPoint_px,CosmicMuon_OuterTrack_InnerPoint_py,CosmicMuon_OuterTrack_InnerPoint_pz, CosmicMuon_n);
        fisherd2[i] = bg->fisherCosmic2(Photon_Roundness[i],Photon_Angle[i]);
        fisherd3[i] = bg->fisherCosmic3(Photon_Roundness[i],Photon_Angle[i],Photon_hasConvTrk[i]);
@@ -1383,7 +1626,10 @@ void myCuts::Loop(){
      /////////////////////////////////////////////////////////////////////////////////
      if(debug_)cout<<"Removing Photon from Jet Block"<<endl;
 
-     if(photon_ecalRecHitSumEtConeDR04[0]<4.2+0.006*photon_pt[0] && photon_hcalTowerSumEtConeDR04[0]< 2.2+0.0025*photon_pt[0]  && photon_trkSumPtHollowConeDR04[0] < 3.5+0.001*photon_pt[0] && photon_HoE[0]<0.05 && photon_n >0)
+     if(photon_ecalRecHitSumEtConeDR04[0]<4.2+0.006*photon_pt[0]   && 
+        photon_hcalTowerSumEtConeDR04[0]< 2.2+0.0025*photon_pt[0]  &&
+        photon_trkSumPtHollowConeDR04[0] < 3.5+0.001*photon_pt[0]  &&
+        photon_HoE[0]<0.05 && photon_n >0)
      {
        int tmpFilled=0;
        for (int j=0;j<Jet_n;++j){
@@ -1395,7 +1641,10 @@ void myCuts::Loop(){
 	 ///////////////////////////////////////////////////////////////////////////////// 
 	 //**************Check Delta_R and Jet ID Cuts then fill jets*******************//
 	 ///////////////////////////////////////////////////////////////////////////////// 
-	 if (dR > 0.5 && fabs(Jet_eta[j])<2.6 && Jet_emEnergyFraction[j]>0.01 && Jet_n90Hits[j]>1 && Jet_fHPD[j]<0.98){
+	 if (dR > 0.5 && fabs(Jet_eta[j])<2.6 && 
+             Jet_emEnergyFraction[j]>0.01     &&
+             Jet_n90Hits[j]>1 && Jet_fHPD[j]<0.98)
+         {
 	   jet_pt[tmpFilled]                    = Jet_pt[j];
 	   jet_px[tmpFilled]                    = Jet_px[j];
 	   jet_py[tmpFilled]                    = Jet_py[j];
@@ -1420,7 +1669,11 @@ void myCuts::Loop(){
 
     if(debug_)cout<<"Again doing the same "<<endl;
     ///Same above loop but to calculate HT for different threshold of Jets pT
-           if(photon_ecalRecHitSumEtConeDR04[0]<4.2+0.006*photon_pt[0] && photon_hcalTowerSumEtConeDR04[0]< 2.2+0.0025*photon_pt[0]  && photon_trkSumPtHollowConeDR04[0] < 3.5+0.001*photon_pt[0] && photon_HoE[0]<0.05 && photon_n >0)
+           if(photon_ecalRecHitSumEtConeDR04[0]<4.2+0.006*photon_pt[0]   && 
+              photon_hcalTowerSumEtConeDR04[0]< 2.2+0.0025*photon_pt[0]  &&
+              photon_trkSumPtHollowConeDR04[0]< 3.5+0.001*photon_pt[0]   &&
+              photon_HoE[0]<0.05                                         &&
+              photon_n >0)
      {
        int tmpFilled=0;
        for (int j=0;j<Jet_n;++j){
@@ -1433,7 +1686,11 @@ void myCuts::Loop(){
          ///////////////////////////////////////////////////////////////////////////////// 
          //**************Check Delta_R and Jet ID Cuts then fill jets*******************//
          ///////////////////////////////////////////////////////////////////////////////// 
-         if (dR > 0.5 && fabs(Jet_eta[j])<2.6 && Jet_emEnergyFraction[j]>0.01 && Jet_n90Hits[j]>1 && Jet_fHPD[j]<0.98){
+         if (dR > 0.5 && fabs(Jet_eta[j])<2.6 && 
+             Jet_emEnergyFraction[j]>0.01     && 
+             Jet_n90Hits[j]>1                 &&
+             Jet_fHPD[j]<0.98)
+            {
                              HT += Jet_pt[j];
              if(Jet_pt[j]> 50.0)HT_JetpT50 += Jet_pt[j];
              if(Jet_pt[j]> 100.)HT_JetpT100 += Jet_pt[j];
@@ -1447,13 +1704,14 @@ void myCuts::Loop(){
 
    if(Jet_n>0)jet_n_PhotonRemoved=Jet_n-jet_n_FromHT;
 
-   if(debug_)cout<<"starting CSC infor filling"<<endl;
 
 ///-----------Same for pfJets
-
      if(debug_)cout<<"Removing Photon from pfJet Block"<<endl;
 
-     if(photon_ecalRecHitSumEtConeDR04[0]<4.2+0.006*photon_pt[0] && photon_hcalTowerSumEtConeDR04[0]< 2.2+0.0025*photon_pt[0]  && photon_trkSumPtHollowConeDR04[0] < 3.5+0.001*photon_pt[0] && photon_HoE[0]<0.05 && photon_n >0)
+     if(photon_ecalRecHitSumEtConeDR04[0]<4.2+0.006*photon_pt[0]   &&
+        photon_hcalTowerSumEtConeDR04[0]< 2.2+0.0025*photon_pt[0]  &&
+        photon_trkSumPtHollowConeDR04[0] < 3.5+0.001*photon_pt[0]  &&
+        photon_HoE[0]<0.05 && photon_n >0)
      {
        int tmpFilledPF=0;
        for (int j=0;j<pfJet_n;++j){
@@ -1462,7 +1720,7 @@ void myCuts::Loop(){
 	 Float_t pfdEta = fabs(photon_eta[0]-pfJet_eta[j]);
 	 Float_t pfdR = sqrt(pfdPhi*pfdPhi + pfdEta*pfdEta);
 
-	 if (pfdR > 0.5 && fabs(pfJet_eta[j])<3.0){
+	 if (pfdR > 0.5 && fabs(pfJet_eta[j])<2.6){
 	   pfjet_pt[tmpFilledPF]                    = pfJet_pt[j];
 	   pfjet_px[tmpFilledPF]                    = pfJet_px[j];
 	   pfjet_py[tmpFilledPF]                    = pfJet_py[j];
@@ -1475,13 +1733,44 @@ void myCuts::Loop(){
 	 }
 
        }
-     }
+     }//check if photon is isolated or not
 
+       ///Same above loop but to calculate HT for different threshold of Jets pT
+       if(photon_ecalRecHitSumEtConeDR04[0]<4.2+0.006*photon_pt[0]  && 
+          photon_hcalTowerSumEtConeDR04[0]< 2.2+0.0025*photon_pt[0] && 
+          photon_trkSumPtHollowConeDR04[0] < 3.5+0.001*photon_pt[0] &&
+          photon_HoE[0]<0.05 && photon_n >0)
+         {
+          int tmpFilled=0; 
+           for(int j=0;j<pfJet_n;++j)
+              {  Float_t dPhi = fabs(photon_phi[0]-pfJet_phi[j]);
+                 if (dPhi > TMath::Pi()) dPhi = TMath::Pi()*2. - dPhi;
+                     Float_t dEta = fabs(photon_eta[0]-pfJet_eta[j]);
+                     Float_t dR = sqrt(dPhi*dPhi + dEta*dEta);
+                    
+         /////////////////////////////////////////////////////////////////////////////////
+          //**************Check Delta_R and Jet ID Cuts then fill jets*******************//
+         /////////////////////////////////////////////////////////////////////////////////
+          if (dR > 0.5 && fabs(pfJet_eta[j])<5.0)
+             {
+                  pfHT += pfJet_pt[j];
+                 if(pfJet_pt[j]> 50.0)HT_pfJetpT50 += pfJet_pt[j];
+                 if(pfJet_pt[j]> 100.)HT_pfJetpT100 += pfJet_pt[j];
+                 if(pfJet_pt[j]> 150.)HT_pfJetpT150 += pfJet_pt[j]; 
+                  pfjet_n_FromHT++;
+            }
+          }//loop over j
+       }//check if an isolated photon           
+
+    if(pfJet_n > 0)pfjet_n_PhotonRemoved = pfJet_n - pfjet_n_FromHT;
+                    
+  //-------------------
 
 
      if(debug_)cout<<"starting CSC infor filling"<<endl;
           
     //csc 
+     /*
      for(int j=0;j < cscseg_n;j++)
        {
 	 cscseg_x[j] = CSCseg_x[j];
@@ -1489,7 +1778,7 @@ void myCuts::Loop(){
 	 cscseg_z[j] = CSCseg_z[j];
 	 cscseg_time[j] = CSCseg_time[j];
        }
-
+     */
      //lets calculate Ht based on the 
      
     if(debug_)cout<<"Starting filling MET"<<endl;
@@ -1549,4 +1838,41 @@ void myCuts::Loop(){
 }//Loop()  
 
 
+/*
+float makeHistogramsW_7::computeLICTD(int nCry, float cryTime[], float cryEnergy[]){
+    int seed = GetSeed(nCry, cryEnergy);
+    if(seed<0) return -99;   
+    Float_t LICTD =0;        
+    Int_t crysCrys=-1;       
+    Int_t crysThresh=0;      
+    for(int k=0;k<nCry&&k<100;++k){
+        if (seed==k) continue;
+        Float_t crysE = cryEnergy[k];
+        if(crysE > 1.){      
+            crysThresh++;    
+            Float_t tdiff = cryTime[seed] - cryTime[k];
+            if(fabs(tdiff) > fabs(LICTD)){
+                LICTD = tdiff;
+                crysCrys=k;  
+            }                
+        }                    
+    }                        
+    return LICTD;            
+}                            
+
+//  seed finding function    
+//useage makeHistogramsW_7::GetSeed(Photon_ncrys[x], Photon_energy_xtal[x])
+int makeHistogramsW_7::GetSeed(int Ncry, float cryE[]){
+    int seedIdx=-1;          
+    float seedE=-99;         
+    for(int k=0;k<Ncry&&k<100;++k){
+        if(cryE[k] > seedE){ 
+            seedIdx = k;     
+            seedE=cryE[seedIdx];
+        }                    
+    }                        
+    return seedIdx;          
+}                            
+
+*/
 
