@@ -213,7 +213,60 @@ private:
   Float_t  muon_InnerTrack_OuterPoint_px[100];   
   Float_t  muon_InnerTrack_OuterPoint_py[100];   
   Float_t  muon_InnerTrack_OuterPoint_pz[100];   
-  
+  Float_t  muon_OuterPoint_x[100];   
+  Float_t  muon_OuterPoint_y[100]; 
+  Float_t  muon_OuterPoint_z[100];   
+  Float_t  muon_InnerPoint_x[100];   
+  Float_t  muon_InnerPoint_y[100]; 
+  Float_t  muon_InnerPoint_z[100];   
+  Float_t  muon_vx[100];   
+  Float_t  muon_vy[100]; 
+  Float_t  muon_vz[100];
+
+
+  //cosmicmuon
+  Int_t    cosmicmuon_n;  
+  Float_t  cosmicmuon_px[100];   
+  Float_t  cosmicmuon_py[100];   
+  Float_t  cosmicmuon_pz[100];   
+  Float_t  cosmicmuon_pt[100];   
+  Float_t  cosmicmuon_eta[100];   
+  Float_t  cosmicmuon_phi[100];   
+  Float_t  cosmicmuon_energy[100];   
+  Float_t  cosmicmuon_charge[100];   
+  Bool_t   cosmicmuon_isGlobalcosmicmuon[100];   
+  Bool_t   cosmicmuon_isTrackercosmicmuon[100];   
+  Bool_t   cosmicmuon_isStandAlonecosmicmuon[100];   
+  Bool_t   cosmicmuon_InnerTrack_isNonnull[100];   
+  Bool_t   cosmicmuon_OuterTrack_isNonnull[100];   
+  Float_t  cosmicmuon_OuterTrack_InnerPoint_x[100];   
+  Float_t  cosmicmuon_OuterTrack_InnerPoint_y[100];   
+  Float_t  cosmicmuon_OuterTrack_InnerPoint_z[100];   
+  Float_t  cosmicmuon_OuterTrack_InnerPoint_px[100];   
+  Float_t  cosmicmuon_OuterTrack_InnerPoint_py[100];   
+  Float_t  cosmicmuon_OuterTrack_InnerPoint_pz[100];   
+  Float_t  cosmicmuon_OuterTrack_OuterPoint_x[100];   
+  Float_t  cosmicmuon_OuterTrack_OuterPoint_y[100];   
+  Float_t  cosmicmuon_OuterTrack_OuterPoint_z[100];   
+  Float_t  cosmicmuon_OuterTrack_OuterPoint_px[100];   
+  Float_t  cosmicmuon_OuterTrack_OuterPoint_py[100];   
+  Float_t  cosmicmuon_OuterTrack_OuterPoint_pz[100];   
+  Float_t  cosmicmuon_InnerTrack_InnerPoint_x[100];   
+  Float_t  cosmicmuon_InnerTrack_InnerPoint_y[100];   
+  Float_t  cosmicmuon_InnerTrack_InnerPoint_z[100];   
+  Float_t  cosmicmuon_InnerTrack_InnerPoint_px[100];   
+  Float_t  cosmicmuon_InnerTrack_InnerPoint_py[100];   
+  Float_t  cosmicmuon_InnerTrack_InnerPoint_pz[100];   
+  Float_t  cosmicmuon_InnerTrack_OuterPoint_x[100];   
+  Float_t  cosmicmuon_InnerTrack_OuterPoint_y[100];   
+  Float_t  cosmicmuon_InnerTrack_OuterPoint_z[100];   
+  Float_t  cosmicmuon_InnerTrack_OuterPoint_px[100];   
+  Float_t  cosmicmuon_InnerTrack_OuterPoint_py[100];   
+  Float_t  cosmicmuon_InnerTrack_OuterPoint_pz[100];  
+  Float_t  cosmicmuon_OuterPoint_x[100];   
+  Float_t  cosmicmuon_OuterPoint_y[100]; 
+  Float_t  cosmicmuon_OuterPoint_z[100];   
+
   //MC photon_
   Float_t MC_photon_pt[1000];
   Float_t MC_photon_eta[1000];
@@ -650,7 +703,59 @@ void myCuts::define_Tree(){
   tree->Branch("muon_InnerTrack_OuterPoint_px",muon_InnerTrack_OuterPoint_px,"muon_InnerTrack_OuterPoint_px[NFilled]/F");
   tree->Branch("muon_InnerTrack_OuterPoint_py",muon_InnerTrack_OuterPoint_py,"muon_InnerTrack_OuterPoint_py[NFilled]/F");
   tree->Branch("muon_InnerTrack_OuterPoint_pz",muon_InnerTrack_OuterPoint_pz,"muon_InnerTrack_OuterPoint_pz[NFilled]/F");
-  
+  tree->Branch("muon_OuterPoint_x",muon_OuterPoint_x,"muon_OuterPoint_x[NFilled]/F");
+  tree->Branch("muon_OuterPoint_y",muon_OuterPoint_y,"muon_OuterPoint_y[NFilled]/F");
+  tree->Branch("muon_OuterPoint_z",muon_OuterPoint_z,"muon_OuterPoint_z[NFilled]/F"); 
+  tree->Branch("muon_InnerPoint_x",muon_InnerPoint_x,"muon_InnerPoint_x[NFilled]/F");
+  tree->Branch("muon_InnerPoint_y",muon_InnerPoint_y,"muon_InnerPoint_y[NFilled]/F");
+  tree->Branch("muon_InnerPoint_z",muon_InnerPoint_z,"muon_InnerPoint_z[NFilled]/F"); 
+  tree->Branch("muon_vx",muon_vx,"muon_vx[NFilled]/F");
+  tree->Branch("muon_vy",muon_vy,"muon_vy[NFilled]/F");
+  tree->Branch("muon_vz",muon_vz,"muon_vz[NFilled]/F"); 
+
+  //cosmicmuon 
+  tree->Branch("cosmicmuon_n",&cosmicmuon_n,"cosmicmuon_n/I"); 
+  tree->Branch("cosmicmuon_px",cosmicmuon_px,"cosmicmuon_px[NFilled]/F");
+  tree->Branch("cosmicmuon_py",cosmicmuon_py,"cosmicmuon_py[NFilled]/F");
+  tree->Branch("cosmicmuon_pz",cosmicmuon_pz,"cosmicmuon_pz[NFilled]/F");
+  tree->Branch("cosmicmuon_pt",cosmicmuon_pt,"cosmicmuon_pt[NFilled]/F");
+  tree->Branch("cosmicmuon_eta",cosmicmuon_eta,"cosmicmuon_eta[NFilled]/F");
+  tree->Branch("cosmicmuon_phi",cosmicmuon_phi,"cosmicmuon_phi[NFilled]/F");
+  tree->Branch("cosmicmuon_energy",cosmicmuon_energy,"cosmicmuon_energy[NFilled]/F");
+  tree->Branch("cosmicmuon_charge",cosmicmuon_charge,"cosmicmuon_charge[NFilled]/F");
+  tree->Branch("cosmicmuon_isGlobalcosmicmuon",cosmicmuon_isGlobalcosmicmuon,"cosmicmuon_isGlobalcosmicmuon[NFilled]/O");
+  tree->Branch("cosmicmuon_isTrackercosmicmuon",cosmicmuon_isTrackercosmicmuon,"cosmicmuon_isTrackercosmicmuon[NFilled]/O");
+  tree->Branch("cosmicmuon_isStandAlonecosmicmuon",cosmicmuon_isStandAlonecosmicmuon,"cosmicmuon_isStandAlonecosmicmuon[NFilled]/O");
+  tree->Branch("cosmicmuon_InnerTrack_isNonnull",cosmicmuon_InnerTrack_isNonnull,"cosmicmuon_InnerTrack_isNonnull[NFilled]/O");
+  tree->Branch("cosmicmuon_OuterTrack_isNonnull",cosmicmuon_OuterTrack_isNonnull,"cosmicmuon_OuterTrack_isNonnull[NFilled]/O");
+  tree->Branch("cosmicmuon_OuterTrack_InnerPoint_x",cosmicmuon_OuterTrack_InnerPoint_x,"cosmicmuon_OuterTrack_InnerPoint_x[NFilled]/F");
+  tree->Branch("cosmicmuon_OuterTrack_InnerPoint_y",cosmicmuon_OuterTrack_InnerPoint_y,"cosmicmuon_OuterTrack_InnerPoint_y[NFilled]/F");
+  tree->Branch("cosmicmuon_OuterTrack_InnerPoint_z",cosmicmuon_OuterTrack_InnerPoint_z,"cosmicmuon_OuterTrack_InnerPoint_z[NFilled]/F");
+  tree->Branch("cosmicmuon_OuterTrack_InnerPoint_px",cosmicmuon_OuterTrack_InnerPoint_px,"cosmicmuon_OuterTrack_InnerPoint_px[NFilled]/F");
+  tree->Branch("cosmicmuon_OuterTrack_InnerPoint_py",cosmicmuon_OuterTrack_InnerPoint_py,"cosmicmuon_OuterTrack_InnerPoint_py[NFilled]/F");
+  tree->Branch("cosmicmuon_OuterTrack_InnerPoint_pz",cosmicmuon_OuterTrack_InnerPoint_pz,"cosmicmuon_OuterTrack_InnerPoint_pz[NFilled]/F");
+  tree->Branch("cosmicmuon_OuterTrack_OuterPoint_x",cosmicmuon_OuterTrack_OuterPoint_x,"cosmicmuon_OuterTrack_OuterPoint_x[NFilled]/F");
+  tree->Branch("cosmicmuon_OuterTrack_OuterPoint_y",cosmicmuon_OuterTrack_OuterPoint_y,"cosmicmuon_OuterTrack_OuterPoint_y[NFilled]/F");
+  tree->Branch("cosmicmuon_OuterTrack_OuterPoint_z",cosmicmuon_OuterTrack_OuterPoint_z,"cosmicmuon_OuterTrack_OuterPoint_z[NFilled]/F");
+  tree->Branch("cosmicmuon_OuterTrack_OuterPoint_px",cosmicmuon_OuterTrack_OuterPoint_px,"cosmicmuon_OuterTrack_OuterPoint_px[NFilled]/F");
+  tree->Branch("cosmicmuon_OuterTrack_OuterPoint_py",cosmicmuon_OuterTrack_OuterPoint_py,"cosmicmuon_OuterTrack_OuterPoint_py[NFilled]/F");
+  tree->Branch("cosmicmuon_OuterTrack_OuterPoint_pz",cosmicmuon_OuterTrack_OuterPoint_pz,"cosmicmuon_OuterTrack_OuterPoint_pz[NFilled]/F");
+  tree->Branch("cosmicmuon_InnerTrack_InnerPoint_x",cosmicmuon_InnerTrack_InnerPoint_x,"cosmicmuon_InnerTrack_InnerPoint_x[NFilled]/F");
+  tree->Branch("cosmicmuon_InnerTrack_InnerPoint_y",cosmicmuon_InnerTrack_InnerPoint_y,"cosmicmuon_InnerTrack_InnerPoint_y[NFilled]/F");
+  tree->Branch("cosmicmuon_InnerTrack_InnerPoint_z",cosmicmuon_InnerTrack_InnerPoint_z,"cosmicmuon_InnerTrack_InnerPoint_z[NFilled]/F");
+  tree->Branch("cosmicmuon_InnerTrack_InnerPoint_px",cosmicmuon_InnerTrack_InnerPoint_px,"cosmicmuon_InnerTrack_InnerPoint_px[NFilled]/F");
+  tree->Branch("cosmicmuon_InnerTrack_InnerPoint_py",cosmicmuon_InnerTrack_InnerPoint_py,"cosmicmuon_InnerTrack_InnerPoint_py[NFilled]/F");
+  tree->Branch("cosmicmuon_InnerTrack_InnerPoint_pz",cosmicmuon_InnerTrack_InnerPoint_pz,"cosmicmuon_InnerTrack_InnerPoint_pz[NFilled]/F");
+  tree->Branch("cosmicmuon_InnerTrack_OuterPoint_x",cosmicmuon_InnerTrack_OuterPoint_x,"cosmicmuon_InnerTrack_OuterPoint_x[NFilled]/F");
+  tree->Branch("cosmicmuon_InnerTrack_OuterPoint_y",cosmicmuon_InnerTrack_OuterPoint_y,"cosmicmuon_InnerTrack_OuterPoint_y[NFilled]/F");
+  tree->Branch("cosmicmuon_InnerTrack_OuterPoint_z",cosmicmuon_InnerTrack_OuterPoint_z,"cosmicmuon_InnerTrack_OuterPoint_z[NFilled]/F");
+  tree->Branch("cosmicmuon_InnerTrack_OuterPoint_px",cosmicmuon_InnerTrack_OuterPoint_px,"cosmicmuon_InnerTrack_OuterPoint_px[NFilled]/F");
+  tree->Branch("cosmicmuon_InnerTrack_OuterPoint_py",cosmicmuon_InnerTrack_OuterPoint_py,"cosmicmuon_InnerTrack_OuterPoint_py[NFilled]/F");
+  tree->Branch("cosmicmuon_InnerTrack_OuterPoint_pz",cosmicmuon_InnerTrack_OuterPoint_pz,"cosmicmuon_InnerTrack_OuterPoint_pz[NFilled]/F");
+  tree->Branch("cosmicmuon_OuterPoint_x",cosmicmuon_OuterPoint_x,"cosmicmuon_OuterPoint_x[NFilled]/F");
+  tree->Branch("cosmicmuon_OuterPoint_y",cosmicmuon_OuterPoint_y,"cosmicmuon_OuterPoint_y[NFilled]/F");
+  tree->Branch("cosmicmuon_OuterPoint_z",cosmicmuon_OuterPoint_z,"cosmicmuon_OuterPoint_z[NFilled]/F");
+ 
   //MC
   tree->Branch("MC_photon_pt",MC_photon_pt,"MC_photon_pt[NFilled]/F");
   tree->Branch("MC_photon_eta",MC_photon_eta,"MC_photon_eta[NFilled]/F");
@@ -779,6 +884,7 @@ void myCuts::define_Tree(){
   tree->Branch("pfjet_E",pfjet_E,"pfjet_E[NJFilled]/F");
   tree->Branch("pfjet_eta",pfjet_eta,"pfjet_eta[NJFilled]/F");
   tree->Branch("pfjet_phi",pfjet_phi,"pfjet_phi[NJFilled]/F");
+<<<<<<< myCuts_halo.C
   tree->Branch("pfjet_n_PhotonRemoved",&pfjet_n_PhotonRemoved,"pfjet_n_PhotonRemoved/I");
   tree->Branch("pfjet_n_FromHT",&pfjet_n_FromHT,"pfjet_n_FromHT/I");
   tree->Branch("pfHT",&pfHT,"pfHT/F");
@@ -813,6 +919,53 @@ void myCuts::define_Tree(){
   tree->Branch("pi0Eta",pi0Eta,"pi0Eta[NFilled][NFilled]/F");
   tree->Branch("pi0Phi",pi0Phi,"pi0Phi[NFilled][NFilled]/F");
 
+
+  tree->Branch("photonPdgId",photonPdgId,"photonPdgId[NFilled][NFilled]/I");
+  tree->Branch("photonPt",photonPt,"photonPt[NFilled][NFilled]/F");
+  tree->Branch("photonEta",photonEta,"photonEta[NFilled][NFilled]/F");
+  tree->Branch("photonPhi",photonPhi,"photonPhi[NFilled][NFilled]/F");  
+=======
+  tree->Branch("pfjet_n_PhotonRemoved",&pfjet_n_PhotonRemoved,"pfjet_n_PhotonRemoved/I");
+  tree->Branch("pfjet_n_FromHT",&pfjet_n_FromHT,"pfjet_n_FromHT/I");
+  tree->Branch("pfHT",&pfHT,"pfHT/F");
+  tree->Branch("HT_pfJetpT50",&HT_pfJetpT50,"HT_pfJetpT50/F");  
+  tree->Branch("HT_pfJetpT100",&HT_pfJetpT100,"HT_pfJetpT100/F");
+  tree->Branch("HT_pfJetpT150",&HT_pfJetpT150,"HT_pfJetpT150/F");
+                 
+
+
+  ///////////////////////added by bhawna/////////////////////
+  //////////////////////////////////////////////////////////
+  //tau info
+  tree->Branch("tau_n",&tau_n,"tau_n/I");
+  tree->Branch("OneProng0Pi0",OneProng0Pi0,"OneProng0Pi0[NFilled]/I");
+  tree->Branch("OneProng1Pi0",OneProng1Pi0,"OneProng1Pi0[NFilled]/I");
+  tree->Branch("OneProng2Pi0",OneProng2Pi0,"OneProng2Pi0[NFilled]/I");
+  tree->Branch("ThreeProng0Pi0",ThreeProng0Pi0,"ThreeProng0Pi0[NFilled]/I");
+  tree->Branch("ThreeProng1Pi0",ThreeProng1Pi0,"ThreeProng1Pi0[NFilled]/I");
+  tree->Branch("GenHadTauPt",GenHadTauPt,"GenHadTauPt[NFilled]/F");
+  tree->Branch("GenHadTauEta",GenHadTauEta,"GenHadTauEta[NFilled]/F");
+  tree->Branch("GenHadTauPhi",GenHadTauPhi,"GenHadTauPhi[NFilled]/F");
+  tree->Branch("NPions",&NPions,"NPions/I");
+  tree->Branch("NPi0",&NPi0,"NPi0/I");
+  tree->Branch("NPhotons",&NPhotons,"NPhotons/I");
+  tree->Branch("pionPdgId",pionPdgId,"pionPdgId[NFilled][NFilled]/I");
+  tree->Branch("pionPt",pionPt,"pionPt[NFilled][NFilled]/F");
+  tree->Branch("pionEta",pionEta,"pionEta[NFilled][NFilled]/F");
+  tree->Branch("pionPhi",pionPhi,"pionPhi[NFilled][NFilled]/F");
+  
+  tree->Branch("pi0PdgId",pi0PdgId,"pi0PdgId[NFilled][NFilled]/I");
+  tree->Branch("pi0Pt",pi0Pt,"pi0Pt[NFilled][NFilled]/F");
+  tree->Branch("pi0Eta",pi0Eta,"pi0Eta[NFilled][NFilled]/F");
+  tree->Branch("pi0Phi",pi0Phi,"pi0Phi[NFilled][NFilled]/F");
+>>>>>>> 1.2
+
+  /////////////ends here///////////////////////////
+  
+  
+  
+  
+  
 
   tree->Branch("photonPdgId",photonPdgId,"photonPdgId[NFilled][NFilled]/I");
   tree->Branch("photonPt",photonPt,"photonPt[NFilled][NFilled]/F");
@@ -1076,11 +1229,67 @@ void myCuts::Loop(){
       muon_InnerTrack_OuterPoint_py[i]     =-99.;
       muon_InnerTrack_OuterPoint_pz[i]     =-99.;  
       
-      muon_isGlobalMuon[i]        = false;
-      muon_isTrackerMuon[i]       = false;
-      muon_isStandAloneMuon[i]    = false;
-      muon_InnerTrack_isNonnull[i]= false;
-      muon_OuterTrack_isNonnull[i]= false;
+      muon_isGlobalMuon[i]                 = false;
+      muon_isTrackerMuon[i]                = false;
+      muon_isStandAloneMuon[i]             = false;
+      muon_InnerTrack_isNonnull[i]         = false;
+      muon_OuterTrack_isNonnull[i]         = false;
+
+      muon_OuterPoint_x[i]                   = -99.;   
+      muon_OuterPoint_y[i]                   = -99.;
+      muon_OuterPoint_z[i]                   = -99.;
+      muon_InnerPoint_x[i]                   = -99.;   
+      muon_InnerPoint_y[i]                   = -99.;
+      muon_InnerPoint_z[i]                   = -99.;
+      
+      muon_vx[i]                            = -99.;   
+      muon_vy[i]                            = -99.;
+      muon_vz[i]                            = -99.;
+
+     //cosmicmuon
+      cosmicmuon_px[i]                           =-99.;
+      cosmicmuon_py[i]                           =-99.;
+      cosmicmuon_pz[i]                           =-99.;
+      cosmicmuon_pt[i]                           =-99.;
+      cosmicmuon_eta[i]                          =-99.;
+      cosmicmuon_phi[i]                          =-99.;
+      cosmicmuon_energy[i]                       =-99.;
+      cosmicmuon_charge[i]                       =-99.;
+      cosmicmuon_OuterTrack_InnerPoint_x[i]      =-99.;
+      cosmicmuon_OuterTrack_InnerPoint_y[i]      =-99.;
+      cosmicmuon_OuterTrack_InnerPoint_z[i]      =-99.;
+      cosmicmuon_OuterTrack_InnerPoint_px[i]     =-99.;
+      cosmicmuon_OuterTrack_InnerPoint_py[i]     =-99.;
+      cosmicmuon_OuterTrack_InnerPoint_pz[i]     =-99.;
+      cosmicmuon_OuterTrack_OuterPoint_x[i]      =-99.;
+      cosmicmuon_OuterTrack_OuterPoint_y[i]      =-99.;
+      cosmicmuon_OuterTrack_OuterPoint_z[i]      =-99.;
+      cosmicmuon_OuterTrack_OuterPoint_px[i]     =-99.;
+      cosmicmuon_OuterTrack_OuterPoint_py[i]     =-99.;
+      cosmicmuon_OuterTrack_OuterPoint_pz[i]     =-99.;
+      cosmicmuon_InnerTrack_InnerPoint_x[i]      =-99.;
+      cosmicmuon_InnerTrack_InnerPoint_y[i]      =-99.;
+      cosmicmuon_InnerTrack_InnerPoint_z[i]      =-99.;
+      cosmicmuon_InnerTrack_InnerPoint_px[i]     =-99.;
+      cosmicmuon_InnerTrack_InnerPoint_py[i]     =-99.;
+      cosmicmuon_InnerTrack_InnerPoint_pz[i]     =-99.;
+      cosmicmuon_InnerTrack_OuterPoint_x[i]      =-99.;
+      cosmicmuon_InnerTrack_OuterPoint_y[i]      =-99.;
+      cosmicmuon_InnerTrack_OuterPoint_z[i]      =-99.;
+      cosmicmuon_InnerTrack_OuterPoint_px[i]     =-99.;
+      cosmicmuon_InnerTrack_OuterPoint_py[i]     =-99.;
+      cosmicmuon_InnerTrack_OuterPoint_pz[i]     =-99.;  
+      
+      cosmicmuon_isGlobalcosmicmuon[i]        = false;
+      cosmicmuon_isTrackercosmicmuon[i]       = false;
+      cosmicmuon_isStandAlonecosmicmuon[i]    = false;
+      cosmicmuon_InnerTrack_isNonnull[i]      = false;
+      cosmicmuon_OuterTrack_isNonnull[i]      = false;
+
+       cosmicmuon_OuterPoint_x[i]                   = -99.;   
+       cosmicmuon_OuterPoint_y[i]                   = -99.;
+       cosmicmuon_OuterPoint_z[i]                   = -99.;
+
 
     }//loop over 100 entries
 	
@@ -1325,10 +1534,19 @@ void myCuts::Loop(){
      pfjet_n                  = pfJet_n;	
      elec_n                   = Electron_n;
      muon_n                   = Muon_n;
+     cosmicmuon_n             = CosmicMuon_n;
      vertex_n                 = Vertex_n;
+<<<<<<< myCuts_halo.C
      //cscseg_n                 = CSCseg_n;
      tau_n                    = Tau_n;
 
+
+
+=======
+     //cscseg_n                 = CSCseg_n;
+     tau_n                    = Tau_n;
+
+>>>>>>> 1.2
     if(debug_)cout<<"Starting Filling: vertex, photon, ele, muon  and tracks variable "<<endl;
 
      for(int i=0; i<NFilled;i++){
@@ -1560,6 +1778,62 @@ void myCuts::Loop(){
        muon_InnerTrack_OuterPoint_px[i]       = Muon_InnerTrack_OuterPoint_px[i];
        muon_InnerTrack_OuterPoint_py[i]       = Muon_InnerTrack_OuterPoint_py[i];
        muon_InnerTrack_OuterPoint_pz[i]       = Muon_InnerTrack_OuterPoint_pz[i];  
+       muon_InnerTrack_OuterPoint_pz[i]       = Muon_InnerTrack_OuterPoint_pz[i];   
+       muon_OuterPoint_x[i]                   = Muon_OuterPoint_x[i];  
+       muon_OuterPoint_y[i]                   = Muon_OuterPoint_y[i];
+       muon_OuterPoint_z[i]                   = Muon_OuterPoint_z[i];
+       muon_InnerPoint_x[i]                   = Muon_InnerPoint_x[i];  
+       muon_InnerPoint_y[i]                   = Muon_InnerPoint_y[i];
+       muon_InnerPoint_z[i]                   = Muon_InnerPoint_z[i];
+       muon_vx[i]                             = Muon_vx[i];  
+       muon_vy[i]                             = Muon_vy[i];
+       muon_vz[i]                             = Muon_vz[i];
+ 
+
+       //Cosmic Muon
+       cosmicmuon_px[i]                             = CosmicMuon_px[i];
+       cosmicmuon_py[i]                             = CosmicMuon_py[i];
+       cosmicmuon_pz[i]                             = CosmicMuon_pz[i];
+       cosmicmuon_pt[i]                             = CosmicMuon_pt[i];
+       cosmicmuon_eta[i]                            = CosmicMuon_eta[i];
+       cosmicmuon_phi[i]                            = CosmicMuon_phi[i];
+       cosmicmuon_energy[i]                         = CosmicMuon_energy[i];
+       cosmicmuon_charge[i]                         = CosmicMuon_charge[i];
+       cosmicmuon_isGlobalcosmicmuon[i]             = CosmicMuon_isGlobalMuon[i];
+       cosmicmuon_isTrackercosmicmuon[i]            = CosmicMuon_isTrackerMuon[i];
+       cosmicmuon_isStandAlonecosmicmuon[i]         = CosmicMuon_isStandAloneMuon[i];
+       cosmicmuon_InnerTrack_isNonnull[i]           = CosmicMuon_InnerTrack_isNonnull[i];
+       cosmicmuon_OuterTrack_isNonnull[i]           = CosmicMuon_OuterTrack_isNonnull[i];
+       cosmicmuon_OuterTrack_InnerPoint_x[i]        = CosmicMuon_OuterTrack_InnerPoint_x[i];
+       cosmicmuon_OuterTrack_InnerPoint_y[i]        = CosmicMuon_OuterTrack_InnerPoint_y[i];
+       cosmicmuon_OuterTrack_InnerPoint_z[i]        = CosmicMuon_OuterTrack_InnerPoint_z[i];
+       cosmicmuon_OuterTrack_InnerPoint_px[i]       = CosmicMuon_OuterTrack_InnerPoint_px[i];
+       cosmicmuon_OuterTrack_InnerPoint_py[i]       = CosmicMuon_OuterTrack_InnerPoint_py[i];
+       cosmicmuon_OuterTrack_InnerPoint_pz[i]       = CosmicMuon_OuterTrack_InnerPoint_pz[i];
+       cosmicmuon_OuterTrack_OuterPoint_x[i]        = CosmicMuon_OuterTrack_OuterPoint_x[i];
+       cosmicmuon_OuterTrack_OuterPoint_y[i]        = CosmicMuon_OuterTrack_OuterPoint_y[i];
+       cosmicmuon_OuterTrack_OuterPoint_z[i]        = CosmicMuon_OuterTrack_OuterPoint_z[i];
+       cosmicmuon_OuterTrack_OuterPoint_px[i]       = CosmicMuon_OuterTrack_OuterPoint_px[i];
+       cosmicmuon_OuterTrack_OuterPoint_py[i]       = CosmicMuon_OuterTrack_OuterPoint_py[i];
+       cosmicmuon_OuterTrack_OuterPoint_pz[i]       = CosmicMuon_OuterTrack_OuterPoint_pz[i];
+       cosmicmuon_InnerTrack_InnerPoint_x[i]        = CosmicMuon_InnerTrack_InnerPoint_x[i];
+       cosmicmuon_InnerTrack_InnerPoint_y[i]        = CosmicMuon_InnerTrack_InnerPoint_y[i];
+       cosmicmuon_InnerTrack_InnerPoint_z[i]        = CosmicMuon_InnerTrack_InnerPoint_z[i];
+       cosmicmuon_InnerTrack_InnerPoint_px[i]       = CosmicMuon_InnerTrack_InnerPoint_px[i];
+       cosmicmuon_InnerTrack_InnerPoint_py[i]       = CosmicMuon_InnerTrack_InnerPoint_py[i];
+       cosmicmuon_InnerTrack_InnerPoint_pz[i]       = CosmicMuon_InnerTrack_InnerPoint_pz[i];
+       cosmicmuon_InnerTrack_OuterPoint_x[i]        = CosmicMuon_InnerTrack_OuterPoint_x[i];
+       cosmicmuon_InnerTrack_OuterPoint_y[i]        = CosmicMuon_InnerTrack_OuterPoint_y[i];
+       cosmicmuon_InnerTrack_OuterPoint_z[i]        = CosmicMuon_InnerTrack_OuterPoint_z[i];
+       cosmicmuon_InnerTrack_OuterPoint_px[i]       = CosmicMuon_InnerTrack_OuterPoint_px[i];
+       cosmicmuon_InnerTrack_OuterPoint_py[i]       = CosmicMuon_InnerTrack_OuterPoint_py[i];
+       cosmicmuon_InnerTrack_OuterPoint_pz[i]       = CosmicMuon_InnerTrack_OuterPoint_pz[i];  
+       cosmicmuon_InnerTrack_OuterPoint_pz[i]       = CosmicMuon_InnerTrack_OuterPoint_pz[i];   
+       cosmicmuon_OuterPoint_x[i]                   = CosmicMuon_OuterPoint_x[i];  
+       cosmicmuon_OuterPoint_y[i]                   = CosmicMuon_OuterPoint_y[i];
+       cosmicmuon_OuterPoint_z[i]                   = CosmicMuon_OuterPoint_z[i];
+       
+
 
        if(Photon_isEB[i]){       
 	 vector<int> thisPho_ietaRH;
