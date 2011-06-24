@@ -1,9 +1,9 @@
-for which in QCDDiJet_Pt15to30 QCDDiJet_Pt30to50 QCDDiJet_Pt50to80 QCDDiJet_Pt80to120 QCDDiJet_Pt120to170 QCDDiJet_Pt170to300 QCDDiJet_Pt300to470 QCDDiJet_Pt470to600;do
+for which in ZNuNu_Gamma;do
 cat myCuts_halo.C > myCuts_new.C
 sed -e '472 c\  TString location = "dcap://cmsgridftp.fnal.gov:24125";' \
--e '473 c\  TString path = "/pnfs/cms/WAX/11/store/user/sushil/Summer11/MC/QCD/'$which'/";' \
--e '474 c\  TString short_path ="/pnfs/fnal.gov/usr/cms/WAX/11/store/user/sushil/Summer11/MC/QCD/'$which'/";' \
--e '510 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sushil/ShortRootFileCode/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
+-e '473 c\  TString path = "/pnfs/cms/WAX/11/store/user/sushil/Summer11/MC/'$which'/";' \
+-e '474 c\  TString short_path ="/pnfs/fnal.gov/usr/cms/WAX/11/store/user/sushil/Summer11/MC/'$which'/";' \
+-e '510 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sandhya/423_ShortRootFiles/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
 ./compile ${which}.exe
 rm myCuts_new.C myCuts.C
 ./MakeCondorFiles.csh ${which}
@@ -11,44 +11,52 @@ done
 exit 0
 
 
-
-for which in G_Pt_300to470 G_Pt_50to80 G_Pt_80to120 G_Pt_800to1400  G_Pt_120to170 G_Pt_170to300 G_Pt_470to800 PATTuples_G_Pt_30to50;do
-cat myCuts_halo.C > myCuts_new.C                                                                                    
-sed -e '472 c\  TString location = "dcap://cmsgridftp.fnal.gov:24125";' \                                           
--e '473 c\  TString path = "/pnfs/cms/WAX/11/store/user/carley/Summer11/MC/PhotonJet/'$which'/";' \                       
--e '474 c\  TString short_path ="/pnfs/fnal.gov/usr/cms/WAX/11/store/user/carley/Summer11/MC/PhotonJet/'$which'/";' \     
--e '510 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sushil/ShortRootFileCode/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
+for which in G_Pt_300to470 G_Pt_50to80 G_Pt_80to120 G_Pt_800to1400  G_Pt_120to170 G_Pt_170to300 G_Pt_470to800 G_Pt_30to50;do
+cat myCuts_halo.C > myCuts_new.C
+sed -e '472 c\  TString location = "dcap://cmsgridftp.fnal.gov:24125";' \
+-e '473 c\  TString path = "/pnfs/cms/WAX/11/store/user/carley/Summer11/MC/PhotonJet/'$which'/";' \
+-e '474 c\  TString short_path ="/pnfs/fnal.gov/usr/cms/WAX/11/store/user/carley/Summer11/MC/PhotonJet/'$which'/";' \
+-e '510 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sandhya/423_ShortRootFiles/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
 ./compile ${which}.exe                                                                                              
 rm myCuts_new.C myCuts.C                                                                                            
 ./MakeCondorFiles.csh ${which}                                                                                      
 done                                                                                                                
-exit 0                  
 
-
-
-
-for which in W_ENu
-cat myCuts_halo.C > myCuts_new.C    
+for which in W_ENu;do
+cat myCuts_halo.C > myCuts_new.C
 sed -e '472 c\  TString location = "dcap://cmsgridftp.fnal.gov:24125";' \
 -e '473 c\  TString path = "/pnfs/cms/WAX/11/store/user/sushil/Summer11/MC/'$which'/";' \
 -e '474 c\  TString short_path ="/pnfs/fnal.gov/usr/cms/WAX/11/store/user/sushil/Summer11/MC/'$which'/";' \
--e '510 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sushil/ShortRootFileCode/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
+-e '510 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sandhya/423_ShortRootFiles/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
 ./compile ${which}.exe              
 rm myCuts_new.C myCuts.C            
 ./MakeCondorFiles.csh ${which}      
 done              
-exit 0            
 
 
 for which in W_TauNu W_MuNu;do
-cat myCuts_halo.C > myCuts_new.C                                                                                    
-sed -e '472 c\  TString location = "dcap://cmsgridftp.fnal.gov:24125";' \                                           
--e '473 c\  TString path = "/pnfs/cms/WAX/11/store/user/carley/Summer11/MC/'$which'/";' \                       
--e '474 c\  TString short_path ="/pnfs/fnal.gov/usr/cms/WAX/11/store/user/carley/Summer11/MC/'$which'/";' \     
--e '510 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sushil/ShortRootFileCode/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
+cat myCuts_halo.C > myCuts_new.C
+sed -e '472 c\  TString location = "dcap://cmsgridftp.fnal.gov:24125";' \
+-e '473 c\  TString path = "/pnfs/cms/WAX/11/store/user/carley/Summer11/MC/'$which'/";' \
+-e '474 c\  TString short_path ="/pnfs/fnal.gov/usr/cms/WAX/11/store/user/carley/Summer11/MC/'$which'/";' \
+-e '510 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sandhya/423_ShortRootFiles/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
 ./compile ${which}.exe                                                                                              
 rm myCuts_new.C myCuts.C                                                                                            
 ./MakeCondorFiles.csh ${which}                                                                                      
 done                                                                                                                
 exit 0  
+
+for which in QCDDiJet_Pt30to50 QCDDiJet_Pt50to80 QCDDiJet_Pt80to120 QCDDiJet_Pt120to170 QCDDiJet_Pt170to300 QCDDiJet_Pt300to470 QCDDiJet_Pt470to600;do
+cat myCuts_halo.C > myCuts_new.C
+sed -e '472 c\  TString location = "dcap://cmsgridftp.fnal.gov:24125";' \
+-e '473 c\  TString path = "/pnfs/cms/WAX/11/store/user/sushil/Summer11/MC/QCD/'$which'/";' \
+-e '474 c\  TString short_path ="/pnfs/fnal.gov/usr/cms/WAX/11/store/user/sushil/Summer11/MC/QCD/'$which'/";' \
+-e '510 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sandhya/423_ShortRootFiles/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
+./compile ${which}.exe
+rm myCuts_new.C myCuts.C
+./MakeCondorFiles.csh ${which}
+done
+
+
+
 

@@ -537,14 +537,14 @@ void myCuts::define_Tree(){
 
   //VERTICES
   tree->Branch("vertex_n",&vertex_n,"vertex_n/I");
-  tree->Branch("vertex_x",vertex_x,"vertex_x[NFilled]/F");
-  tree->Branch("vertex_y",vertex_y,"vertex_y[NFilled]/F");
-  tree->Branch("vertex_z",vertex_z,"vertex_z[NFilled]/F");
-  tree->Branch("vertex_tracksize",vertex_tracksize,"vertex_tracksize[NFilled]/F");
-  tree->Branch("vertex_ndof",vertex_ndof,"vertex_ndof[NFilled]/F");
-  tree->Branch("vertex_chi2",vertex_chi2,"vertex_chi2[NFilled]/F");
-  tree->Branch("vertex_d0",vertex_d0,"vertex_d0[NFilled]/F");
-  tree->Branch("vertex_isFake",vertex_isFake,"vertex_isFake[NFilled]/O");
+  tree->Branch("vertex_x",vertex_x,"vertex_x[vertex_n]/F");
+  tree->Branch("vertex_y",vertex_y,"vertex_y[vertex_n]/F");
+  tree->Branch("vertex_z",vertex_z,"vertex_z[vertex_n]/F");
+  tree->Branch("vertex_tracksize",vertex_tracksize,"vertex_tracksize[vertex_n]/F");
+  tree->Branch("vertex_ndof",vertex_ndof,"vertex_ndof[vertex_n]/F");
+  tree->Branch("vertex_chi2",vertex_chi2,"vertex_chi2[vertex_n]/F");
+  tree->Branch("vertex_d0",vertex_d0,"vertex_d0[vertex_n]/F");
+  tree->Branch("vertex_isFake",vertex_isFake,"vertex_isFake[vertex_n]/O");
   
   //TRACK
   tree->Branch("track_n",&track_n,"track_n/I");
@@ -884,7 +884,7 @@ void myCuts::define_Tree(){
   tree->Branch("pfjet_E",pfjet_E,"pfjet_E[NJFilled]/F");
   tree->Branch("pfjet_eta",pfjet_eta,"pfjet_eta[NJFilled]/F");
   tree->Branch("pfjet_phi",pfjet_phi,"pfjet_phi[NJFilled]/F");
-<<<<<<< myCuts_halo.C
+
   tree->Branch("pfjet_n_PhotonRemoved",&pfjet_n_PhotonRemoved,"pfjet_n_PhotonRemoved/I");
   tree->Branch("pfjet_n_FromHT",&pfjet_n_FromHT,"pfjet_n_FromHT/I");
   tree->Branch("pfHT",&pfHT,"pfHT/F");
@@ -924,58 +924,9 @@ void myCuts::define_Tree(){
   tree->Branch("photonPt",photonPt,"photonPt[NFilled][NFilled]/F");
   tree->Branch("photonEta",photonEta,"photonEta[NFilled][NFilled]/F");
   tree->Branch("photonPhi",photonPhi,"photonPhi[NFilled][NFilled]/F");  
-=======
-  tree->Branch("pfjet_n_PhotonRemoved",&pfjet_n_PhotonRemoved,"pfjet_n_PhotonRemoved/I");
-  tree->Branch("pfjet_n_FromHT",&pfjet_n_FromHT,"pfjet_n_FromHT/I");
-  tree->Branch("pfHT",&pfHT,"pfHT/F");
-  tree->Branch("HT_pfJetpT50",&HT_pfJetpT50,"HT_pfJetpT50/F");  
-  tree->Branch("HT_pfJetpT100",&HT_pfJetpT100,"HT_pfJetpT100/F");
-  tree->Branch("HT_pfJetpT150",&HT_pfJetpT150,"HT_pfJetpT150/F");
+  //////////////////////////////////////////////////////////
                  
 
-
-  ///////////////////////added by bhawna/////////////////////
-  //////////////////////////////////////////////////////////
-  //tau info
-  tree->Branch("tau_n",&tau_n,"tau_n/I");
-  tree->Branch("OneProng0Pi0",OneProng0Pi0,"OneProng0Pi0[NFilled]/I");
-  tree->Branch("OneProng1Pi0",OneProng1Pi0,"OneProng1Pi0[NFilled]/I");
-  tree->Branch("OneProng2Pi0",OneProng2Pi0,"OneProng2Pi0[NFilled]/I");
-  tree->Branch("ThreeProng0Pi0",ThreeProng0Pi0,"ThreeProng0Pi0[NFilled]/I");
-  tree->Branch("ThreeProng1Pi0",ThreeProng1Pi0,"ThreeProng1Pi0[NFilled]/I");
-  tree->Branch("GenHadTauPt",GenHadTauPt,"GenHadTauPt[NFilled]/F");
-  tree->Branch("GenHadTauEta",GenHadTauEta,"GenHadTauEta[NFilled]/F");
-  tree->Branch("GenHadTauPhi",GenHadTauPhi,"GenHadTauPhi[NFilled]/F");
-  tree->Branch("NPions",&NPions,"NPions/I");
-  tree->Branch("NPi0",&NPi0,"NPi0/I");
-  tree->Branch("NPhotons",&NPhotons,"NPhotons/I");
-  tree->Branch("pionPdgId",pionPdgId,"pionPdgId[NFilled][NFilled]/I");
-  tree->Branch("pionPt",pionPt,"pionPt[NFilled][NFilled]/F");
-  tree->Branch("pionEta",pionEta,"pionEta[NFilled][NFilled]/F");
-  tree->Branch("pionPhi",pionPhi,"pionPhi[NFilled][NFilled]/F");
-  
-  tree->Branch("pi0PdgId",pi0PdgId,"pi0PdgId[NFilled][NFilled]/I");
-  tree->Branch("pi0Pt",pi0Pt,"pi0Pt[NFilled][NFilled]/F");
-  tree->Branch("pi0Eta",pi0Eta,"pi0Eta[NFilled][NFilled]/F");
-  tree->Branch("pi0Phi",pi0Phi,"pi0Phi[NFilled][NFilled]/F");
->>>>>>> 1.2
-
-  /////////////ends here///////////////////////////
-  
-  
-  
-  
-  
-
-  tree->Branch("photonPdgId",photonPdgId,"photonPdgId[NFilled][NFilled]/I");
-  tree->Branch("photonPt",photonPt,"photonPt[NFilled][NFilled]/F");
-  tree->Branch("photonEta",photonEta,"photonEta[NFilled][NFilled]/F");
-  tree->Branch("photonPhi",photonPhi,"photonPhi[NFilled][NFilled]/F");  
-
-  /////////////ends here///////////////////////////
-  
-  
-  
   
   
 
@@ -1536,17 +1487,17 @@ void myCuts::Loop(){
      muon_n                   = Muon_n;
      cosmicmuon_n             = CosmicMuon_n;
      vertex_n                 = Vertex_n;
-<<<<<<< myCuts_halo.C
+
      //cscseg_n                 = CSCseg_n;
      tau_n                    = Tau_n;
 
 
 
-=======
-     //cscseg_n                 = CSCseg_n;
-     tau_n                    = Tau_n;
 
->>>>>>> 1.2
+     //cscseg_n                 = CSCseg_n;
+     //tau_n                    = Tau_n;
+
+
     if(debug_)cout<<"Starting Filling: vertex, photon, ele, muon  and tracks variable "<<endl;
 
      for(int i=0; i<NFilled;i++){
@@ -1674,14 +1625,14 @@ void myCuts::Loop(){
        MC_photon_MotherPhi[i]                 = gen_photonMotherPhi[i];
        MC_photon_GrandMotherID[i]             = gen_photonGrandmotherID[i];
 
-       TLorentzVetor v2;
-       v2.clear();
+       TLorentzVector v2;
+       v2.Clear();
        v2.SetPxPyPzE(MC_photon_px[i],
                      MC_photon_py[i],
                      MC_photon_pz[i],
                      MC_photon_E[i]); 
  
-       photon_deltR_mc[i]=v2.DeltaR(v1); 
+       photon_deltaR_mc[i]=v2.DeltaR(v1); 
  
        //////////////////////////////////////////////////////
 

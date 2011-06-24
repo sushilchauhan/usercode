@@ -1,5 +1,36 @@
+
+for which in Tuples_2011_Prompt_2;do
+cat myCuts_halo.C > myCuts_new.C
+sed -e '472 c\  TString location = "dcap://cmsgridftp.fnal.gov:24125";' \
+-e '473 c\  TString path = "/pnfs/cms/WAX/11/store/user/lpcgg/askew/42Mono/'$which'/";' \
+-e '474 c\  TString short_path ="/pnfs/fnal.gov/usr/cms/WAX/11/store/user/lpcgg/askew/42Mono/'$which'/";' \
+-e '5149c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sandhya/423_ShortRootFiles/'$which'.root","RECREATE");' \
+-e '1475 c\  /*' \
+-e '1479 c\  */' \
+-e '1528 c\     scraping_isScrapingEvent = Scraping_isScrapingEvent;' \
+-e '1612 c\  /*' \
+-e '1638 c\  */'  < myCuts_new.C > myCuts.C
+./compile ${which}.exe
+rm myCuts.C myCuts_new.C
+./MakeCondorFiles.csh ${which}
+done
+
+exit 0
+
+for which in Tuples_2011Rereco Tuples_2011_Prompt_1;do
 for which in May10thReReco_New;do
 cat myCuts_halo.C > myCuts_new.C
+<<<<<<< CompileSubmitData
+sed -e '419 c\  TString location = "dcap://cmsgridftp.fnal.gov:24125";' \
+-e '420 c\  TString path = "/pnfs/cms/WAX/11/store/user/sushil/Summer11/Data/'$which'/";' \
+-e '421 c\  TString short_path ="/pnfs/fnal.gov/usr/cms/WAX/11/store/user/sushil/Summer11/Data/'$which'/";' \
+-e '457 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sandhya/423_ShortRootFiles/'$which'.root","RECREATE");' \
+-e '1289 c\  /*' \
+-e '1315 c\  */' \
+-e '1319 c\     scraping_isScrapingEvent = Scraping_isScrapingEvent;' \
+-e '1444 c\  /*' \
+-e '1468 c\  */'  < myCuts_new.C > myCuts.C
+=======
 sed -e '472 c\  TString location = "dcap://cmsgridftp.fnal.gov:24125";' \
 -e '473 c\  TString path = "/pnfs/cms/WAX/11/store/user/sushil/Summer11/Data/May10thReReco_New/'$which'/";' \
 -e '474 c\  TString short_path ="/pnfs/cms/WAX/11/store/user/sushil/Summer11/Data/May10thReReco_New/'$which'/";' \
@@ -9,6 +40,7 @@ sed -e '472 c\  TString location = "dcap://cmsgridftp.fnal.gov:24125";' \
 -e '1480 c\     scraping_isScrapingEvent = Scraping_isScrapingEvent;' \
 -e '1607 c\  /*' \
 -e '1631 c\  */'  < myCuts_new.C > myCuts.C
+>>>>>>> 1.2
 ./compile ${which}.exe
 ./MakeCondorFiles.csh ${which}
 done
