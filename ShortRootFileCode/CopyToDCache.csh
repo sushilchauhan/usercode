@@ -5,10 +5,10 @@ cat>Job_${1}.csh<<EOF
 #!/bin/tcsh
 setenv X509_USER_PROXY /uscms/home/sushil/x509up_u12124
 source /uscmst1/prod/sw/cms/setup/cshrc prod
-cd /uscms_data/d2/sushil/CMSSW/MonoPhoton/CMSSW_3_9_7/src 
+cd /uscms_data/d2/sushil/CMSSW/MonoPhoton/CMSSW_4_2_3/src 
 cmsenv
 cd ${pwd}
-/opt/d-cache/srm/bin/srmcp "file://localhost/${PWD}/${1}.root" "srm://cmssrm.fnal.gov:8443/11/store/user/sushil/MonoPhoton/397_Ntuples_V26/ShortRootFiles/${1}.root"
+/opt/d-cache/srm/bin/srmcp "file://localhost/${PWD}/${1}.root" "srm://cmssrm.fnal.gov:8443/11/store/user/sushil/MonoPhoton/Summer11/ShortRootFiles/${1}.root"
 echo "Copied file"
 EOF
 

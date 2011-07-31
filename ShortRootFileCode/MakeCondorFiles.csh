@@ -6,7 +6,7 @@ echo ${pwd}
 cat>Job_${1}.csh<<EOF
 #!/bin/tcsh
 source /uscmst1/prod/sw/cms/setup/cshrc prod
-cd /uscms_data/d2/sushil/CMSSW/MonoPhoton/CMSSW_3_9_7/src 
+cd /uscms_data/d2/sushil/CMSSW/MonoPhoton/CMSSW_4_2_3/src 
 cmsenv
 cd ${pwd}
 ${pwd}/${1}.exe

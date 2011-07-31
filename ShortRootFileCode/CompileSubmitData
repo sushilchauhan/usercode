@@ -1,49 +1,33 @@
-
-for which in Tuples_2011_Prompt_2;do
+for which in Tuples;do
 cat myCuts_halo.C > myCuts_new.C
-sed -e '472 c\  TString location = "dcap://cmsgridftp.fnal.gov:24125";' \
--e '473 c\  TString path = "/pnfs/cms/WAX/11/store/user/lpcgg/askew/42Mono/'$which'/";' \
--e '474 c\  TString short_path ="/pnfs/fnal.gov/usr/cms/WAX/11/store/user/lpcgg/askew/42Mono/'$which'/";' \
--e '5149c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sandhya/423_ShortRootFiles/'$which'.root","RECREATE");' \
--e '1475 c\  /*' \
--e '1479 c\  */' \
--e '1528 c\     scraping_isScrapingEvent = Scraping_isScrapingEvent;' \
--e '1612 c\  /*' \
--e '1638 c\  */'  < myCuts_new.C > myCuts.C
+sed -e '476 c\  TString location = "dcap://cmsgridftp.fnal.gov:24125";' \
+-e '477 c\  TString path = "/pnfs/cms/WAX/11/store/user/lpcgg/askew/42Rho/'$which'/";' \
+-e '478 c\  TString short_path ="/pnfs/fnal.gov/usr/cms/WAX/11/store/user/lpcgg/askew/42Rho/'$which'/";' \
+-e '514 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sushil/423_ShortRootFiles/'$which'.root","RECREATE");' \
+-e '1470 c\  /*' \
+-e '1499 c\  */' \
+-e '1504 c\     scraping_isScrapingEvent = Scraping_isScrapingEvent;' \
+-e '1639 c\  /*' \
+-e '1662 c\  */'  < myCuts_new.C > myCuts.C
 ./compile ${which}.exe
 rm myCuts.C myCuts_new.C
 ./MakeCondorFiles.csh ${which}
 done
-
 exit 0
 
-for which in Tuples_2011Rereco Tuples_2011_Prompt_1;do
-for which in May10thReReco_New;do
-cat myCuts_halo.C > myCuts_new.C
-<<<<<<< CompileSubmitData
-sed -e '419 c\  TString location = "dcap://cmsgridftp.fnal.gov:24125";' \
--e '420 c\  TString path = "/pnfs/cms/WAX/11/store/user/sushil/Summer11/Data/'$which'/";' \
--e '421 c\  TString short_path ="/pnfs/fnal.gov/usr/cms/WAX/11/store/user/sushil/Summer11/Data/'$which'/";' \
--e '457 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sandhya/423_ShortRootFiles/'$which'.root","RECREATE");' \
--e '1289 c\  /*' \
--e '1315 c\  */' \
--e '1319 c\     scraping_isScrapingEvent = Scraping_isScrapingEvent;' \
--e '1444 c\  /*' \
--e '1468 c\  */'  < myCuts_new.C > myCuts.C
-=======
-sed -e '472 c\  TString location = "dcap://cmsgridftp.fnal.gov:24125";' \
--e '473 c\  TString path = "/pnfs/cms/WAX/11/store/user/sushil/Summer11/Data/May10thReReco_New/'$which'/";' \
--e '474 c\  TString short_path ="/pnfs/cms/WAX/11/store/user/sushil/Summer11/Data/May10thReReco_New/'$which'/";' \
--e '510 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sushil/ShortRootFileCode/'$which'.root","RECREATE");' \
--e '1450 c\  /*' \
--e '1476 c\  */' \
--e '1480 c\     scraping_isScrapingEvent = Scraping_isScrapingEvent;' \
--e '1607 c\  /*' \
--e '1631 c\  */'  < myCuts_new.C > myCuts.C
->>>>>>> 1.2
-./compile ${which}.exe
-./MakeCondorFiles.csh ${which}
-done
 
-exit 0
+for which in PATTuples_G_Pt_300to470 PATTuples_G_Pt_1400to1800 PATTuples_G_Pt_15to30 PATTuples_G_Pt_1800_Inf PATTuples_G_Pt_50to80 PATTuples_G_Pt_80to120 PATTuples_G_Pt_800to1400 PATTuples_G_Pt_120to170 PATTuples_G_Pt_170to300 PATTuples_G_Pt_470to800 PATTuples_G_Pt_30to50;do
+ 
+for which in W_ENu WENu_Gamma W_MuNu W_TauNu Zll_Gamma;do
+for which in ZNuNu_Gamma ZNuNu_Gamma_Pythia;do
+for which in PATTuples_QCDDiJet_Pt15to30 PATTuples_QCDDiJet_Pt30to50 PATTuples_QCDDiJet_Pt50to80 PATTuples_QCDDiJet_Pt80to120 PATTuples_QCDDiJet_Pt120to170 PATTuples_QCDDiJet_Pt170to300 PATTuples_QCDDiJet_Pt300to470 PATTuples_QCDDiJet_Pt470to600 PATTuples_QCDDiJet_Pt600to800 PATTuples_QCDDiJet_Pt800to1000 PATTuples_QCDDiJet_Pt1000to1400 PATTuples_QCDDiJet_Pt1400to1800 PATTuples_QCDDiJet_Pt1800toInf;do
+ 
+for which in 38PromptA_JSON 38PromptB_JSON;do
+for which in ADDToMonoPhoton_MD_1_d_2 ADDToMonoPhoton_MD_1_d_3 ADDToMonoPhoton_MD_1_d_4 ADDToMonoPhoton_MD_2_d_2 ADDToMonoPhoton_MD_2_d_3 ADDToMonoPhoton_MD_2_d_4;do
+for which in Oct13_g;do
+ 
+for which in QstarToGJ_M_700 QstarToGJ_M_1000 QstarToGJ_M_1200 QstarToGJ_M_1500 QstarToGJ_M_1700 QstarToGJ_M_2000 QstarToGJ_M_2500 QstarToGJ_M_3000 QstarToGJ_M_1000_fhalf QstarToGJ_M_1500_fhalf QstarToGJ_M_2000_fhalf QstarToGJ_M_2500_fhalf;do
+ 
+ 
+ 
 
