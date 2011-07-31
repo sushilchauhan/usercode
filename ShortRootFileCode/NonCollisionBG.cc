@@ -12,8 +12,8 @@
 ClassImp(NonCollisionBG)
   
   NonCollisionBG::NonCollisionBG(){
-  file_PHOTON = TFile::Open("/uscmst1b_scratch/lpc1/3DayLifetime/sushil/ShortRootFileCode/photon_MC.root","READ");
-  file_COSMIC = TFile::Open("/uscmst1b_scratch/lpc1/3DayLifetime/sushil/ShortRootFileCode/data_cosmics.root","READ");
+  file_PHOTON = TFile::Open("/uscms_data/d3/sandhya/CMSSW_4_2_3/src/ADDmonophoton/Analyzer/test/ShortNtupleCode04/photon_MC.root","READ");
+  file_COSMIC = TFile::Open("/uscms_data/d3/sandhya/CMSSW_4_2_3/src/ADDmonophoton/Analyzer/test/ShortNtupleCode04/data_cosmics.root","READ");
 }
 
 NonCollisionBG::~NonCollisionBG(){
