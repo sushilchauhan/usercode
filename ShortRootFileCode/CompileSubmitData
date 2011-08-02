@@ -3,7 +3,7 @@ cat myCuts_halo.C > myCuts_new.C
 sed -e '476 c\  TString location = "dcap://cmsgridftp.fnal.gov:24125";' \
 -e '477 c\  TString path = "/pnfs/cms/WAX/11/store/user/lpcgg/askew/42Rho/'$which'/";' \
 -e '478 c\  TString short_path ="/pnfs/fnal.gov/usr/cms/WAX/11/store/user/lpcgg/askew/42Rho/'$which'/";' \
--e '514 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sushil/423_ShortRootFiles/'$which'.root","RECREATE");' \
+-e '514 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sushil/ShortRootFileCode/'$which'.root","RECREATE");' \
 -e '1470 c\  /*' \
 -e '1499 c\  */' \
 -e '1504 c\     scraping_isScrapingEvent = Scraping_isScrapingEvent;' \

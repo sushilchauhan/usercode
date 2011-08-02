@@ -1,5 +1,4 @@
 #!/bin/tcsh
-#setenv X509_USER_PROXY /uscms/home/sandhya/x509up_u45353
 setenv pwd $PWD
 echo ${pwd}
 

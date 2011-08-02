@@ -3,7 +3,7 @@ cat myCuts_halo.C > myCuts_new.C
 sed -e '476 c\  TString location = "dcap://cmsgridftp.fnal.gov:24125";' \
 -e '477 c\  TString path = "/pnfs/cms/WAX/11/store/user/lpcgg/sushil/Summer11/MC/'$which'/";' \
 -e '478 c\  TString short_path ="/pnfs/fnal.gov/usr/cms/WAX/11/store/user/lpcgg/sushil/Summer11/MC/'$which'/";' \
--e '514 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sandhya/423_ShortRootFiles/'$which'_80.root","RECREATE");' < myCuts_new.C > myC\
+-e '514 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sushil/ShortRootFileCode/'$which'_80.root","RECREATE");' < myCuts_new.C > myC\
 uts.C
 ./compile ${which}.exe
 rm myCuts_new.C myCuts.C
@@ -16,7 +16,7 @@ cat myCuts_halo.C > myCuts_new.C
 sed -e '476 c\  TString location = "dcap://cmsgridftp.fnal.gov:24125";' \
 -e '477 c\  TString path = "/pnfs/cms/WAX/11/store/user/lpcgg/sushil/Summer11/MC/WZGamma/'$which'/";' \
 -e '478 c\  TString short_path ="/pnfs/fnal.gov/usr/cms/WAX/11/store/user/lpcgg/sushil/Summer11/MC/WZGamma/'$which'/";' \
--e '514 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sandhya/423_ShortRootFiles/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
+-e '514 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sushil/ShortRootFileCode/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
 ./compile ${which}.exe
 rm myCuts_new.C myCuts.C
 ./MakeCondorFiles.csh ${which}
@@ -27,7 +27,7 @@ cat myCuts_halo.C > myCuts_new.C
 sed -e '476 c\  TString location = "dcap://cmsgridftp.fnal.gov:24125";' \
 -e '477 c\  TString path = "/pnfs/cms/WAX/11/store/user/lpcgg/sushil/Summer11/MC/WGamma/enu/'$which'/";' \
 -e '478 c\  TString short_path ="/pnfs/fnal.gov/usr/cms/WAX/11/store/user/lpcgg/sushil/Summer11/MC/WGamma/enu/'$which'/";' \
--e '514 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sandhya/423_ShortRootFiles/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
+-e '514 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sushil/ShortRootFileCode/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
 ./compile ${which}.exe
 rm myCuts_new.C myCuts.C
 ./MakeCondorFiles.csh ${which}
@@ -39,7 +39,7 @@ cat myCuts_halo.C > myCuts_new.C
 sed -e '476 c\  TString location = "dcap://cmsgridftp.fnal.gov:24125";' \
 -e '477 c\  TString path = "/pnfs/cms/WAX/11/store/user/lpcgg/sushil/Summer11/MC/ADD_New/'$which'/";' \
 -e '478 c\  TString short_path ="/pnfs/fnal.gov/usr/cms/WAX/11/store/user/lpcgg/sushil/Summer11/MC/ADD_New/'$which'/";' \
--e '514 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sandhya/423_ShortRootFiles/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
+-e '514 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sushil/ShortRootFileCode'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
 ./compile ${which}.exe
 rm myCuts_new.C myCuts.C
 ./MakeCondorFiles.csh ${which}
@@ -51,7 +51,7 @@ cat myCuts_halo.C > myCuts_new.C
 sed -e '476 c\  TString location = "dcap://cmsgridftp.fnal.gov:24125";' \
 -e '477 c\  TString path = "/pnfs/cms/WAX/11/store/user/lpcgg/sushil/Summer11/MC/ZllGamma/ee/'$which'/";' \
 -e '478 c\  TString short_path ="/pnfs/fnal.gov/usr/cms/WAX/11/store/user/lpcgg/sushil/Summer11/MC/ZllGamma/ee/'$which'/";' \
--e '514 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sandhya/423_ShortRootFiles/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
+-e '514 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sushil/ShortRootFileCode/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
 ./compile ${which}.exe
 rm myCuts_new.C myCuts.C
 ./MakeCondorFiles.csh ${which}
@@ -63,7 +63,7 @@ cat myCuts_halo.C > myCuts_new.C
 sed -e '476 c\  TString location = "dcap://cmsgridftp.fnal.gov:24125";' \
 -e '477 c\  TString path = "/pnfs/cms/WAX/11/store/user/lpcgg/sushil/Summer11/MC/ZllGamma/mumu/'$which'/";' \
 -e '478 c\  TString short_path ="/pnfs/fnal.gov/usr/cms/WAX/11/store/user/lpcgg/sushil/Summer11/MC/ZllGamma/mumu/'$which'/";' \
--e '514 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sandhya/423_ShortRootFiles/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
+-e '514 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sushil/ShortRootFileCode/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
 ./compile ${which}.exe
 rm myCuts_new.C myCuts.C
 ./MakeCondorFiles.csh ${which}
@@ -75,7 +75,7 @@ cat myCuts_halo.C > myCuts_new.C
 sed -e '476 c\  TString location = "dcap://cmsgridftp.fnal.gov:24125";' \
 -e '477 c\  TString path = "/pnfs/cms/WAX/11/store/user/lpcgg/sushil/Summer11/MC/DiPhoton/'$which'/";' \
 -e '478 c\  TString short_path ="/pnfs/fnal.gov/usr/cms/WAX/11/store/user/lpcgg/sushil/Summer11/MC/DiPhoton/'$which'/";' \
--e '514 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sandhya/423_ShortRootFiles/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
+-e '514 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sushil/ShortRootFileCode/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
 ./compile ${which}.exe
 rm myCuts_new.C myCuts.C
 ./MakeCondorFiles.csh ${which}
@@ -89,7 +89,7 @@ cat myCuts_halo.C > myCuts_new.C
 sed -e '476 c\  TString location = "dcap://cmsgridftp.fnal.gov:24125";' \
 -e '477 c\  TString path = "/pnfs/cms/WAX/11/store/user/lpcgg/sushil/Summer11/MC/DiPhoton/'$which'/";' \
 -e '478 c\  TString short_path ="/pnfs/fnal.gov/usr/cms/WAX/11/store/user/lpcgg/sushil/Summer11/MC/DiPhoton/'$which'/";' \
--e '514 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sandhya/423_ShortRootFiles/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
+-e '514 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sushil/ShortRootFileCode/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
 ./compile ${which}.exe
 rm myCuts_new.C myCuts.C
 ./MakeCondorFiles.csh ${which}
@@ -100,7 +100,7 @@ cat myCuts_halo.C > myCuts_new.C
 sed -e '476 c\  TString location = "dcap://cmsgridftp.fnal.gov:24125";' \
 -e '477 c\  TString path = "/pnfs/cms/WAX/11/store/user/carley/Summer11/MC/PhotonJet/'$which'/";' \
 -e '478 c\  TString short_path ="/pnfs/fnal.gov/usr/cms/WAX/11/store/user/carley/Summer11/MC/PhotonJet/'$which'/";' \
--e '514 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sandhya/423_ShortRootFiles/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
+-e '514 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sushil/ShortRootFileCode/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
 ./compile ${which}.exe                                                                                              
 rm myCuts_new.C myCuts.C                                                                                            
 ./MakeCondorFiles.csh ${which}                                                                                      
@@ -111,7 +111,7 @@ cat myCuts_halo.C > myCuts_new.C
 sed -e '476 c\  TString location = "dcap://cmsgridftp.fnal.gov:24125";' \
 -e '477 c\  TString path = "/pnfs/cms/WAX/11/store/user/sushil/Summer11/MC/'$which'/";' \
 -e '478 c\  TString short_path ="/pnfs/fnal.gov/usr/cms/WAX/11/store/user/sushil/Summer11/MC/'$which'/";' \
--e '514 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sandhya/423_ShortRootFiles/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
+-e '514 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sushil/ShortRootFileCode/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
 ./compile ${which}.exe              
 rm myCuts_new.C myCuts.C            
 ./MakeCondorFiles.csh ${which}      
@@ -123,7 +123,7 @@ cat myCuts_halo.C > myCuts_new.C
 sed -e '476 c\  TString location = "dcap://cmsgridftp.fnal.gov:24125";' \
 -e '477 c\  TString path = "/pnfs/cms/WAX/11/store/user/carley/Summer11/MC/'$which'/";' \
 -e '478 c\  TString short_path ="/pnfs/fnal.gov/usr/cms/WAX/11/store/user/carley/Summer11/MC/'$which'/";' \
--e '514 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sandhya/423_ShortRootFiles/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
+-e '514 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sushil/ShortRootFileCode/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
 ./compile ${which}.exe                                                                                              
 rm myCuts_new.C myCuts.C                                                                                            
 ./MakeCondorFiles.csh ${which}                                                                                      
@@ -135,7 +135,7 @@ cat myCuts_halo.C > myCuts_new.C
 sed -e '476 c\  TString location = "dcap://cmsgridftp.fnal.gov:24125";' \
 -e '477 c\  TString path = "/pnfs/cms/WAX/11/store/user/sushil/Summer11/MC/QCD/'$which'/";' \
 -e '478 c\  TString short_path ="/pnfs/fnal.gov/usr/cms/WAX/11/store/user/sushil/Summer11/MC/QCD/'$which'/";' \
--e '514 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sandhya/423_ShortRootFiles/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
+-e '514 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sushil/ShortRootFileCode/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
 ./compile ${which}.exe
 rm myCuts_new.C myCuts.C
 ./MakeCondorFiles.csh ${which}
@@ -147,7 +147,7 @@ cat myCuts_halo.C > myCuts_new.C
 sed -e '476 c\  TString location = "dcap://cmsgridftp.fnal.gov:24125";' \
 -e '477 c\  TString path = "/pnfs/cms/WAX/11/store/user/carley/Summer11/MC/'$which'/";' \
 -e '478 c\  TString short_path ="/pnfs/fnal.gov/usr/cms/WAX/11/store/user/carley/Summer11/MC/'$which'/";' \
--e '514 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sandhya/423_ShortRootFiles/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
+-e '514 c\  outfile = new TFile("/uscmst1b_scratch/lpc1/3DayLifetime/sushil/ShortRootFileCode/'$which'.root","RECREATE");' < myCuts_new.C > myCuts.C
 ./compile ${which}.exe
 rm myCuts_new.C myCuts.C
 ./MakeCondorFiles.csh ${which}
